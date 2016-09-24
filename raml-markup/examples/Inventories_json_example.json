@@ -1,0 +1,16 @@
+{
+   "inventory":{
+      "availabilty":"2",
+      "bedinventory":"3a1827bc-4fe3-40e7-abba-7956939fae05",
+      "bedtype":1,
+      "hmisparticipatingbeds":-791575690,
+      "householdtype":3,
+      "inventoryenddate":"02-04-2016 12:12",
+      "inventorystartdate":"02-04-2016 12:12",
+      "unitinventory":1579850350,
+      "chbedinventory":1,
+      "vetbedinventory":2,
+      "youthbedinventory":3,
+      "youthagegroup":4
+   }
+}

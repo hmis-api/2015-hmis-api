@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "medicalassistances": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "medicalassistances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "medicalassistanceId": {
+                "type": "string"
+              },
+              "hivaidsassistance": {
+                "type": "integer"
+              },
+              "nohivaidsassistancereason": {
+                "type": "integer"
+              },
+              "adap": {
+                "type": "integer"
+              },
+              "noadapreason": {
+                "type": "integer"
+              },
+              "informationDate": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "medicalassistanceId",
+              "hivaidsassistance",
+              "nohivaidsassistancereason",
+              "adap",
+              "noadapreason",
+              "informationDate"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "medicalassistances"
+      ]
+    }
+  },
+  "required": [
+    "medicalassistances"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "affiliation": {
+      "id": "affiliation",
+      "type": "object",
+      "properties": {
+        "affiliationId": {
+          "id": "affiliationId",
+          "type": "string"
+        },
+        "resprojectid": {
+          "id": "resprojectid",
+          "type": "string"
+        },
+        "dateCreated": {
+          "id": "dateCreated",
+          "type": "string"
+        },
+        "dateUpdated": {
+          "id": "dateUpdated",
+          "type": "string"
+        }
+      },
+      "required": [
+        "affiliationId",
+        "resprojectid",
+        "dateCreated",
+        "dateUpdated"
+      ]
+    }
+  },
+  "required": [
+    "affiliation"
+  ]
+}

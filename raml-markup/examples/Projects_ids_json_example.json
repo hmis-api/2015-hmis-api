@@ -1,0 +1,24 @@
+{
+  "projects": {
+    "pagination": {
+      "from": 0,
+      "returned": 1,
+      "total": 1,
+      "maximum": 30,
+      "sort": {}
+    },
+    "projects": [
+      {
+        "projectId": "0dda7333-0592-4fa7-ba79-1fe2dfaaff4e",
+        "projectName": "Homeless People Project",
+        "projectCommonName": "Homeless People Project",
+        "continuumProject": 0,
+        "projectType": 1,
+        "residentialAffiliation": 0,
+        "targetPopulation": 1,
+        "trackingMethod": 0,
+        "dateCreated": "03-15-2016"
+      }
+    ]
+  }
+}

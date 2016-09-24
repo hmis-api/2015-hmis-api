@@ -1,0 +1,14 @@
+{
+   "noncashbenefits":{
+      "benefitsfromanysource":0,
+      "othersource":99,
+      "othertanf":0,
+      "rentalassistanceongoing":0,
+      "rentalassistancetemp":0,
+      "snap":0,
+      "tanfchildcare":0,
+      "tanftransportation":0,
+      "wic":0,
+      "othersourceidentify":"test"
+   }
+}

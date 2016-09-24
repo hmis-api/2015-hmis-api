@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "domesticviolence": {
+      "id": "http://jsonschema.net/domesticviolence",
+      "type": "object",
+      "properties": {
+        "domesticviolenceId": {
+          "id": "http://jsonschema.net/domesticviolence/domesticviolenceId",
+          "type": "string"
+        }
+      },
+      "required": [
+        "domesticviolenceId"
+      ]
+    }
+  },
+  "required": [
+    "domesticviolence"
+  ]
+}

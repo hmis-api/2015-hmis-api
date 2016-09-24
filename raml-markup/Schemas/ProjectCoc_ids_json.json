@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "projectcocs": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "projectcocs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "projectcocId": {
+                "type": "string"
+              },
+              "coccode": {
+                "type": "string"
+              },
+              "dateCreated": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "projectcocId",
+              "coccode",
+              "dateCreated"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "projectcocs"
+      ]
+    }
+  },
+  "required": [
+    "projectcocs"
+  ]
+}

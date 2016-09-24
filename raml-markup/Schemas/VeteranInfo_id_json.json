@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "veteranInfo": {
+      "type": "object",
+      "properties": {
+        "veteranInfoId": {
+          "type": "string"
+        },
+        "yearEntrdService": {
+          "type": "integer"
+        },
+        "yearSeperated": {
+          "type": "integer"
+        },
+        "worldWar2": {
+          "type": "integer"
+        },
+        "koreanWar": {
+          "type": "integer"
+        },
+        "vietnamWar": {
+          "type": "integer"
+        },
+        "desertStorm": {
+          "type": "integer"
+        },
+        "afghanistanOef": {
+          "type": "integer"
+        },
+        "iraqOif": {
+          "type": "integer"
+        },
+        "iraqOnd": {
+          "type": "integer"
+        },
+        "otherTheater": {
+          "type": "integer"
+        },
+        "militaryBranch": {
+          "type": "integer"
+        },
+        "dischargeStatus": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "veteranInfoId",
+        "yearEntrdService",
+        "yearSeperated",
+        "worldWar2",
+        "koreanWar",
+        "vietnamWar",
+        "desertStorm",
+        "afghanistanOef",
+        "iraqOif",
+        "iraqOnd",
+        "otherTheater",
+        "militaryBranch",
+        "dischargeStatus"
+      ]
+    }
+  },
+  "required": [
+    "veteranInfo"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string"
+        },
+        "projectName": {
+          "type": "string"
+        },
+        "projectCommonName": {
+          "type": "string"
+        },
+        "continuumProject": {
+          "type": "integer"
+        },
+        "projectType": {
+          "type": "integer"
+        },
+        "targetPopulation": {
+          "type": "integer"
+        },
+        "trackingMethod": {
+          "type": "integer"
+        },
+        "dateCreated": {
+          "type": "string"
+        },
+        "dateUpdated": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "projectId",
+        "projectName",
+        "projectCommonName",
+        "continuumProject",
+        "projectType",
+        "targetPopulation",
+        "trackingMethod",
+        "dateCreated",
+        "dateUpdated"
+      ]
+    }
+  },
+  "required": [
+    "project"
+  ]
+}

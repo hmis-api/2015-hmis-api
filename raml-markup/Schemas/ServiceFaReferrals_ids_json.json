@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "servicefareferrals": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "servicefareferrals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "servicefareferralId": {
+                "type": "string"
+              },
+              "serviceCategory": {
+                "type": "integer"
+              },
+              "funderList": {
+                "type": "integer"
+              },
+              "typeProvided": {
+                "type": "integer"
+              },
+              "otherTypeProvided": {
+                "type": "string"
+              },
+              "subTypeProvided": {
+                "type": "integer"
+              },
+              "faAmount": {
+                "type": "number"
+              },
+              "referralOutcome": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "servicefareferralId",
+              "serviceCategory",
+              "funderList",
+              "typeProvided",
+              "otherTypeProvided",
+              "subTypeProvided",
+              "faAmount",
+              "referralOutcome"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "servicefareferrals"
+      ]
+    }
+  },
+  "required": [
+    "servicefareferrals"
+  ]
+}

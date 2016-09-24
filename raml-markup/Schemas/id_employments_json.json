@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "employment": {
+      "id": "http://jsonschema.net/employment",
+      "type": "object",
+      "properties": {
+        "employmentId": {
+          "id": "http://jsonschema.net/employment/employmentId",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employmentId"
+      ]
+    }
+  },
+  "required": [
+    "employment"
+  ]
+}

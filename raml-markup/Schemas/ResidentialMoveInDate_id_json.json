@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "residentialmoveindate": {
+      "type": "object",
+      "properties": {
+        "residentialmoveindateId": {
+          "type": "string"
+        },
+        "inpermanenthousing": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "residentialmoveindateId",
+        "inpermanenthousing"
+      ]
+    }
+  },
+  "required": [
+    "residentialmoveindate"
+  ]
+}

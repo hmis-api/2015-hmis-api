@@ -1,0 +1,23 @@
+{
+   "funders":{
+      "pagination":{
+         "from":0,
+         "returned":1,
+         "total":1,
+         "maximum":30,
+         "sort":{
+
+         }
+      },
+      "funders":[
+         {
+            "funderId":"8f11979d-8402-49a8-8253-f5f16c57d63f",
+            "funder":8,
+            "grantid":"a2cac563-e852-487b-996d-b1bae8225234",
+            "dateCreated":"05-11-2016",
+            "enddate":"04-16-2016",
+            "startdate":"02-04-2016"
+         }
+      ]
+   }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "noncashbenefits": {
+      "type": "object",
+      "properties": {
+        "noncashbenefitsID": {
+          "type": "string"
+        },
+        "benefitsfromanysource": {
+          "type": "integer"
+        },
+        "othersource": {
+          "type": "integer"
+        },
+        "othersourceidentify": {
+          "type": "string"
+        },
+        "othertanf": {
+          "type": "integer"
+        },
+        "rentalassistanceongoing": {
+          "type": "integer"
+        },
+        "rentalassistancetemp": {
+          "type": "integer"
+        },
+        "snap": {
+          "type": "integer"
+        },
+        "tanfchildcare": {
+          "type": "integer"
+        },
+        "tanftransportation": {
+          "type": "integer"
+        },
+        "wic": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "noncashbenefitsID",
+        "benefitsfromanysource",
+        "othersource",
+        "othersourceidentify",
+        "othertanf",
+        "rentalassistanceongoing",
+        "rentalassistancetemp",
+        "snap",
+        "tanfchildcare",
+        "tanftransportation",
+        "wic"
+      ]
+    }
+  },
+  "required": [
+    "noncashbenefits"
+  ]
+}

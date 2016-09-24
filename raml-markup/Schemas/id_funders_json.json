@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "funder": {
+      "type": "object",
+      "properties": {
+        "funderId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "funderId"
+      ]
+    }
+  },
+  "required": [
+    "funder"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "affiliation": {
+      "id": "affiliation",
+      "type": "object",
+      "properties": {
+        "resprojectid": {
+          "id": "resprojectid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "resprojectid"
+      ]
+    }
+  },
+  "required": [
+    "affiliation"
+  ]
+}

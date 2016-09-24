@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "pathstatus": {
+      "type": "object",
+      "properties": {
+        "pathstatusId": {
+          "type": "string"
+        },
+        "clientEnrolledInPath": {
+          "type": "integer"
+        },
+        "reasonNotEnrolled": {
+          "type": "integer"
+        },
+        "dateOfStatus": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pathstatusId",
+        "clientEnrolledInPath",
+        "reasonNotEnrolled",
+        "dateOfStatus"
+      ]
+    }
+  },
+  "required": [
+    "pathstatus"
+  ]
+}

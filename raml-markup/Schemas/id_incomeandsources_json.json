@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "incomeAndSource": {
+      "id": "http://jsonschema.net/incomeAndSource",
+      "type": "object",
+      "properties": {
+        "incomeAndSourceId": {
+          "id": "http://jsonschema.net/incomeAndSource/incomeAndSourceId",
+          "type": "string"
+        },
+        "alimonyamount": {
+          "id": "http://jsonschema.net/incomeAndSource/alimonyamount",
+          "type": "integer"
+        },
+        "childsupportamount": {
+          "id": "http://jsonschema.net/incomeAndSource/childsupportamount",
+          "type": "integer"
+        },
+        "earnedamount": {
+          "id": "http://jsonschema.net/incomeAndSource/earnedamount",
+          "type": "integer"
+        },
+        "gaamount": {
+          "id": "http://jsonschema.net/incomeAndSource/gaamount",
+          "type": "integer"
+        },
+        "othersourceamount": {
+          "id": "http://jsonschema.net/incomeAndSource/othersourceamount",
+          "type": "integer"
+        },
+        "pensionamount": {
+          "id": "http://jsonschema.net/incomeAndSource/pensionamount",
+          "type": "integer"
+        },
+        "privatedisabilityamount": {
+          "id": "http://jsonschema.net/incomeAndSource/privatedisabilityamount",
+          "type": "integer"
+        },
+        "socsecretirementamount": {
+          "id": "http://jsonschema.net/incomeAndSource/socsecretirementamount",
+          "type": "integer"
+        },
+        "ssdiamount": {
+          "id": "http://jsonschema.net/incomeAndSource/ssdiamount",
+          "type": "integer"
+        },
+        "ssiamount": {
+          "id": "http://jsonschema.net/incomeAndSource/ssiamount",
+          "type": "integer"
+        },
+        "tanfamount": {
+          "id": "http://jsonschema.net/incomeAndSource/tanfamount",
+          "type": "integer"
+        },
+        "totalmonthlyincome": {
+          "id": "http://jsonschema.net/incomeAndSource/totalmonthlyincome",
+          "type": "integer"
+        },
+        "unemploymentamount": {
+          "id": "http://jsonschema.net/incomeAndSource/unemploymentamount",
+          "type": "integer"
+        },
+        "vadisabilitynonserviceamount": {
+          "id": "http://jsonschema.net/incomeAndSource/vadisabilitynonserviceamount",
+          "type": "integer"
+        },
+        "vadisabilityserviceamount": {
+          "id": "http://jsonschema.net/incomeAndSource/vadisabilityserviceamount",
+          "type": "integer"
+        },
+        "workerscompamount": {
+          "id": "http://jsonschema.net/incomeAndSource/workerscompamount",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "incomeAndSourceId",
+        "alimonyamount",
+        "childsupportamount",
+        "earnedamount",
+        "gaamount",
+        "othersourceamount",
+        "pensionamount",
+        "privatedisabilityamount",
+        "socsecretirementamount",
+        "ssdiamount",
+        "ssiamount",
+        "tanfamount",
+        "totalmonthlyincome",
+        "unemploymentamount",
+        "vadisabilitynonserviceamount",
+        "vadisabilityserviceamount",
+        "workerscompamount"
+      ]
+    }
+  },
+  "required": [
+    "incomeAndSource"
+  ]
+}

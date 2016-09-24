@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "enrollment": {
+      "type": "object",
+      "properties": {
+        "continuouslyhomelessoneyear": {
+          "type": "integer"
+        },
+        "disablingcondition": {
+          "type": "integer"
+        },
+        "entrydate": {
+          "type": "integer"
+        },
+        "householdid": {
+          "type": "string"
+        },
+        "housingstatus": {
+          "type": "integer"
+        },
+        "monthshomelesspastthreeyears": {
+          "type": "integer"
+        },
+        "monthshomelessthistime": {
+          "type": "integer"
+        },
+        "otherresidenceprior": {
+          "type": "string"
+        },
+        "personalid": {
+          "type": "string"
+        },
+        "projectentryid": {
+          "type": "string"
+        },
+        "projectid": {
+          "type": "string"
+        },
+        "relationshiptohoh": {
+          "type": "integer"
+        },
+        "residenceprior": {
+          "type": "integer"
+        },
+        "residencepriorlengthofstay": {
+          "type": "integer"
+        },
+        "statusdocumented": {
+          "type": "integer"
+        },
+        "timeshomelesspastthreeyears": {
+          "type": "integer"
+        },
+        "yearshomeless": {
+          "type": "integer"
+        },
+        "entryfromstreetessh": {
+          "type": "integer"
+        },
+        "datetostreetessh": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "continuouslyhomelessoneyear",
+        "disablingcondition",
+        "entrydate",
+        "householdid",
+        "housingstatus",
+        "monthshomelesspastthreeyears",
+        "monthshomelessthistime",
+        "otherresidenceprior",
+        "personalid",
+        "projectentryid",
+        "projectid",
+        "relationshiptohoh",
+        "residenceprior",
+        "residencepriorlengthofstay",
+        "statusdocumented",
+        "timeshomelesspastthreeyears",
+        "yearshomeless",
+        "entryfromstreetessh",
+        "datetostreetessh"
+      ]
+    }
+  },
+  "required": [
+    "enrollment"
+  ]
+}

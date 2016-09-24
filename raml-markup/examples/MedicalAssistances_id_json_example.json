@@ -1,0 +1,10 @@
+{
+   "medicalassistance":{
+      "medicalassistanceId":"7bad6629-48da-49b2-aebe-3ff449ee5b91",
+      "hivaidsassistance":9,
+      "nohivaidsassistancereason":3,
+      "adap":0,
+      "noadapreason":2,
+      "informationDate":"04-05-2016"
+   }
+}

@@ -1,0 +1,30 @@
+{
+   "veteranInfos":{
+      "pagination":{
+         "from":0,
+         "returned":1,
+         "total":1,
+         "maximum":30,
+         "sort":{
+
+         }
+      },
+      "veteranInfos":[
+         {
+            "veteranInfoId":"d0f7f763-dba8-4bc5-9602-d6e3775c59d3",
+            "yearEntrdService":1164728538,
+            "yearSeperated":-410173299,
+            "worldWar2":1,
+            "koreanWar":8,
+            "vietnamWar":9,
+            "desertStorm":8,
+            "afghanistanOef":99,
+            "iraqOif":1,
+            "iraqOnd":1,
+            "otherTheater":9,
+            "militaryBranch":2,
+            "dischargeStatus":5
+         }
+      ]
+   }
+}

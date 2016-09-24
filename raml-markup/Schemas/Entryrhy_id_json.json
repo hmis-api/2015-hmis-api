@@ -1,0 +1,184 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "entryrhy": {
+      "type": "object",
+      "properties": {
+        "entryrhyId": {
+          "type": "string"
+        },
+        "formerlyWardChildWelfrForestCare": {
+          "type": "integer"
+        },
+        "yearsChildWelfrForestCare": {
+          "type": "integer"
+        },
+        "monthsChildWelfrForestCare": {
+          "type": "integer"
+        },
+        "formerlyWardOfJuvenileJustice": {
+          "type": "integer"
+        },
+        "yearsJuvenileJustice": {
+          "type": "integer"
+        },
+        "houseHoldDynamics": {
+          "type": "integer"
+        },
+        "sexualOrientatiionGenderIdentityYouth": {
+          "type": "integer"
+        },
+        "sexualOrientatiionGenderIdentityFamilyMbr": {
+          "type": "integer"
+        },
+        "housingIssuesYouth": {
+          "type": "integer"
+        },
+        "housingIssuesFamilyMbr": {
+          "type": "integer"
+        },
+        "schoolEducationIssuesYouth": {
+          "type": "integer"
+        },
+        "schoolEducationIssuesFamilyMbr": {
+          "type": "integer"
+        },
+        "unemployementYouth": {
+          "type": "integer"
+        },
+        "unemployementFamilyMbr": {
+          "type": "integer"
+        },
+        "mentalHealthIssuesYouth": {
+          "type": "integer"
+        },
+        "mentalHealthIssuesFamilyMbr": {
+          "type": "integer"
+        },
+        "healthIssuesYouth": {
+          "type": "integer"
+        },
+        "healthIssuesFamilyMbr": {
+          "type": "integer"
+        },
+        "physicalDisabilityYouth": {
+          "type": "integer"
+        },
+        "physicalDisabilityFamilyMbr": {
+          "type": "integer"
+        },
+        "mentalDisabilityYouth": {
+          "type": "integer"
+        },
+        "mentalDisabilityFamilyMbr": {
+          "type": "integer"
+        },
+        "abuseAndNeglectYouth": {
+          "type": "integer"
+        },
+        "abuseAndNeglectFamilyMbr": {
+          "type": "integer"
+        },
+        "alcoholDrugAbuseYouth": {
+          "type": "integer"
+        },
+        "alcoholDrugAbuseFamilyMbr": {
+          "type": "integer"
+        },
+        "insufficientIncomeToSupportYouth": {
+          "type": "integer"
+        },
+        "activeMilitaryParent": {
+          "type": "integer"
+        },
+        "incarceratedParent": {
+          "type": "integer"
+        },
+        "incarceratedParentStatus": {
+          "type": "integer"
+        },
+        "referralSource": {
+          "type": "integer"
+        },
+        "countOutReachReferralApproaches": {
+          "type": "integer"
+        },
+        "exchangeForSex": {
+          "type": "integer"
+        },
+        "exchangeForSexPastThreeMonths": {
+          "type": "integer"
+        },
+        "countOfExchangeForSex": {
+          "type": "integer"
+        },
+        "askedOfForcedToExchangeForSex": {
+          "type": "integer"
+        },
+        "askedOfForcedToExchangeForSexPastThreeMonths": {
+          "type": "integer"
+        },
+        "workPlaceViolenceThreat": {
+          "type": "integer"
+        },
+        "workPlacePromiseDifference": {
+          "type": "integer"
+        },
+        "coercedToContinueWork": {
+          "type": "integer"
+        },
+        "laborExploitPastThreeMonths": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "entryrhyId",
+        "formerlyWardChildWelfrForestCare",
+        "yearsChildWelfrForestCare",
+        "monthsChildWelfrForestCare",
+        "formerlyWardOfJuvenileJustice",
+        "yearsJuvenileJustice",
+        "houseHoldDynamics",
+        "sexualOrientatiionGenderIdentityYouth",
+        "sexualOrientatiionGenderIdentityFamilyMbr",
+        "housingIssuesYouth",
+        "housingIssuesFamilyMbr",
+        "schoolEducationIssuesYouth",
+        "schoolEducationIssuesFamilyMbr",
+        "unemployementYouth",
+        "unemployementFamilyMbr",
+        "mentalHealthIssuesYouth",
+        "mentalHealthIssuesFamilyMbr",
+        "healthIssuesYouth",
+        "healthIssuesFamilyMbr",
+        "physicalDisabilityYouth",
+        "physicalDisabilityFamilyMbr",
+        "mentalDisabilityYouth",
+        "mentalDisabilityFamilyMbr",
+        "abuseAndNeglectYouth",
+        "abuseAndNeglectFamilyMbr",
+        "alcoholDrugAbuseYouth",
+        "alcoholDrugAbuseFamilyMbr",
+        "insufficientIncomeToSupportYouth",
+        "activeMilitaryParent",
+        "incarceratedParent",
+        "incarceratedParentStatus",
+        "referralSource",
+        "countOutReachReferralApproaches",
+        "exchangeForSex",
+        "exchangeForSexPastThreeMonths",
+        "countOfExchangeForSex",
+        "askedOfForcedToExchangeForSex",
+        "askedOfForcedToExchangeForSexPastThreeMonths",
+        "workPlaceViolenceThreat",
+        "workPlacePromiseDifference",
+        "coercedToContinueWork",
+        "laborExploitPastThreeMonths"
+      ]
+    }
+  },
+  "required": [
+    "entryrhy"
+  ]
+}

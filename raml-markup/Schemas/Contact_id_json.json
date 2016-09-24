@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "contact": {
+      "type": "object",
+      "properties": {
+        "contactId": {
+          "type": "string"
+        },
+        "contactLocation": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "contactId",
+        "contactLocation"
+      ]
+    }
+  },
+  "required": [
+    "contact"
+  ]
+}

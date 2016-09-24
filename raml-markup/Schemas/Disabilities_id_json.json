@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "disabilities": {
+      "type": "object",
+      "properties": {
+        "disabilitiesId": {
+          "type": "string"
+        },
+        "disabilitytype": {
+          "type": "integer"
+        },
+        "disabilityresponse": {
+          "type": "integer"
+        },
+        "indefiniteandimpairs": {
+          "type": "integer"
+        },
+        "documentationonfile": {
+          "type": "integer"
+        },
+        "receivingservices": {
+          "type": "integer"
+        },
+        "pathhowconfirmed": {
+          "type": "integer"
+        },
+        "pathsmiinformation": {
+          "type": "integer"
+        },
+        "tcellcountavailable": {
+          "type": "integer"
+        },
+        "tcellcount": {
+          "type": "integer"
+        },
+        "tcellcountsource": {
+          "type": "string"
+        },
+        "viralLoadAvailable": {
+          "type": "integer"
+        },
+        "viralLoad": {
+          "type": "integer"
+        },
+        "viralLoadSource": {
+          "type": "string"
+        },
+        "informationDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "disabilitiesId",
+        "disabilitytype",
+        "disabilityresponse",
+        "indefiniteandimpairs",
+        "documentationonfile",
+        "receivingservices",
+        "pathhowconfirmed",
+        "pathsmiinformation",
+        "tcellcountavailable",
+        "tcellcount",
+        "tcellcountsource",
+        "viralLoadAvailable",
+        "viralLoad",
+        "viralLoadSource",
+        "informationDate"
+      ]
+    }
+  },
+  "required": [
+    "disabilities"
+  ]
+}

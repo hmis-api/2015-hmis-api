@@ -1,0 +1,23 @@
+{
+   "healthinsurance":{
+      "insurancefromanysource":99,
+      "medicaid":1,
+      "nomedicaidreason":8,
+      "medicare":99,
+      "nomedicarereason":4,
+      "schip":1,
+      "noschipreason":2,
+      "vamedicalservices":9,
+      "novamedreason":9,
+      "employerprovided":1929555170,
+      "noemployerprovidedreason":99,
+      "cobra":1401014227,
+      "nocobrareason":2,
+      "privatepay":0,
+      "noprivatepayreason":4,
+      "statehealthins":0,
+      "nostatehealthinsreason":8,
+      "otherSource":688424562,
+      "otherSourceIdentify":"test"
+   }
+}

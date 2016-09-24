@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "entryssvfs": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "entryssvfs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entryssvfId": {
+                "type": "string"
+              },
+              "percentami": {
+                "type": "integer"
+              },
+              "lastPermanentStreet": {
+                "type": "string"
+              },
+              "lastPermanentCity": {
+                "type": "string"
+              },
+              "lastPermanentState": {
+                "type": "string"
+              },
+              "lastPermanentZip": {
+                "type": "string"
+              },
+              "addressDataQuality": {
+                "type": "integer"
+              },
+              "hpScreenScore": {
+                "type": "integer"
+              },
+              "vamcStaction": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "entryssvfId",
+              "percentami",
+              "lastPermanentStreet",
+              "lastPermanentCity",
+              "lastPermanentState",
+              "lastPermanentZip",
+              "addressDataQuality",
+              "hpScreenScore",
+              "vamcStaction"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "entryssvfs"
+      ]
+    }
+  },
+  "required": [
+    "entryssvfs"
+  ]
+}

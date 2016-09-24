@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "pathstatus": {
+      "id": "http://jsonschema.net/pathstatus",
+      "type": "object",
+      "properties": {
+        "pathstatusId": {
+          "id": "http://jsonschema.net/pathstatus/pathstatusId",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pathstatusId"
+      ]
+    }
+  },
+  "required": [
+    "pathstatus"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "exitpath": {
+      "type": "object",
+      "properties": {
+        "exitpathId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "exitpathId"
+      ]
+    }
+  },
+  "required": [
+    "exitpath"
+  ]
+}

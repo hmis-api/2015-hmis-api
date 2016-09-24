@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "medicalassistance": {
+      "type": "object",
+      "properties": {
+        "medicalassistanceId": {
+          "type": "string"
+        },
+        "hivaidsassistance": {
+          "type": "integer"
+        },
+        "nohivaidsassistancereason": {
+          "type": "integer"
+        },
+        "adap": {
+          "type": "integer"
+        },
+        "noadapreason": {
+          "type": "integer"
+        },
+        "informationDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "medicalassistanceId",
+        "hivaidsassistance",
+        "nohivaidsassistancereason",
+        "adap",
+        "noadapreason",
+        "informationDate"
+      ]
+    }
+  },
+  "required": [
+    "medicalassistance"
+  ]
+}

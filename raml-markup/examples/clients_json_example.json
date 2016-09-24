@@ -1,0 +1,18 @@
+{
+   "client":{
+      "firstName":"First Name",
+      "middleName":"Middle Name",
+      "lastName":"LAST NAME",
+      "nameSuffix":"NS",
+      "nameDataQuality":1,
+      "ssn":"123-45-6789",
+      "ssnDataQuality":1,
+      "dob":1459517834983,
+      "dobDataQuality":1,
+      "race":1,
+      "ethnicity":1,
+      "gender":1,
+      "otherGender":"Test",
+      "veteranStatus":8
+   }
+}

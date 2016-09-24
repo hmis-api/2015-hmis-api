@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "noncashbenefitsList": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "noncashbenefitsList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "noncashbenefitsID": {
+                "type": "string"
+              },
+              "benefitsfromanysource": {
+                "type": "integer"
+              },
+              "othersource": {
+                "type": "integer"
+              },
+              "othersourceidentify": {
+                "type": "string"
+              },
+              "othertanf": {
+                "type": "integer"
+              },
+              "rentalassistanceongoing": {
+                "type": "integer"
+              },
+              "rentalassistancetemp": {
+                "type": "integer"
+              },
+              "snap": {
+                "type": "integer"
+              },
+              "tanfchildcare": {
+                "type": "integer"
+              },
+              "tanftransportation": {
+                "type": "integer"
+              },
+              "wic": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "noncashbenefitsID",
+              "benefitsfromanysource",
+              "othersource",
+              "othersourceidentify",
+              "othertanf",
+              "rentalassistanceongoing",
+              "rentalassistancetemp",
+              "snap",
+              "tanfchildcare",
+              "tanftransportation",
+              "wic"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "noncashbenefitsList"
+      ]
+    }
+  },
+  "required": [
+    "noncashbenefitsList"
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "IncomeAndSources": {
+      "id": "http://jsonschema.net/IncomeAndSources",
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "id": "http://jsonschema.net/IncomeAndSources/pagination",
+          "type": "object",
+          "properties": {
+            "from": {
+              "id": "http://jsonschema.net/IncomeAndSources/pagination/from",
+              "type": "integer"
+            },
+            "returned": {
+              "id": "http://jsonschema.net/IncomeAndSources/pagination/returned",
+              "type": "integer"
+            },
+            "total": {
+              "id": "http://jsonschema.net/IncomeAndSources/pagination/total",
+              "type": "integer"
+            },
+            "maximum": {
+              "id": "http://jsonschema.net/IncomeAndSources/pagination/maximum",
+              "type": "integer"
+            },
+            "sort": {
+              "id": "http://jsonschema.net/IncomeAndSources/pagination/sort",
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "incomeAndSources": {
+          "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources",
+          "type": "array",
+          "items": {
+            "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0",
+            "type": "object",
+            "properties": {
+              "incomeAndSourceId": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/incomeAndSourceId",
+                "type": "string"
+              },
+              "alimony": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/alimony",
+                "type": "integer"
+              },
+              "alimonyamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/alimonyamount",
+                "type": "number"
+              },
+              "childsupport": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/childsupport",
+                "type": "integer"
+              },
+              "childsupportamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/childsupportamount",
+                "type": "number"
+              },
+              "earned": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/earned",
+                "type": "integer"
+              },
+              "earnedamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/earnedamount",
+                "type": "number"
+              },
+              "ga": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/ga",
+                "type": "integer"
+              },
+              "gaamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/gaamount",
+                "type": "number"
+              },
+              "incomefromanysource": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/incomefromanysource",
+                "type": "integer"
+              },
+              "othersource": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/othersource",
+                "type": "integer"
+              },
+              "othersourceamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/othersourceamount",
+                "type": "number"
+              },
+              "othersourceidentify": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/othersourceidentify",
+                "type": "string"
+              },
+              "pension": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/pension",
+                "type": "integer"
+              },
+              "pensionamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/pensionamount",
+                "type": "number"
+              },
+              "privatedisability": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/privatedisability",
+                "type": "integer"
+              },
+              "privatedisabilityamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/privatedisabilityamount",
+                "type": "number"
+              },
+              "socsecretirement": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/socsecretirement",
+                "type": "integer"
+              },
+              "socsecretirementamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/socsecretirementamount",
+                "type": "number"
+              },
+              "ssdi": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/ssdi",
+                "type": "integer"
+              },
+              "ssdiamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/ssdiamount",
+                "type": "number"
+              },
+              "ssi": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/ssi",
+                "type": "integer"
+              },
+              "ssiamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/ssiamount",
+                "type": "number"
+              },
+              "tanf": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/tanf",
+                "type": "integer"
+              },
+              "tanfamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/tanfamount",
+                "type": "number"
+              },
+              "totalmonthlyincome": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/totalmonthlyincome",
+                "type": "number"
+              },
+              "unemployment": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/unemployment",
+                "type": "integer"
+              },
+              "unemploymentamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/unemploymentamount",
+                "type": "number"
+              },
+              "vadisabilitynonservice": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/vadisabilitynonservice",
+                "type": "integer"
+              },
+              "vadisabilitynonserviceamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/vadisabilitynonserviceamount",
+                "type": "number"
+              },
+              "vadisabilityservice": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/vadisabilityservice",
+                "type": "integer"
+              },
+              "vadisabilityserviceamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/vadisabilityserviceamount",
+                "type": "number"
+              },
+              "workerscomp": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/workerscomp",
+                "type": "integer"
+              },
+              "workerscompamount": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/workerscompamount",
+                "type": "number"
+              },
+              "dateCreated": {
+                "id": "http://jsonschema.net/IncomeAndSources/incomeAndSources/0/dateCreated",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "incomeAndSources"
+      ]
+    }
+  },
+  "required": [
+    "IncomeAndSources"
+  ]
+}

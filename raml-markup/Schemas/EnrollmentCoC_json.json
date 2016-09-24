@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "enrollmentCoc": {
+      "type": "object",
+      "properties": {
+        "informationDate": {
+          "type": "string"
+        },
+        "clientCode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "informationDate",
+        "clientCode"
+      ]
+    }
+  },
+  "required": [
+    "enrollmentCoc"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+   "inventory":{
+      "inventoryId":"74e4ed15-688e-4dfa-9609-1c6161d0dedd",
+      "availabilty":2,
+      "bedtype":1,
+      "hmisparticipatingbeds":-791575690,
+      "householdtype":3,
+      "chbedinventory":1,
+      "vetbedinventory":2,
+      "youthbedinventory":3,
+      "youthagegroup":4,
+      "unitinventory":1579850350,
+      "dateCreated":"05-12-2016",
+      "dateUpdated":"05-12-2016",
+      "inventoryenddate":"02-04-2016",
+      "inventorystartdate":"02-04-2016"
+   }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "education": {
+      "type": "object",
+      "properties": {
+        "educationId": {
+          "type": "string"
+        },
+        "lastgradecompleted": {
+          "type": "integer"
+        },
+        "schoolStatus": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "educationId",
+        "lastgradecompleted",
+        "schoolStatus"
+      ]
+    }
+  },
+  "required": [
+    "education"
+  ]
+}

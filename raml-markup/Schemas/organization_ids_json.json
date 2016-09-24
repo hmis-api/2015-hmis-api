@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Organizations": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "organizations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "organizationId": {
+                "type": "string"
+              },
+              "organizationCommonName": {
+                "type": "string"
+              },
+              "organizationName":{
+                "type":"string"
+            }
+            },
+            "required": [
+              "organizationId",
+              "organizationCommonName",
+              "organizationName"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "organizations"
+      ]
+    }
+  },
+  "required": [
+    "Organizations"
+  ]
+}

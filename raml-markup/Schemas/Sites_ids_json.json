@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "sites": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "sites": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "siteId": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "geocode": {
+                "type": "integer"
+              },
+              "principalsite": {
+                "type": "integer"
+              },
+              "state": {
+                "type": "string"
+              },
+              "zip": {
+                "type": "string"
+              },
+              "dateCreated": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "siteId",
+              "address",
+              "city",
+              "geocode",
+              "principalsite",
+              "state",
+              "zip",
+              "dateCreated"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "sites"
+      ]
+    }
+  },
+  "required": [
+    "sites"
+  ]
+}

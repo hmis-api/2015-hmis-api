@@ -1,0 +1,20 @@
+{
+   "educations":{
+      "pagination":{
+         "from":0,
+         "returned":1,
+         "total":1,
+         "maximum":30,
+         "sort":{
+
+         }
+      },
+      "educations":[
+         {
+            "educationId":"f91547a2-d13b-40a1-a1be-fed415c468a6",
+            "lastgradecompleted":10,
+            "schoolStatus":6
+         }
+      ]
+   }
+}

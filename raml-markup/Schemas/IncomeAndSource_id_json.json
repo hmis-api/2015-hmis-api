@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "incomeAndSource": {
+      "type": "object",
+      "properties": {
+        "incomeAndSourceId": {
+          "type": "string"
+        },
+        "alimony": {
+          "type": "integer"
+        },
+        "alimonyamount": {
+          "type": "number"
+        },
+        "childsupport": {
+          "type": "integer"
+        },
+        "childsupportamount": {
+          "type": "number"
+        },
+        "earned": {
+          "type": "integer"
+        },
+        "earnedamount": {
+          "type": "number"
+        },
+        "ga": {
+          "type": "integer"
+        },
+        "gaamount": {
+          "type": "number"
+        },
+        "incomefromanysource": {
+          "type": "integer"
+        },
+        "othersource": {
+          "type": "integer"
+        },
+        "othersourceamount": {
+          "type": "number"
+        },
+        "othersourceidentify": {
+          "type": "string"
+        },
+        "pension": {
+          "type": "integer"
+        },
+        "pensionamount": {
+          "type": "number"
+        },
+        "privatedisability": {
+          "type": "integer"
+        },
+        "privatedisabilityamount": {
+          "type": "number"
+        },
+        "socsecretirement": {
+          "type": "integer"
+        },
+        "socsecretirementamount": {
+          "type": "number"
+        },
+        "ssdi": {
+          "type": "integer"
+        },
+        "ssdiamount": {
+          "type": "number"
+        },
+        "ssi": {
+          "type": "integer"
+        },
+        "ssiamount": {
+          "type": "number"
+        },
+        "tanf": {
+          "type": "integer"
+        },
+        "tanfamount": {
+          "type": "number"
+        },
+        "totalmonthlyincome": {
+          "type": "number"
+        },
+        "unemployment": {
+          "type": "integer"
+        },
+        "unemploymentamount": {
+          "type": "number"
+        },
+        "vadisabilitynonservice": {
+          "type": "integer"
+        },
+        "vadisabilitynonserviceamount": {
+          "type": "number"
+        },
+        "vadisabilityservice": {
+          "type": "integer"
+        },
+        "vadisabilityserviceamount": {
+          "type": "number"
+        },
+        "workerscomp": {
+          "type": "integer"
+        },
+        "workerscompamount": {
+          "type": "number"
+        },
+        "dateCreated": {
+          "type": "string"
+        },
+        "dateUpdated": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "incomeAndSourceId",
+        "alimony",
+        "alimonyamount",
+        "childsupport",
+        "childsupportamount",
+        "earned",
+        "earnedamount",
+        "ga",
+        "gaamount",
+        "incomefromanysource",
+        "othersource",
+        "othersourceamount",
+        "othersourceidentify",
+        "pension",
+        "pensionamount",
+        "privatedisability",
+        "privatedisabilityamount",
+        "socsecretirement",
+        "socsecretirementamount",
+        "ssdi",
+        "ssdiamount",
+        "ssi",
+        "ssiamount",
+        "tanf",
+        "tanfamount",
+        "totalmonthlyincome",
+        "unemployment",
+        "unemploymentamount",
+        "vadisabilitynonservice",
+        "vadisabilitynonserviceamount",
+        "vadisabilityservice",
+        "vadisabilityserviceamount",
+        "workerscomp",
+        "workerscompamount",
+        "dateCreated",
+        "dateUpdated"
+      ]
+    }
+  },
+  "required": [
+    "incomeAndSource"
+  ]
+}

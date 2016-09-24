@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "employments": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "employments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "employmentId": {
+                "type": "string"
+              },
+              "employed": {
+                "type": "integer"
+              },
+              "employmentType": {
+                "type": "integer"
+              },
+              "notEmployedReason": {
+                "type": "integer"
+              },
+              "informationDate": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "employmentId",
+              "employed",
+              "employmentType",
+              "notEmployedReason",
+              "informationDate"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "employments"
+      ]
+    }
+  },
+  "required": [
+    "employments"
+  ]
+}

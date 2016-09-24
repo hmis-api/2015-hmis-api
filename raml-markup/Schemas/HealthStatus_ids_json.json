@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "healthstatuses": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "healthstatuses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "healthstatusId": {
+                "type": "string"
+              },
+              "healthCategory": {
+                "type": "integer"
+              },
+              "healthStatus": {
+                "type": "integer"
+              },
+              "informationDate": {
+                "type": "string"
+              },
+              "dueDate": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "healthstatusId",
+              "healthCategory",
+              "healthStatus",
+              "informationDate",
+              "dueDate"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "healthstatuses"
+      ]
+    }
+  },
+  "required": [
+    "healthstatuses"
+  ]
+}

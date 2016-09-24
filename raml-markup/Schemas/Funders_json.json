@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "funder": {
+      "type": "object",
+      "properties": {
+        "enddate": {
+          "type": "string"
+        },
+        "funder": {
+          "type": "integer"
+        },
+        "grantid": {
+          "type": "string"
+        },
+        "startdate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "enddate",
+        "funder",
+        "grantid",
+        "startdate"
+      ]
+    }
+  },
+  "required": [
+    "funder"
+  ]
+}

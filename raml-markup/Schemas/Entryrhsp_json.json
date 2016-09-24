@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "entryrhsp": {
+      "id": "http://jsonschema.net/entryrhsp",
+      "type": "object",
+      "properties": {
+        "worstHousingSituation": {
+          "id": "http://jsonschema.net/entryrhsp/worstHousingSituation",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "worstHousingSituation"
+      ]
+    }
+  },
+  "required": [
+    "entryrhsp"
+  ]
+}

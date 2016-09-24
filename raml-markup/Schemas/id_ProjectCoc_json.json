@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "projectcoc": {
+      "id": "projectcoc",
+      "type": "object",
+      "properties": {
+        "projectcocId": {
+          "id": "projectcocId",
+          "type": "string"
+        }
+      },
+      "required": [
+        "projectcocId"
+      ]
+    }
+  },
+  "required": [
+    "projectcoc"
+  ]
+}

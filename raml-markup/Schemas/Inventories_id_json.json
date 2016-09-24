@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "inventory": {
+      "type": "object",
+      "properties": {
+        "inventoryId": {
+          "type": "string"
+        },
+        "availabilty": {
+          "type": "integer"
+        },
+        "bedtype": {
+          "type": "integer"
+        },
+        "hmisparticipatingbeds": {
+          "type": "integer"
+        },
+        "householdtype": {
+          "type": "integer"
+        },
+        "chbedinventory": {
+          "type": "integer"
+        },
+        "vetbedinventory": {
+          "type": "integer"
+        },
+        "youthbedinventory": {
+          "type": "integer"
+        },
+        "youthagegroup": {
+          "type": "integer"
+        },
+        "unitinventory": {
+          "type": "integer"
+        },
+        "dateCreated": {
+          "type": "string"
+        },
+        "dateUpdated": {
+          "type": "string"
+        },
+        "inventoryenddate": {
+          "type": "string"
+        },
+        "inventorystartdate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "inventoryId",
+        "availabilty",
+        "bedtype",
+        "hmisparticipatingbeds",
+        "householdtype",
+        "chbedinventory",
+        "vetbedinventory",
+        "youthbedinventory",
+        "youthagegroup",
+        "unitinventory",
+        "dateCreated",
+        "dateUpdated",
+        "inventoryenddate",
+        "inventorystartdate"
+      ]
+    }
+  },
+  "required": [
+    "inventory"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "pathstatuses": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "pathstatuses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pathstatusId": {
+                "type": "string"
+              },
+              "clientEnrolledInPath": {
+                "type": "integer"
+              },
+              "reasonNotEnrolled": {
+                "type": "integer"
+              },
+              "dateOfStatus": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "pathstatusId",
+              "clientEnrolledInPath",
+              "reasonNotEnrolled",
+              "dateOfStatus"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "pathstatuses"
+      ]
+    }
+  },
+  "required": [
+    "pathstatuses"
+  ]
+}

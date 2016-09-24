@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "housingAssessmentDisposition": {
+      "type": "object",
+      "properties": {
+        "assessmentdisposition": {
+          "type": "integer"
+        },
+        "otherdisposition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "assessmentdisposition",
+        "otherdisposition"
+      ]
+    }
+  },
+  "required": [
+    "housingAssessmentDisposition"
+  ]
+}

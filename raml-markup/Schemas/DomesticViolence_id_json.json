@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "domesticviolence": {
+      "type": "object",
+      "properties": {
+        "domesticviolenceId": {
+          "type": "string"
+        },
+        "domesticviolencevictim": {
+          "type": "integer"
+        },
+        "whenoccurred": {
+          "type": "integer"
+        },
+        "currentlyFleeing": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "domesticviolenceId",
+        "domesticviolencevictim",
+        "whenoccurred",
+        "currentlyFleeing"
+      ]
+    }
+  },
+  "required": [
+    "domesticviolence"
+  ]
+}

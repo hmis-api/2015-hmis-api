@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "projects": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "projects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "projectId": {
+                "type": "string"
+              },
+              "projectName": {
+                "type": "string"
+              },
+              "projectCommonName": {
+                "type": "string"
+              },
+              "continuumProject": {
+                "type": "integer"
+              },
+              "projectType": {
+                "type": "integer"
+              },
+              "residentialAffiliation": {
+                "type": "integer"
+              },
+              "targetPopulation": {
+                "type": "integer"
+              },
+              "trackingMethod": {
+                "type": "integer"
+              },
+              "dateCreated": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "projects"
+      ]
+    }
+  },
+  "required": [
+    "projects"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "funders": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "funders": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "funderId": {
+                "type": "string"
+              },
+              "funder": {
+                "type": "integer"
+              },
+              "grantid": {
+                "type": "string"
+              },
+              "dateCreated": {
+                "type": "string"
+              },
+              "enddate": {
+                "type": "string"
+              },
+              "startdate": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "funderId",
+              "funder",
+              "grantid",
+              "dateCreated",
+              "enddate",
+              "startdate"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "funders"
+      ]
+    }
+  },
+  "required": [
+    "funders"
+  ]
+}

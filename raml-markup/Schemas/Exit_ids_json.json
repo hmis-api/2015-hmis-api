@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "exits": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "exits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "exitId": {
+                "type": "string"
+              },
+              "exitDate": {
+                "type": "integer"
+              },
+              "otherDestination": {
+                "type": "string"
+              },
+              "destination": {
+                "type": "integer"
+              },
+              "dateCreated": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "exitId",
+              "exitDate",
+              "otherDestination",
+              "destination",
+              "dateCreated"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "exits"
+      ]
+    }
+  },
+  "required": [
+    "exits"
+  ]
+}

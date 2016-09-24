@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "veteranInfo": {
+      "type": "object",
+      "properties": {
+        "veteranInfoId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "veteranInfoId"
+      ]
+    }
+  },
+  "required": [
+    "veteranInfo"
+  ]
+}

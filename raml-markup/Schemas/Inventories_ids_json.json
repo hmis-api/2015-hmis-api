@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Inventories": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "inventories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "inventoryId": {
+                "type": "string"
+              },
+              "availabilty": {
+                "type": "integer"
+              },
+              "bedtype": {
+                "type": "integer"
+              },
+              "hmisparticipatingbeds": {
+                "type": "integer"
+              },
+              "householdtype": {
+                "type": "integer"
+              },
+              "chbedinventory": {
+                "type": "integer"
+              },
+              "vetbedinventory": {
+                "type": "integer"
+              },
+              "youthbedinventory": {
+                "type": "integer"
+              },
+              "youthagegroup": {
+                "type": "integer"
+              },
+              "unitinventory": {
+                "type": "integer"
+              },
+              "dateCreated": {
+                "type": "string"
+              },
+              "inventoryenddate": {
+                "type": "string"
+              },
+              "inventorystartdate": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "inventoryId",
+              "availabilty",
+              "bedtype",
+              "hmisparticipatingbeds",
+              "householdtype",
+              "chbedinventory",
+              "vetbedinventory",
+              "youthbedinventory",
+              "youthagegroup",
+              "unitinventory",
+              "dateCreated",
+              "inventoryenddate",
+              "inventorystartdate"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "inventories"
+      ]
+    }
+  },
+  "required": [
+    "Inventories"
+  ]
+}

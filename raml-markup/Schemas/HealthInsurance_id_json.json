@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "healthinsurance": {
+      "type": "object",
+      "properties": {
+        "healthinsuranceId": {
+          "type": "string"
+        },
+        "insurancefromanysource": {
+          "type": "integer"
+        },
+        "medicaid": {
+          "type": "integer"
+        },
+        "nomedicaidreason": {
+          "type": "integer"
+        },
+        "medicare": {
+          "type": "integer"
+        },
+        "nomedicarereason": {
+          "type": "integer"
+        },
+        "schip": {
+          "type": "integer"
+        },
+        "noschipreason": {
+          "type": "integer"
+        },
+        "novamedreason": {
+          "type": "integer"
+        },
+        "employerprovided": {
+          "type": "integer"
+        },
+        "noemployerprovidedreason": {
+          "type": "integer"
+        },
+        "cobra": {
+          "type": "integer"
+        },
+        "nocobrareason": {
+          "type": "integer"
+        },
+        "privatepay": {
+          "type": "integer"
+        },
+        "noprivatepayreason": {
+          "type": "integer"
+        },
+        "statehealthins": {
+          "type": "integer"
+        },
+        "nostatehealthinsreason": {
+          "type": "integer"
+        },
+        "otherSource": {
+          "type": "integer"
+        },
+        "otherSourceIdentify": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "healthinsuranceId",
+        "insurancefromanysource",
+        "medicaid",
+        "nomedicaidreason",
+        "medicare",
+        "nomedicarereason",
+        "schip",
+        "noschipreason",
+        "novamedreason",
+        "employerprovided",
+        "noemployerprovidedreason",
+        "cobra",
+        "nocobrareason",
+        "privatepay",
+        "noprivatepayreason",
+        "statehealthins",
+        "nostatehealthinsreason",
+        "otherSource",
+        "otherSourceIdentify"
+      ]
+    }
+  },
+  "required": [
+    "healthinsurance"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+   "enrollmentCocs":{
+      "pagination":{
+         "from":0,
+         "returned":1,
+         "total":1,
+         "maximum":30,
+         "sort":{
+
+         }
+      },
+      "enrollmentCocs":[
+         {
+            "enrollmentCocId":"60071b3a-2625-45b8-aa6e-23e99096b343",
+            "clientCode":"Test                ",
+            "informationDate":"04-18-2016"
+         }
+      ]
+   }
+}

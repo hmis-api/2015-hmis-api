@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "client": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "nameSuffix": {
+          "type": "string"
+        },
+        "nameDataQuality": {
+          "type": "integer"
+        },
+        "ssn": {
+          "type": "string"
+        },
+        "ssnDataQuality": {
+          "type": "integer"
+        },
+        "dob": {
+          "type": "integer"
+        },
+        "dobDataQuality": {
+          "type": "integer"
+        },
+        "race": {
+          "type": "integer"
+        },
+        "ethnicity": {
+          "type": "integer"
+        },
+        "gender": {
+          "type": "integer"
+        },
+        "otherGender": {
+          "type": "string"
+        },
+        "veteranStatus": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "firstName",
+        "middleName",
+        "lastName",
+        "nameSuffix",
+        "nameDataQuality",
+        "ssn",
+        "ssnDataQuality",
+        "dob",
+        "dobDataQuality",
+        "race",
+        "ethnicity",
+        "gender",
+        "otherGender",
+        "veteranStatus"
+      ]
+    }
+  },
+  "required": [
+    "client"
+  ]
+}

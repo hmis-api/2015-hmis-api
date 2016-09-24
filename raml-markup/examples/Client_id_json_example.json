@@ -1,0 +1,19 @@
+{
+   "client":{
+      "clientId":"8547a63e-4659-412f-b5fa-200e03b62ae8",
+      "firstName":"First Name                                        ",
+      "middleName":"Middle Name                                       ",
+      "lastName":"LAST NAME                                         ",
+      "nameSuffix":"NS                                                ",
+      "nameDataQuality":1,
+      "ssn":"ssn      ",
+      "ssnDataQuality":1,
+      "dob":1459517834983,
+      "dobDataQuality":1,
+      "race":1,
+      "ethnicity":1,
+      "gender":1,
+      "otherGender":"Test",
+      "veteranStatus":"8"
+   }
+}

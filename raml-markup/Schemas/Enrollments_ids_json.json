@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "enrollments": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "enrollments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "enrollmentId": {
+                "type": "string"
+              },
+              "disablingcondition": {
+                "type": "integer"
+              },
+              "entrydate": {
+                "type": "integer"
+              },
+              "householdid": {
+                "type": "string"
+              },
+              "housingstatus": {
+                "type": "integer"
+              },
+              "monthshomelesspastthreeyears": {
+                "type": "integer"
+              },
+              "otherresidenceprior": {
+                "type": "string"
+              },
+              "relationshiptohoh": {
+                "type": "integer"
+              },
+              "residenceprior": {
+                "type": "integer"
+              },
+              "residencepriorlengthofstay": {
+                "type": "integer"
+              },
+              "timeshomelesspastthreeyears": {
+                "type": "integer"
+              },
+              "yearshomeless": {
+                "type": "integer"
+              },
+              "entryfromstreetessh": {
+                "type": "integer"
+              },
+              "dateCreated": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "enrollmentId",
+              "disablingcondition",
+              "entrydate",
+              "householdid",
+              "housingstatus",
+              "monthshomelesspastthreeyears",
+              "otherresidenceprior",
+              "relationshiptohoh",
+              "residenceprior",
+              "residencepriorlengthofstay",
+              "timeshomelesspastthreeyears",
+              "yearshomeless",
+              "entryfromstreetessh",
+              "dateCreated"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "enrollments"
+      ]
+    }
+  },
+  "required": [
+    "enrollments"
+  ]
+}

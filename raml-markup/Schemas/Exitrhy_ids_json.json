@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "exitrhys": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "integer"
+            },
+            "returned": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            },
+            "sort": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "exitrhys": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "exitrhyId": {
+                "type": "string"
+              },
+              "projectCompletionStatus": {
+                "type": "integer"
+              },
+              "earlyExitReason": {
+                "type": "integer"
+              },
+              "familyReunificationAchieved": {
+                "type": "integer"
+              },
+              "writtenAfterCarePlan": {
+                "type": "integer"
+              },
+              "assistanceMainStreamBenefits": {
+                "type": "integer"
+              },
+              "permenantHousingPlacement": {
+                "type": "integer"
+              },
+              "tempShelterPlacement": {
+                "type": "integer"
+              },
+              "exitCounseling": {
+                "type": "integer"
+              },
+              "furtherFollowupServices": {
+                "type": "integer"
+              },
+              "scheduledFollowupContacts": {
+                "type": "integer"
+              },
+              "resourcePackage": {
+                "type": "integer"
+              },
+              "otherAftercarePlanOrAction": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "exitrhyId",
+              "projectCompletionStatus",
+              "earlyExitReason",
+              "familyReunificationAchieved",
+              "writtenAfterCarePlan",
+              "assistanceMainStreamBenefits",
+              "permenantHousingPlacement",
+              "tempShelterPlacement",
+              "exitCounseling",
+              "furtherFollowupServices",
+              "scheduledFollowupContacts",
+              "resourcePackage",
+              "otherAftercarePlanOrAction"
+            ]
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "exitrhys"
+      ]
+    }
+  },
+  "required": [
+    "exitrhys"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "affiliations": {
+      "id": "affiliations",
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "id": "pagination",
+          "type": "object",
+          "properties": {
+            "from": {
+              "id": "from",
+              "type": "integer"
+            },
+            "returned": {
+              "id": "returned",
+              "type": "integer"
+            },
+            "total": {
+              "id": "total",
+              "type": "integer"
+            },
+            "maximum": {
+              "id": "maximum",
+              "type": "integer"
+            },
+            "sort": {
+              "id": "sort",
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "from",
+            "returned",
+            "total",
+            "maximum",
+            "sort"
+          ]
+        },
+        "affiliations": {
+          "id": "affiliations",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "object",
+            "properties": {
+              "affiliationId": {
+                "id": "affiliationId",
+                "type": "string"
+              },
+              "resprojectid": {
+                "id": "resprojectid",
+                "type": "string"
+              },
+              "dateCreated": {
+                "id": "dateCreated",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "pagination",
+        "affiliations",
+        "0"
+      ]
+    }
+  },
+  "required": [
+    "affiliations"
+  ]
+}

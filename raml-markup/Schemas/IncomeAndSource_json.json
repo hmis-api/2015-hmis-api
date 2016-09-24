@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "incomeAndSource": {
+      "id": "incomeAndSource",
+      "type": "object",
+      "properties": {
+        "alimony": {
+          "id": "alimony",
+          "type": "integer"
+        },
+        "alimonyamount": {
+          "id": "alimonyamount",
+          "type": "number"
+        },
+        "childsupport": {
+          "id": "childsupport",
+          "type": "integer"
+        },
+        "childsupportamount": {
+          "id": "childsupportamount",
+          "type": "number"
+        },
+        "earned": {
+          "id": "earned",
+          "type": "integer"
+        },
+        "earnedamount": {
+          "id": "earnedamount",
+          "type": "number"
+        },
+        "ga": {
+          "id": "ga",
+          "type": "integer"
+        },
+        "gaamount": {
+          "id": "gaamount",
+          "type": "number"
+        },
+        "incomefromanysource": {
+          "id": "incomefromanysource",
+          "type": "integer"
+        },
+        "othersource": {
+          "id": "othersource",
+          "type": "integer"
+        },
+        "othersourceamount": {
+          "id": "othersourceamount",
+          "type": "number"
+        },
+        "othersourceidentify": {
+          "id": "othersourceidentify",
+          "type": "string"
+        },
+        "pension": {
+          "id": "pension",
+          "type": "integer"
+        },
+        "pensionamount": {
+          "id": "pensionamount",
+          "type": "number"
+        },
+        "privatedisability": {
+          "id": "privatedisability",
+          "type": "integer"
+        },
+        "privatedisabilityamount": {
+          "id": "privatedisabilityamount",
+          "type": "number"
+        },
+        "socsecretirement": {
+          "id": "socsecretirement",
+          "type": "integer"
+        },
+        "socsecretirementamount": {
+          "id": "socsecretirementamount",
+          "type": "number"
+        },
+        "ssdi": {
+          "id": "ssdi",
+          "type": "integer"
+        },
+        "ssdiamount": {
+          "id": "ssdiamount",
+          "type": "number"
+        },
+        "ssi": {
+          "id": "ssi",
+          "type": "integer"
+        },
+        "ssiamount": {
+          "id": "ssiamount",
+          "type": "number"
+        },
+        "tanf": {
+          "id": "tanf",
+          "type": "integer"
+        },
+        "tanfamount": {
+          "id": "tanfamount",
+          "type": "number"
+        },
+        "totalmonthlyincome": {
+          "id": "totalmonthlyincome",
+          "type": "number"
+        },
+        "unemployment": {
+          "id": "unemployment",
+          "type": "integer"
+        },
+        "unemploymentamount": {
+          "id": "unemploymentamount",
+          "type": "number"
+        },
+        "vadisabilitynonservice": {
+          "id": "vadisabilitynonservice",
+          "type": "integer"
+        },
+        "vadisabilitynonserviceamount": {
+          "id": "vadisabilitynonserviceamount",
+          "type": "number"
+        },
+        "vadisabilityservice": {
+          "id": "vadisabilityservice",
+          "type": "integer"
+        },
+        "vadisabilityserviceamount": {
+          "id": "vadisabilityserviceamount",
+          "type": "number"
+        },
+        "workerscomp": {
+          "id": "workerscomp",
+          "type": "integer"
+        },
+        "workerscompamount": {
+          "id": "workerscompamount",
+          "type": "number"
+        }
+      },
+      "required": [
+        "alimony",
+        "alimonyamount",
+        "childsupport",
+        "childsupportamount",
+        "earned",
+        "earnedamount",
+        "ga",
+        "gaamount",
+        "incomefromanysource",
+        "othersource",
+        "othersourceamount",
+        "othersourceidentify",
+        "pension",
+        "pensionamount",
+        "privatedisability",
+        "privatedisabilityamount",
+        "socsecretirement",
+        "socsecretirementamount",
+        "ssdi",
+        "ssdiamount",
+        "ssi",
+        "ssiamount",
+        "tanf",
+        "tanfamount",
+        "totalmonthlyincome",
+        "unemployment",
+        "unemploymentamount",
+        "vadisabilitynonservice",
+        "vadisabilitynonserviceamount",
+        "vadisabilityservice",
+        "vadisabilityserviceamount",
+        "workerscomp",
+        "workerscompamount"
+      ]
+    }
+  },
+  "required": [
+    "incomeAndSource"
+  ]
+}

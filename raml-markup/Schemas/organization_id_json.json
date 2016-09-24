@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "organization": {
+      "type": "object",
+      "properties": {
+        "organizationId": {
+          "type": "string"
+        },
+        "organizationCommonName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "organizationId",
+        "organizationCommonName"
+      ]
+    }
+  },
+  "required": [
+    "organization"
+  ]
+}

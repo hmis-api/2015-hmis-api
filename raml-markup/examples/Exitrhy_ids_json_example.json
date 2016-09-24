@@ -1,0 +1,30 @@
+{
+   "exitrhys":{
+      "pagination":{
+         "from":0,
+         "returned":1,
+         "total":1,
+         "maximum":30,
+         "sort":{
+
+         }
+      },
+      "exitrhys":[
+         {
+            "exitrhyId":"878d7b3f-91d8-4a5d-9eba-81b081f0a9f8",
+            "projectCompletionStatus":3,
+            "earlyExitReason":1,
+            "familyReunificationAchieved":0,
+            "writtenAfterCarePlan":2,
+            "assistanceMainStreamBenefits":0,
+            "permenantHousingPlacement":1,
+            "tempShelterPlacement":2,
+            "exitCounseling":0,
+            "furtherFollowupServices":1,
+            "scheduledFollowupContacts":1,
+            "resourcePackage":1,
+            "otherAftercarePlanOrAction":2
+         }
+      ]
+   }
+}

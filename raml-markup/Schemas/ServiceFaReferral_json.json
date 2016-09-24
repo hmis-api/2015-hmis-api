@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "servicefareferral": {
+      "type": "object",
+      "properties": {
+        "serviceCategory": {
+          "type": "integer"
+        },
+        "funderList": {
+          "type": "integer"
+        },
+        "typeProvided": {
+          "type": "integer"
+        },
+        "otherTypeProvided": {
+          "type": "string"
+        },
+        "subTypeProvided": {
+          "type": "integer"
+        },
+        "referralOutcome": {
+          "type": "integer"
+        },
+        "faAmount": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "serviceCategory",
+        "funderList",
+        "typeProvided",
+        "otherTypeProvided",
+        "subTypeProvided",
+        "referralOutcome",
+        "faAmount"
+      ]
+    }
+  },
+  "required": [
+    "servicefareferral"
+  ]
+}

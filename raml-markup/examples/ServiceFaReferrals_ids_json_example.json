@@ -1,0 +1,25 @@
+{
+   "servicefareferrals":{
+      "pagination":{
+         "from":0,
+         "returned":1,
+         "total":0,
+         "maximum":30,
+         "sort":{
+
+         }
+      },
+      "servicefareferrals":[
+         {
+            "servicefareferralId":"bf09eb50-b641-486e-bf7e-49e9faa37c41",
+            "serviceCategory":8945,
+            "funderList":1234,
+            "typeProvided":4566,
+            "otherTypeProvided":"Test",
+            "subTypeProvided":1234,
+            "faAmount":20.40,
+            "referralOutcome":1234
+         }
+      ]
+   }
+}
