@@ -1,12 +1,17 @@
 {
-   "servicefareferral":{
-      "servicefareferralId":"bf09eb50-b641-486e-bf7e-49e9faa37c41",
-      "serviceCategory":8945,
-      "funderList":1234,
-      "typeProvided":4566,
-      "otherTypeProvided":"Test",
-      "subTypeProvided":1234,
-      "faAmount":20.40,
-      "referralOutcome":1234
+   "veteranInfo":{
+      "veteranInfoId":"bf09eb50-b641-486e-bf7e-49e9faa37c41",
+      "yearEnteredService":1970,
+      "yearSeparated":1972,
+      "worldWar2":1234,
+      "koreanWar":1,
+      "vietnamWar":0,
+      "desertStorm":0,
+      "afghanistanOef":1,
+      "iraqOif":1,
+      "iraqOnd":0,
+      "otherTheater":1,
+      "militaryBranch":1,
+      "dischargeStatus":0
    }
 }

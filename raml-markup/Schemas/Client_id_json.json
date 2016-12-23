@@ -1,88 +1,56 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "Clients": {
-      "type": "object",
-      "properties": {
-        "pagination": {
-          "type": "object",
-          "properties": {
-            "from": {
-              "type": "integer"
-            },
-            "returned": {
-              "type": "integer"
-            },
-            "total": {
-              "type": "integer"
-            },
-            "maximum": {
-              "type": "integer"
-            },
-            "sort": {
-              "type": "object",
-              "properties": {}
-            }
-          },
-          "required": [
-            "from",
-            "returned",
-            "total",
-            "maximum",
-            "sort"
-          ]
-        },
-        "clients": {
-          "type": "array",
-          "items": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "client": {
+            "id": "client",
             "type": "object",
             "properties": {
-              "clientId": {
-                "type": "string"
-              },
-              "firstName": {
-                "type": "string"
-              },
-              "middleName": {
-                "type": "string"
-              },
-              "lastName": {
-                "type": "string"
-              },
-              "nameSuffix": {
-                "type": "string"
-              },
-              "nameDataQuality": {
-                "type": "integer"
-              },
-              "ssn": {
-                "type": "string"
-              },
-              "ssnDataQuality": {
-                "type": "integer"
-              },
-              "dob": {
-                "type": "integer"
-              },
-              "dobDataQuality": {
-                "type": "integer"
-              },
-              "race": {
-                "type": "integer"
-              },
-              "ethnicity": {
-                "type": "integer"
-              },
-              "gender": {
-                "type": "integer"
-              },
-              "otherGender": {
-                "type": "string"
-              },
-              "veteranStatus": {
-                "type": "string"
-              }
+                "clientId": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "nameSuffix": {
+                    "type": "string"
+                },
+                "nameDataQuality": {
+                    "type": "integer"
+                },
+                "ssn": {
+                    "type": "string"
+                },
+                "ssnDataQuality": {
+                    "type": "integer"
+                },
+                "dob": {
+                    "type": "integer"
+                },
+                "dobDataQuality": {
+                    "type": "integer"
+                },
+                "race": {
+                    "type": "integer"
+                },
+                "ethnicity": {
+                    "type": "integer"
+                },
+                "gender": {
+                    "type": "integer"
+                },
+                "otherGender": {
+                    "type": "string"
+                },
+                "veteranStatus": {
+                    "type": "string"
+                }
             },
             "required": [
               "clientId",
@@ -101,16 +69,9 @@
               "otherGender",
               "veteranStatus"
             ]
-          }
         }
-      },
-      "required": [
-        "pagination",
-        "clients"
-      ]
-    }
-  },
-  "required": [
-    "Clients"
-  ]
+    },
+    "required": [
+        "client"
+    ]
 }

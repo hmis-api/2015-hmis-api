@@ -1,34 +1,26 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "/",
   "type": "object",
   "properties": {
-    "affiliations": {
-      "id": "affiliations",
+    "educations": {
       "type": "object",
       "properties": {
         "pagination": {
-          "id": "pagination",
           "type": "object",
           "properties": {
             "from": {
-              "id": "from",
               "type": "integer"
             },
             "returned": {
-              "id": "returned",
               "type": "integer"
             },
             "total": {
-              "id": "total",
               "type": "integer"
             },
             "maximum": {
-              "id": "maximum",
               "type": "integer"
             },
             "sort": {
-              "id": "sort",
               "type": "object",
               "properties": {}
             }
@@ -41,35 +33,36 @@
             "sort"
           ]
         },
-        "affiliations": {
-          "id": "affiliations",
+        "educations": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
-              "affiliationId": {
-                "id": "affiliationId",
+              "educationId": {
                 "type": "string"
               },
-              "resprojectid": {
-                "id": "resprojectid",
-                "type": "string"
+              "lastgradecompleted": {
+                "type": "integer"
               },
-              "dateCreated": {
-                "id": "dateCreated",
-                "type": "string"
+              "schoolStatus": {
+                "type": "integer"
               }
-            }
+            },
+            "required": [
+              "educationId",
+              "lastgradecompleted",
+              "schoolStatus"
+            ]
           }
         }
       },
       "required": [
         "pagination",
-        "affiliations"
+        "educations"
       ]
     }
   },
   "required": [
-    "affiliations"
+    "educations"
   ]
 }

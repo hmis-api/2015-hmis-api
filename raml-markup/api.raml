@@ -1,6 +1,6 @@
 #%RAML 0.8
 title: 2015 HMIS API
-version: 1.0.0
+version: 1.0.1
 baseUri: https://www.hmislynk.com/hmis-clientapi-v2015/rest
 mediaType: application/json
 securedBy: [oauth_2_0]
@@ -25,7 +25,7 @@ schemas:
   - domesticviolence_id_json: !include Schemas/DomesticViolence_id_json.json
   - domesticviolence_ids_json: !include Schemas/DomesticViolence_ids_json.json
   - domesticviolence_json: !include Schemas/DomesticViolence_json.json
-  - edcation_ids_json: !include Schemas/Edcation_ids_json.json
+  - education_ids_json: !include Schemas/Education_ids_json.json
   - education_id_json: !include Schemas/Education_id_json.json
   - education_json: !include Schemas/Education_json.json
   - employment_id_json: !include Schemas/Employment_id_json.json
@@ -95,6 +95,7 @@ schemas:
   - id_inventories_json: !include Schemas/id_inventories_json.json
   - id_medicalassistances_json: !include Schemas/id_medicalassistances_json.json
   - id_noncashbenefits_json: !include Schemas/id_noncashbenefits_json.json
+  - id_organization_json: !include Schemas/id_organization_json.json
   - id_pathstatus_json: !include Schemas/id_pathstatus_json.json
   - id_projectcoc_json: !include Schemas/id_ProjectCoc_json.json
   - id_projects_json: !include Schemas/id_projects_json.json
@@ -335,7 +336,7 @@ resourceTypes:
           type: {
             collection: {
                 id_schema_json: id_enrollmentcoc_json,
-                schema_json:  enrollmentcoc_ids_json,
+                schema_json:  enrollmentcoc_json,
                 schema_ids_json: enrollmentcoc_ids_json,
                 schema_ids_json_example : !include examples/EnrollmentCoC_ids_json_example.json,
                 schema_json_example: !include examples/EnrollmentCoC_json_example.json,
@@ -351,7 +352,7 @@ resourceTypes:
             type:
               member:
                 schema_json:  enrollmentcoc_json
-                schema_id_json: enrollmentcoc_json
+                schema_id_json: enrollmentcoc_id_json
                 schema_id_json_example: !include examples/EnrollmentCoC_id_json_example.json
                 schema_json_example: !include examples/EnrollmentCoC_json_example.json
         /educations:
@@ -359,7 +360,7 @@ resourceTypes:
             collection: {
                 id_schema_json: id_education_json,
                 schema_json:  education_json,
-                schema_ids_json: edcation_ids_json,
+                schema_ids_json: education_ids_json,
                 schema_ids_json_example : !include examples/Education_ids_json_example.json,
                 schema_json_example: !include examples/Education_json_example.json,
                 id_schema_json_example: !include examples/id_education_json_example.json
@@ -1034,7 +1035,7 @@ resourceTypes:
   }
   /{organizationid}:
     uriParameters:
-      projectsid:
+      organizationid:
         displayName: organization Identifier
         type: string
         example: ADBC1111211111114111111111D1111V
@@ -1049,7 +1050,7 @@ resourceTypes:
   get:
     description: |
           The Search API is optimized to find the specific entity you're looking for (e.g., a client, enrollments, etc.).It's designed to  find the one result you're looking for (or maybe the few results you're looking for). Currently hmislynk supporting search on 'clients' entity only. Just like searching on Google, you sometimes want to see a few pages of search results so that you can find the item that best meets your needs.  HMISLynk Search API provides up to 50 results for each searh. However, the search results can be limited by the client.
-            Note: Current suppoerting URI  is /search/clients
+            Note: Current supporting URI  is /search/clients
             
     queryParameters:
       q:
@@ -1079,7 +1080,7 @@ resourceTypes:
              Excludes flieds from the search.Currently it suppoted value is "ssi" (to exclude         source system id) only.
     responses:
       200:
-        body:
+        description: |
           example: |
             {
             "searchResults": {

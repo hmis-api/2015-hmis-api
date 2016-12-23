@@ -5,10 +5,10 @@
     "veteranInfo": {
       "type": "object",
       "properties": {
-        "yearEntrdService": {
+        "yearEnteredService": {
           "type": "integer"
         },
-        "yearSeperated": {
+        "yearSeparated": {
           "type": "integer"
         },
         "worldWar2": {

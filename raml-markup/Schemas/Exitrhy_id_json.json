@@ -4,11 +4,11 @@
   "type": "object",
   "properties": {
     "entryrhy": {
-      "id": "entryrhy",
+      "id": "exitrhy",
       "type": "object",
       "properties": {
-        "entryrhyId": {
-          "id": "entryrhyId",
+        "exitrhyId": {
+          "id": "exitrhyId",
           "type": "string"
         },
         "sexualOrientation": {
@@ -181,7 +181,7 @@
         }
       },
       "required": [
-        "entryrhyId",
+        "exitrhyId",
         "sexualOrientation",
         "formerlyWardChildWelfrForestCare",
         "yearsChildWelfrForestCare",
@@ -228,6 +228,6 @@
     }
   },
   "required": [
-    "entryrhy"
+    "exitrhy"
   ]
 }

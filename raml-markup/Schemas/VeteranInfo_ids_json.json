@@ -41,10 +41,10 @@
               "veteranInfoId": {
                 "type": "string"
               },
-              "yearEntrdService": {
+              "yearEnteredService": {
                 "type": "integer"
               },
-              "yearSeperated": {
+              "yearSeparated": {
                 "type": "integer"
               },
               "worldWar2": {

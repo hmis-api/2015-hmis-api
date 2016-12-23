@@ -46,6 +46,9 @@
         },
         "veteranStatus": {
           "type": "integer"
+        },
+        "sourceSystemId":{
+          "type":"string"
         }
       },
       "required": [
