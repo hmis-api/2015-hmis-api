@@ -14,6 +14,8 @@
       "ethnicity":1,
       "gender":1,
       "otherGender":"Test",
-      "veteranStatus":"8"
+      "veteranStatus":"8",
+      "phoneNumber":"1-541-754-3010",
+      "emailAddress":"Jeanette@gmail.com"
    }
 }

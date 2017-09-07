@@ -14,6 +14,8 @@
       "gender":1,
       "otherGender":"Test",
       "veteranStatus":8,
-     "sourceSystemId":"ssid"
+      "sourceSystemId":"ssid",
+      "phoneNumber":"1-541-754-3010",
+      "emailAddress":"Jeanette@gmail.com"
    }
 }

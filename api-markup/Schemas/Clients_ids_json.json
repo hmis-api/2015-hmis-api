@@ -82,6 +82,14 @@
               },
               "veteranStatus": {
                 "type": "string"
+              },
+              "phoneNumber":{
+                "id":"phoneNumber",
+                "type":"string"
+              },
+              "emailAddress":{
+                "id":"emailAddress",
+                "type":"string"
               }
             },
             "required": [
@@ -100,6 +108,8 @@
               "gender",
               "otherGender",
               "veteranStatus"
+              "phoneNumber",
+              "emailAddress"
             ]
           }
         }

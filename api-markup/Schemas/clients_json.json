@@ -49,6 +49,14 @@
         },
         "sourceSystemId":{
           "type":"string"
+        },
+        "phoneNumber":{
+          "id":"phoneNumber",
+          "type":"string"
+        },
+        "emailAddress":{
+          "id":"emailAddress",
+          "type":"string"
         }
       },
       "required": [
@@ -65,7 +73,9 @@
         "ethnicity",
         "gender",
         "otherGender",
-        "veteranStatus"
+        "veteranStatus",
+        "phoneNumber",
+        "emailAddress"
       ]
     }
   },
