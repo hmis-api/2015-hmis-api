@@ -3320,19 +3320,19 @@ resourceTypes:
         CreatedAfter:
           description: searches for members of the collection created after (inclusive) a particular date
           example: 10-11-2011
-          type: date
+          type: string
         CreatedBefore:
           description: searches for members of the collection created before (inclusive) a particular date
           example: 10-11-2012
-          type: date
+          type: string
         UpdatedAfter:
           description: searches for members of the collection updated after (inclusive) a particular date
           example: 10-11-2011
-          type: date
+          type: string
         UpdatedBefore:
           description: searches for members of the collection updated before (inclusive) a particular date
           example: 10-11-2012
-          type: date
+          type: string
     post:
       description: |
         Add a <<resourcePathName|!singularize>>
@@ -3341,7 +3341,7 @@ resourceTypes:
           description: OK - New resource has been created.
           body:
             application/json:
-              example: <<id_schema_json_example>>
+              example: <<schema_id_json_example>>
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -3416,7 +3416,7 @@ resourceTypes:
     description: 'Operations performed on the set of all HMIS clients within the system, and for adding a new client to the set of clients '
     type:
       collection:
-        id_schema_json: id_clients_json
+        schema_id_json: id_clients_json
         schema_json: clients_json
         schema_ids_json: clients_ids_json
         schema_ids_json_example: |-
@@ -3527,7 +3527,7 @@ resourceTypes:
                 "emailAddress":"Jeanette@gmail.com"
              }
           }
-        id_schema_json_example: |-
+        schema_id_json_example: |-
           {
              "client":{
                 "clientId":"c2e9be40-a644-46e2-9069-2feb0bdc7ee5"
@@ -3663,7 +3663,7 @@ resourceTypes:
         description: 'Operations performed on the set of all HMIS enrollments within the system, and for adding a new enrollment to the set of enrollments '
         type:
           collection:
-            id_schema_json: id_enrollments_json
+            schema_id_json: id_enrollments_json
             schema_json: enrollments_json
             schema_ids_json: enrollments_ids_json
             schema_ids_json_example: |-
@@ -3722,7 +3722,7 @@ resourceTypes:
                     "datetostreetessh":1
                  }
               }
-            id_schema_json_example: |-
+            schema_id_json_example: |-
               {
                  "enrollment":{
                     "enrollmentId":"cc1da849-b877-4455-ab44-84bdb9991f97",
@@ -3859,7 +3859,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS enrollmentcocs within the system, and for adding a new enrollmentcoc to the set of enrollmentcocs '
             type:
               collection:
-                id_schema_json: id_enrollmentcoc_json
+                schema_id_json: id_enrollmentcoc_json
                 schema_json: enrollmentcoc_json
                 schema_ids_json: enrollmentcoc_ids_json
                 schema_ids_json_example: |-
@@ -3891,7 +3891,7 @@ resourceTypes:
                         "clientCode":"Test"
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "enrollmentCoc":{
                         "enrollmentCocId":"60071b3a-2625-45b8-aa6e-23e99096b343"
@@ -3999,7 +3999,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS educations within the system, and for adding a new education to the set of educations '
             type:
               collection:
-                id_schema_json: id_education_json
+                schema_id_json: id_education_json
                 schema_json: education_json
                 schema_ids_json: education_ids_json
                 schema_ids_json_example: |-
@@ -4030,7 +4030,7 @@ resourceTypes:
                         "schoolStatus":6
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "education":{
                         "educationId":"f91547a2-d13b-40a1-a1be-fed415c468a6"
@@ -4137,7 +4137,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS contacts within the system, and for adding a new contact to the set of contacts '
             type:
               collection:
-                id_schema_json: id_contact_json
+                schema_id_json: id_contact_json
                 schema_json: contact_json
                 schema_ids_json: contact_ids_json
                 schema_ids_json_example: |-
@@ -4166,7 +4166,7 @@ resourceTypes:
                         "contactLocation":3
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "contact":{
                         "contactId":"169da295-22f9-41d9-b991-ada835b1e123"
@@ -4271,7 +4271,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS dateofengagements within the system, and for adding a new dateofengagement to the set of dateofengagements '
             type:
               collection:
-                id_schema_json: id_dateofengagements_json
+                schema_id_json: id_dateofengagements_json
                 schema_json: dateofengagements_json
                 schema_ids_json: dateofengagements_ids_json
                 schema_json_example: |-
@@ -4300,7 +4300,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "dateofengagement":{
                         "dateofengagementId":"61d17265-aa9f-4ed2-a146-2a94846f3dd3"
@@ -4405,7 +4405,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS disabilities within the system, and for adding a new disability to the set of disabilities '
             type:
               collection:
-                id_schema_json: id_disabilities_json
+                schema_id_json: id_disabilities_json
                 schema_json: disabilities_json
                 schema_ids_json: disabilities_ids_json
                 schema_json_example: |-
@@ -4460,7 +4460,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "disabilities":{
                         "disabilitiesId":"80f63d5d-f4db-43a5-afb6-74421df88375"
@@ -4591,7 +4591,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS domesticviolences within the system, and for adding a new domesticviolence to the set of domesticviolences '
             type:
               collection:
-                id_schema_json: id_domesticviolences_json
+                schema_id_json: id_domesticviolences_json
                 schema_json: domesticviolence_json
                 schema_ids_json: domesticviolence_ids_json
                 schema_json_example: |-
@@ -4624,7 +4624,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "domesticviolence":{
                         "domesticviolenceId":"e416137a-b8fa-4724-8e3b-35ae0e4ef270"
@@ -4733,7 +4733,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS employments within the system, and for adding a new employment to the set of employments '
             type:
               collection:
-                id_schema_json: id_employments_json
+                schema_id_json: id_employments_json
                 schema_json: employments_json
                 schema_ids_json: employments_ids_json
                 schema_json_example: |-
@@ -4768,7 +4768,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "employment":{
                         "employmentId":"00756afb-fddd-4341-a758-a5e6c46d809f"
@@ -4879,7 +4879,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS exits within the system, and for adding a new exit to the set of exits '
             type:
               collection:
-                id_schema_json: id_exits_json
+                schema_id_json: id_exits_json
                 schema_json: exit_json
                 schema_ids_json: exit_ids_json
                 schema_json_example: |-
@@ -4913,7 +4913,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "exit":{
                         "exitId":"a9c3708e-0ac2-4b80-ad2b-52d8ff7e0ed2"
@@ -5024,7 +5024,7 @@ resourceTypes:
                 description: 'Operations performed on the set of all HMIS exithousingassesments within the system, and for adding a new exithousingassesment to the set of exithousingassesments '
                 type:
                   collection:
-                    id_schema_json: id_exithousingassesment_json
+                    schema_id_json: id_exithousingassesment_json
                     schema_json: exithosingassessments_json
                     schema_ids_json: exithosingassessments_ids_json
                     schema_json_example: |-
@@ -5055,7 +5055,7 @@ resourceTypes:
                             ]
                          }
                       }
-                    id_schema_json_example: |-
+                    schema_id_json_example: |-
                       {
                          "exithousingassessment":{
                             "exithousingassessmentId":"a45e96ba-0287-4c9f-a1c2-5058a4acc1aa"
@@ -5162,7 +5162,7 @@ resourceTypes:
                 description: 'Operations performed on the set of all HMIS housingassesmentdispositions within the system, and for adding a new housingassesmentdisposition to the set of housingassesmentdispositions '
                 type:
                   collection:
-                    id_schema_json: id_housingassesmentdispositions_json
+                    schema_id_json: id_housingassesmentdispositions_json
                     schema_json: housingassesmentdispositions_json
                     schema_ids_json: housingassesmentdispositions_ids_json
                     schema_json_example: |-
@@ -5194,7 +5194,7 @@ resourceTypes:
                             ]
                          }
                       }
-                    id_schema_json_example: |-
+                    schema_id_json_example: |-
                       {
                          "housingAssessmentDisposition":{
                             "housingAssessmentDispositionId":"c08b6685-c03e-4151-87dc-34f367a4a968"
@@ -5304,7 +5304,7 @@ resourceTypes:
                 description: 'Operations performed on the set of all HMIS exitpaths within the system, and for adding a new exitpath to the set of exitpaths '
                 type:
                   collection:
-                    id_schema_json: id_exitpath_json
+                    schema_id_json: id_exitpath_json
                     schema_json: exitpath_json
                     schema_ids_json: exitpath_ids_json
                     schema_json_example: |-
@@ -5333,7 +5333,7 @@ resourceTypes:
                             ]
                          }
                       }
-                    id_schema_json_example: |-
+                    schema_id_json_example: |-
                       {
                         "exitpath": {
                           "exitpathId": "b5598c6c-d021-4f5f-9695-77f7f4685ed2"
@@ -5439,7 +5439,7 @@ resourceTypes:
                 description: 'Operations performed on the set of all HMIS exitrhys within the system, and for adding a new exitrhy to the set of exitrhys '
                 type:
                   collection:
-                    id_schema_json: id_exitrhy_json
+                    schema_id_json: id_exitrhy_json
                     schema_json: exitrhy_json
                     schema_ids_json: exitrhy_ids_json
                     schema_json_example: |-
@@ -5490,7 +5490,7 @@ resourceTypes:
                             ]
                          }
                       }
-                    id_schema_json_example: |-
+                    schema_id_json_example: |-
                       {
                          "exitrhy":{
                             "exitrhyId":"878d7b3f-91d8-4a5d-9eba-81b081f0a9f8"
@@ -5617,7 +5617,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS heathinsurances within the system, and for adding a new heathinsurance to the set of heathinsurances '
             type:
               collection:
-                id_schema_json: id_healthinsurance_json
+                schema_id_json: id_healthinsurance_json
                 schema_json: healthinsurance_json
                 schema_ids_json: healthinsurances_ids_json
                 schema_json_example: |-
@@ -5681,7 +5681,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "healthinsurance":{
                         "healthinsuranceId":"054629bc-b89c-4fdb-99fb-100245c33312"
@@ -5821,7 +5821,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS healthstatuses within the system, and for adding a new healthstatus to the set of healthstatuses '
             type:
               collection:
-                id_schema_json: id_healthstatus_json
+                schema_id_json: id_healthstatus_json
                 schema_json: healthstatus_json
                 schema_ids_json: healthstatus_ids_json
                 schema_json_example: |-
@@ -5856,7 +5856,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "healthstatus":{
                         "healthstatusId":"1e727168-1df8-47d8-aa6f-e1f3fc713bcc"
@@ -5967,7 +5967,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS incomeandsources within the system, and for adding a new incomeandsource to the set of incomeandsources '
             type:
               collection:
-                id_schema_json: id_incomeandsources_json
+                schema_id_json: id_incomeandsources_json
                 schema_json: incomeandsource_json
                 schema_ids_json: incomeandsources_ids_json
                 schema_json_example: |-
@@ -6061,7 +6061,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "incomeAndSource":{
                         "incomeAndSourceId":"07577bdf-d44d-4a2f-b0f5-952098158242",
@@ -6248,7 +6248,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS medicalassistences within the system, and for adding a new medicalassistence to the set of medicalassistences '
             type:
               collection:
-                id_schema_json: id_medicalassistances_json
+                schema_id_json: id_medicalassistances_json
                 schema_json: medicalassistance_json
                 schema_ids_json: medicalassistances_ids_json
                 schema_json_example: |-
@@ -6285,7 +6285,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "medicalassistance":{
                         "medicalassistanceId":"6c570aea-ba70-4784-b2e8-bb33caa5eafe"
@@ -6398,7 +6398,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS noncashbenefits within the system, and for adding a new noncashbenefit to the set of noncashbenefits '
             type:
               collection:
-                id_schema_json: id_noncashbenefits_json
+                schema_id_json: id_noncashbenefits_json
                 schema_json: noncashbenefits_json
                 schema_ids_json: noncashbenefits_ids_json
                 schema_json_example: |-
@@ -6445,7 +6445,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "noncashbenefits":{
                         "noncashbenefitsID":"520f2a27-e92d-4dc2-946f-54bcdd334114"
@@ -6568,7 +6568,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS residentialmoveindates within the system, and for adding a new residentialmoveindate to the set of residentialmoveindates '
             type:
               collection:
-                id_schema_json: id_residentialmoveindate_json
+                schema_id_json: id_residentialmoveindate_json
                 schema_json: residentialmoveindate_json
                 schema_ids_json: residentialmoveindate_ids_json
                 schema_json_example: |-
@@ -6599,7 +6599,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "residentialmoveindate":{
                         "residentialmoveindateId":"8967ae96-79d1-43a9-97da-66179bbb7c71"
@@ -6705,7 +6705,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS pathstatuses within the system, and for adding a new pathstatus to the set of pathstatuses '
             type:
               collection:
-                id_schema_json: id_pathstatus_json
+                schema_id_json: id_pathstatus_json
                 schema_json: pathstatus_json
                 schema_ids_json: pathstatus_ids_json
                 schema_json_example: |-
@@ -6739,7 +6739,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "pathstatus":{
                         "pathstatusId":"478449dc-c26a-4784-bf16-93df65898ed2"
@@ -6849,7 +6849,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS entryrhsps within the system, and for adding a new entryrhsp to the set of entryrhsps '
             type:
               collection:
-                id_schema_json: id_entryrhsp_json
+                schema_id_json: id_entryrhsp_json
                 schema_json: entryrhsp_json
                 schema_ids_json: entryrhsp_ids_json
                 schema_json_example: |-
@@ -6878,7 +6878,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "entryrhsp":{
                         "entryrhspId":"c10f31e4-9e09-4fab-b788-e89fc074c9f8"
@@ -6983,7 +6983,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS entryrhys within the system, and for adding a new entryrhy to the set of entryrhys '
             type:
               collection:
-                id_schema_json: id_entryrhy_json
+                schema_id_json: id_entryrhy_json
                 schema_json: entryrhy_json
                 schema_ids_json: entryrhy_ids_json
                 schema_json_example: |-
@@ -7092,7 +7092,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "entryrhy":{
                         "entryrhyId":"6304041b-b997-4b01-9987-63d7e78070f1"
@@ -7277,7 +7277,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS entryssvfs within the system, and for adding a new entryssvf to the set of entryssvfs '
             type:
               collection:
-                id_schema_json: id_entryssvf_json
+                schema_id_json: id_entryssvf_json
                 schema_json: entryssvf_json
                 schema_ids_json: entryssvf_ids_json
                 schema_json_example: |-
@@ -7320,7 +7320,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                     "entryssvf": {
                       "entryssvfId": "7b66e9d4-49e5-4584-a8cf-fe4f9a5882b8"
@@ -7439,7 +7439,7 @@ resourceTypes:
             description: 'Operations performed on the set of all HMIS servicefareferrals within the system, and for adding a new servicefareferral to the set of servicefareferrals '
             type:
               collection:
-                id_schema_json: id_servicefareferral_json
+                schema_id_json: id_servicefareferral_json
                 schema_json: servicefareferral_json
                 schema_ids_json: servicefareferrals_ids_json
                 schema_json_example: |-
@@ -7480,7 +7480,7 @@ resourceTypes:
                         ]
                      }
                   }
-                id_schema_json_example: |-
+                schema_id_json_example: |-
                   {
                      "servicefareferral":{
                         "servicefareferralId":"bf09eb50-b641-486e-bf7e-49e9faa37c41"
@@ -7597,7 +7597,7 @@ resourceTypes:
         description: 'Operations performed on the set of all HMIS veteraninfos within the system, and for adding a new veteraninfo to the set of veteraninfos '
         type:
           collection:
-            id_schema_json: id_veteraninfo_json
+            schema_id_json: id_veteraninfo_json
             schema_json: veteraninfo_json
             schema_ids_json: veteraninfo_ids_json
             schema_json_example: |-
@@ -7648,7 +7648,7 @@ resourceTypes:
                     ]
                  }
               }
-            id_schema_json_example: |-
+            schema_id_json_example: |-
               {
                  "veteranInfo":{
                     "veteranInfoId":"d0f7f763-dba8-4bc5-9602-d6e3775c59d3"
@@ -7775,7 +7775,7 @@ resourceTypes:
     description: 'Operations performed on the set of all HMIS projects within the system, and for adding a new project to the set of projects '
     type:
       collection:
-        id_schema_json: id_projects_json
+        schema_id_json: id_projects_json
         schema_json: project_json
         schema_ids_json: projects_ids_json
         schema_json_example: |-
@@ -7815,7 +7815,7 @@ resourceTypes:
               ]
             }
           }
-        id_schema_json_example: |-
+        schema_id_json_example: |-
           {
              "project":{
                 "projectId":"0a4819f4-7aff-4beb-b525-26e46c4f5b75"
@@ -7933,7 +7933,7 @@ resourceTypes:
         description: 'Operations performed on the set of all HMIS projectcocs within the system, and for adding a new projectcoc to the set of projectcocs '
         type:
           collection:
-            id_schema_json: id_projectcoc_json
+            schema_id_json: id_projectcoc_json
             schema_json: projectcoc_json
             schema_ids_json: projectcoc_ids_json
             schema_json_example: "{\r\n   \"projectcoc\":{\r\n      \"coccode\":\"HPltHrjWAdDWKDYBj7dvUfzEvrNc2Y\"\r\n   }\r\n}"
@@ -7958,7 +7958,7 @@ resourceTypes:
                     ]
                  }
               }
-            id_schema_json_example: "{\r\n   \"projectcoc\":{\r\n      \"projectcocId\":\"b71b97e5-389e-4e01-971c-c106a3776df7\"\r\n   }\r\n}"
+            schema_id_json_example: "{\r\n   \"projectcoc\":{\r\n      \"projectcocId\":\"b71b97e5-389e-4e01-971c-c106a3776df7\"\r\n   }\r\n}"
         get:
           description: 'Searches for projectcoc.  Returns a list of projectcoc ids, based on the query parameters sent.  The query parameters are cumulative, so each additional query parameter narrows the search down further.'
           responses:
@@ -8055,7 +8055,7 @@ resourceTypes:
         description: 'Operations performed on the set of all HMIS inventories within the system, and for adding a new inventory to the set of inventories '
         type:
           collection:
-            id_schema_json: id_inventories_json
+            schema_id_json: id_inventories_json
             schema_json: inventories_json
             schema_ids_json: inventories_ids_json
             schema_json_example: |-
@@ -8106,7 +8106,7 @@ resourceTypes:
                     ]
                  }
               }
-            id_schema_json_example: |-
+            schema_id_json_example: |-
               {
                  "inventory":{
                     "inventoryId":"74e4ed15-688e-4dfa-9609-1c6161d0dedd"
@@ -8234,7 +8234,7 @@ resourceTypes:
         description: 'Operations performed on the set of all HMIS sites within the system, and for adding a new site to the set of sites '
         type:
           collection:
-            id_schema_json: id_sites_json
+            schema_id_json: id_sites_json
             schema_json: sites_json
             schema_ids_json: sites_ids_json
             schema_json_example: |-
@@ -8274,7 +8274,7 @@ resourceTypes:
                     ]
                  }
               }
-            id_schema_json_example: |-
+            schema_id_json_example: |-
               {
                  "site":{
                     "siteId":"7977f2cc-7058-4958-9aac-309c4f220041"
@@ -8391,7 +8391,7 @@ resourceTypes:
         description: 'Operations performed on the set of all HMIS funders within the system, and for adding a new funder to the set of funders '
         type:
           collection:
-            id_schema_json: id_funders_json
+            schema_id_json: id_funders_json
             schema_json: funders_json
             schema_ids_json: funders_ids_json
             schema_json_example: |-
@@ -8427,7 +8427,7 @@ resourceTypes:
                     ]
                  }
               }
-            id_schema_json_example: |-
+            schema_id_json_example: |-
               {
                  "funder":{
                     "funderId":"47fee5b8-092e-4487-85e6-bfb01ee480f3"
@@ -8540,7 +8540,7 @@ resourceTypes:
         description: 'Operations performed on the set of all HMIS affiliations within the system, and for adding a new affiliation to the set of affiliations '
         type:
           collection:
-            id_schema_json: id_affiliation_json
+            schema_id_json: id_affiliation_json
             schema_json: affiliations_json
             schema_ids_json: affiliations_ids_json
             schema_json_example: |-
@@ -8570,7 +8570,7 @@ resourceTypes:
                     ]
                  }
               }
-            id_schema_json_example: |-
+            schema_id_json_example: |-
               {
                  "affiliation":{
                     "affiliationId":"f3c479a5-041a-49f6-b3ce-c999ec0bee40"
@@ -8677,7 +8677,7 @@ resourceTypes:
     description: 'Operations performed on the set of all HMIS organizations within the system, and for adding a new organization to the set of organizations '
     type:
       collection:
-        id_schema_json: id_organization_json
+        schema_id_json: id_organization_json
         schema_json: organization_json
         schema_ids_json: organization_ids_json
         schema_json_example: |-
@@ -8713,7 +8713,7 @@ resourceTypes:
                 ]
              }
           }
-        id_schema_json_example: |-
+        schema_id_json_example: |-
           {
              "organization":{
                 "organizationId":"8dff4029-09b7-4293-b24b-b077b39ee673",
@@ -8823,7 +8823,7 @@ resourceTypes:
       description: |
         The Search API is optimized to find the specific entity you're looking for (e.g., a client, enrollments, etc.).It's designed to  find the one result you're looking for (or maybe the few results you're looking for). Currently hmislynk supporting search on 'clients' entity only. Just like searching on Google, you sometimes want to see a few pages of search results so that you can find the item that best meets your needs.  HMISLynk Search API provides up to 50 results for each searh. However, the search results can be limited by the client.
           Note: Current supporting URI  is /search/clients
-          
+
       responses:
         '200':
           description: |
@@ -8876,11 +8876,11 @@ resourceTypes:
                 ]
               }
               }
-                        
+
       queryParameters:
         q:
           description: |
-            The search keywords, as well as any qualifiers. Currently supported search fields are first name,middle name,last name,dob,source system id and ssn. For search on "date of birth" field the format MM-dd-YYYY should be used for the search keyword. 
+            The search keywords, as well as any qualifiers. Currently supported search fields are first name,middle name,last name,dob,source system id and ssn. For search on "date of birth" field the format MM-dd-YYYY should be used for the search keyword.
         sort:
           description: The sort field. Default- results are sorted by "created date".
           example: created date
@@ -8905,4 +8905,3 @@ resourceTypes:
             Excludes flieds from the search.Currently it suppoted value is "ssi" (to exclude         source system id) only.
     uriParameters:
       searchentity: {}
-
