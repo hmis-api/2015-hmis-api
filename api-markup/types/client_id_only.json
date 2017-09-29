@@ -2,23 +2,19 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "organization": {
+    "client": {
       "type": "object",
       "properties": {
-        "organizationId": {
-          "type": "string"
-        },
-        "organizationCommonName": {
+        "clientId": {
           "type": "string"
         }
       },
       "required": [
-        "organizationId",
-        "organizationCommonName"
+        "clientId"
       ]
     }
   },
   "required": [
-    "organization"
+    "client"
   ]
 }

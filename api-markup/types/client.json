@@ -73,9 +73,7 @@
         "ethnicity",
         "gender",
         "otherGender",
-        "veteranStatus",
-        "phoneNumber",
-        "emailAddress"
+        "veteranStatus"
       ]
     }
   },

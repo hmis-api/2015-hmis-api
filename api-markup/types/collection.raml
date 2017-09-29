@@ -1,0 +1,62 @@
+#%RAML 1.0 ResourceType
+usage: This resourceType should be used for any collection of items
+description: Operations performed on the set of all HMIS <<resourcePathName>> within the system, and for adding a new <<resourcePathName|!singularize>> to the set of <<resourcePathName>>
+get:
+  description: 'Searches for <<resourcePathName|!singularize>>.  Returns a list of <<resourcePathName|!singularize>> ids, based on the query parameters sent.  The query parameters are cumulative, so each additional query parameter narrows the search down further.'
+  responses:
+    200:
+      description: OK – Everything is working.
+      body:
+        application/json:
+          type: <<schema_ids>>
+          example: <<schema_ids_example>>
+    400:
+      description: Bad Request – The request was invalid or cannot be served.
+    403:
+      description: 'Forbidden – The server understood the request, but is refusing it or the access is not allowed.'
+    404:
+      description: Not found – There is no resource behind the URI.
+    500:
+      description: Internal Server Error
+  queryParameters:
+    CreatedAfter:
+      description: searches for members of the collection created after (inclusive) a particular date
+      example: 10-11-2011
+      type: string
+    CreatedBefore:
+      description: searches for members of the collection created before (inclusive) a particular date
+      example: 10-11-2012
+      type: string
+    UpdatedAfter:
+      description: searches for members of the collection updated after (inclusive) a particular date
+      example: 10-11-2011
+      type: string
+    UpdatedBefore:
+      description: searches for members of the collection updated before (inclusive) a particular date
+      example: 10-11-2012
+      type: string
+post:
+  description: |
+    Add a <<resourcePathName|!singularize>>
+  body:
+      application/json:
+        type: <<schema>>
+        example: <<schema_example>>
+  responses:
+    201:
+      description: OK - New resource has been created.
+      body:
+        application/json:
+          example: <<schema_id_example>>
+    400:
+      description: Bad Request – The request was invalid or cannot be served.
+    401:
+      description: Unauthorized – The request requires user authentication.
+    403:
+      description: Forbidden – The server understood the request, but is refusing it or access is not allowed.
+    404:
+      description: Not Found – There is no resource behind the URI.
+    422:
+      description: Unprocessable Entity - Request body is incorrect.
+    500:
+      description: Internal Server Error.

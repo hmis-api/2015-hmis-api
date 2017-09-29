@@ -8,13 +8,9 @@
         "enrollmentId": {
           "type": "string"
         },
-        "yearshomeless": {
-          "type": "integer"
-        }
       },
       "required": [
-        "enrollmentId",
-        "yearshomeless"
+        "enrollmentId"
       ]
     }
   },

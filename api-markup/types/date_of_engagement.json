@@ -1,20 +1,23 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
   "type": "object",
   "properties": {
-    "affiliation": {
+    "dateofengagement": {
+      "id": "dateofengagement",
       "type": "object",
       "properties": {
-        "affiliationId": {
+        "dateofengagement": {
+          "id": "dateofengagement",
           "type": "string"
         }
       },
       "required": [
-        "affiliationId"
+        "dateofengagement"
       ]
     }
   },
   "required": [
-    "affiliation"
+    "dateofengagement"
   ]
 }
