@@ -1,0 +1,19 @@
+{
+   "disabilities":{
+      "disabilitiesId":"afeb939c-72d9-43e8-95e6-045a39843c10",
+      "disabilitytype":6,
+      "disabilityresponse":-1994754550,
+      "indefiniteandimpairs":0,
+      "documentationonfile":0,
+      "receivingservices":0,
+      "pathhowconfirmed":99,
+      "pathsmiinformation":0,
+      "tcellcountavailable":1,
+      "tcellcount":2,
+      "tcellcountsource":"3       ",
+      "viralLoadAvailable":4,
+      "viralLoad":5,
+      "viralLoadSource":"test    ",
+      "informationDate":"04-05-2016"
+   }
+}

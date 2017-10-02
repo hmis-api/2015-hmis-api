@@ -2,19 +2,19 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "enrollment": {
+    "affiliation": {
       "type": "object",
       "properties": {
-        "enrollmentId": {
+        "affiliationId": {
           "type": "string"
         }
       },
       "required": [
-        "enrollmentId"
+        "affiliationId"
       ]
     }
   },
   "required": [
-    "enrollment"
+    "affiliation"
   ]
 }

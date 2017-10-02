@@ -2,19 +2,19 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "enrollment": {
+    "incomeAndSource": {
       "type": "object",
       "properties": {
-        "enrollmentId": {
+        "incomeAndSourceId": {
           "type": "string"
         }
       },
       "required": [
-        "enrollmentId"
+        "incomeAndSourceId"
       ]
     }
   },
   "required": [
-    "enrollment"
+    "incomeAndSource"
   ]
 }

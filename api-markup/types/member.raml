@@ -1,6 +1,12 @@
 #%RAML 1.0 ResourceType
 usage: Apply this resource type to any resource that returns only a single item.
 description: Operations performed on a single HMIS <<resourcePathName|!singularize>> within the system.
+uriParameters:
+  <<resourcePathName|!singularize>>id:
+    example: ADBC1111211111114111111111D1111V
+    type: string
+    displayName: <<resourcePathName|!singularize|!uppercamelcase>> Identifier
+
 get:
   description: Gets a <<resourcePathName|!singularize>> using a URI resource parameter/ID.
   responses:

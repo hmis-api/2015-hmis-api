@@ -1,0 +1,19 @@
+{
+   "exitpaths":{
+      "pagination":{
+         "from":0,
+         "returned":1,
+         "total":1,
+         "maximum":30,
+         "sort":{
+
+         }
+      },
+      "exitpaths":[
+         {
+            "exitpathId":"46b4e67b-08f4-4962-9a1e-3ff614aaea23",
+            "connectionWithSoar":9
+         }
+      ]
+   }
+}
