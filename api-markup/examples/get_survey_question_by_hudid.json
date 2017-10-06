@@ -1,0 +1,21 @@
+{
+   "question":{
+      "questionId":"273ec115-4a6a-4919-84e3-b8a0515fd2a7",
+      "questionDescription":"How long has it been since you lived in permanent stable housing?",
+      "displayText":"2. How long has it been since you lived in permanent stable housing ?",
+      "questionDataType":"STRING",
+      "questionType":"TEXT",
+      "picklistGroupName":"housingstatus",
+      "hudQuestionId":"2",
+      "links":[
+         {
+            "rel":"pickList",
+            "href":"/hmis-clientapi/rest/v2014/hmistypes/housingstatus/values"
+         },
+         {
+            "rel":"updateUriTemplate",
+            "href":"/v2014/clients/{clientid}/enrollments"
+         }
+      ]
+   }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "question": {
+      "type": "object",
+      "properties": {
+        "questionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questionDescription": {
+          "type": "string",
+          "minLength": 1
+        },
+        "displayText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questionDataType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questionType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "picklistGroupName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hudQuestionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "links": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "rel",
+              "href"
+            ],
+            "properties": {
+              "rel": {
+                "type": "string",
+                "minLength": 1
+              },
+              "href": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "questionId",
+        "questionDescription",
+        "displayText",
+        "questionDataType",
+        "questionType",
+        "picklistGroupName",
+        "hudQuestionId",
+        "links"
+      ]
+    }
+  },
+  "required": [
+    "question"
+  ]
+}

@@ -724,3 +724,40 @@ resourceTypes:
             Excludes flieds from the search.Currently it suppoted value is "ssi" (to exclude         source system id) only.
     uriParameters:
       searchentity: {}
+/dataelements:
+  description: Get all available data elements
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+             example: !include examples/get_all_hmis_type_names.json
+             schema: !include types/get_all_hmis_type_names.json
+  /{name}/values:
+    description:  get all values of elements
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/get_all_hmis_type_value_of_hmis_type.json
+              schema: !include types/get_all_hmis_type_value_of_hmis_type.json
+
+/questions:
+  description:  get all HUD Questions
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/get_all_survey_questions.json
+            schema: !include types/get_all_survey_questions.json
+/questions/{hudQuestionId}:
+  description:  get HUD Question by hudQuestionId
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/get_survey_question_by_hudid.json
+            schema: !include types/get_survey_question_by_hudid.json

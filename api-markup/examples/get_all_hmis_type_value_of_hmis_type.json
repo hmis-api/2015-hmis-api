@@ -1,0 +1,31 @@
+{
+   "dataElements":{
+      "dataElements":[
+         {
+            "name":"address_data_quality",
+            "value":"1",
+            "description":"Full address reported"
+         },
+         {
+            "name":"address_data_quality",
+            "value":"2",
+            "description":"Incomplete or estimated address reported"
+         },
+         {
+            "name":"address_data_quality",
+            "value":"8",
+            "description":"Client doesn't know"
+         },
+         {
+            "name":"address_data_quality",
+            "value":"9",
+            "description":"Client refused"
+         },
+         {
+            "name":"address_data_quality",
+            "value":"99",
+            "description":"Data not collected"
+         }
+      ]
+   }
+}
