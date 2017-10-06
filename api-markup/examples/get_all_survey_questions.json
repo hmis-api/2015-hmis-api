@@ -21,11 +21,11 @@
             "links":[
                {
                   "rel":"pickList",
-                  "href":"/hmis-clientapi/rest/v2014/hmistypes/housingstatus/values"
+                  "href":"/hmis-clientapi/rest/v2015/hmistypes/housingstatus/values"
                },
                {
                   "rel":"updateUriTemplate",
-                  "href":"/v2014/clients/{clientid}/enrollments"
+                  "href":"/v2015/clients/{clientid}/enrollments"
                }
             ]
          }
