@@ -23,8 +23,7 @@
             },
             "sort": {
               "type": "object",
-              "properties": {},
-              "required": []
+              "properties": {}
             }
           },
           "required": [

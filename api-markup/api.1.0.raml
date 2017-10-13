@@ -8,7 +8,7 @@ protocols:
 baseUri: 'https://www.hmislynk.com/hmis-clientapi-v2015/rest/v2015'
 securedBy: [oauth_2_0]
 securitySchemes:
-  oauth_2_0: !include securitySchemes/oauth_2_0.raml
+  oauth_2_0: !include security-schemes/oauth_2_0.raml
 types:
   affiliation_id_only: !include types/affiliation_id_only.json
   affiliation_id: !include types/affiliation_id.json
@@ -472,7 +472,7 @@ resourceTypes:
                   schema_id: exit_id
                   schema_id_example: !include examples/exit_id_example.json
                   schema_example: !include examples/exit_example.json
-              /exithousingassesments:
+              /exithousingassessments:
                 type:
                   collection:
                     schema_ids: exit_housing_assessments_ids
@@ -480,7 +480,7 @@ resourceTypes:
                     schema: exit_housing_assessment
                     schema_example: !include examples/exit_housing_assessment_example.json
                     schema_id_example: !include examples/exit_housing_assessment_id_example.json
-                /{exithousingassesmentid}:
+                /{exithousingassessmentid}:
                   type:
                     member:
                       schema: exit_housing_assessment
