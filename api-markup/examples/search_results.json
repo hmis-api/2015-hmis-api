@@ -1,0 +1,48 @@
+{
+"searchResults": {
+  "pagination": {
+    "total":"2"
+    "from": "0",
+    "maximum": "50",
+    "returned":"2"
+  },
+  "items": [
+    {
+      "clientId": "65e3df62-dd22-4d07-83ef-6858a6322839",
+      "firstName": "Eric",
+      "middleName": "Eric",
+      "lastName": "Eric",
+      "nameSuffix": "NS ",
+      "nameDataQuality": "1",
+      "ssn": "ssn ",
+      "ssnDataQuality": "1",
+      "dob": "1459498034983",
+      "dobDataQuality": "1",
+      "race": "1",
+      "ethnicity": "1",
+      "gender": "1",
+      "otherGender": "Test",
+      "veteranStatus": "8",
+      "link":"/hmis-clientapi/rest/v2015/clients/65e3df62-dd22-4d07-83ef-6858a6322839"
+    },
+    {
+      "clientId": "cf98b9b2-9a77-4133-99a3-b60f05a12ad1",
+      "firstName": "Eric",
+      "middleName": "Eric",
+      "lastName": "Eric",
+      "nameSuffix": "NS ",
+      "nameDataQuality": "1",
+      "ssn": "ssn ",
+      "ssnDataQuality": "1",
+      "dob": "1459498034983",
+      "dobDataQuality": "1",
+      "race": "1",
+      "ethnicity": "1",
+      "gender": "1",
+      "otherGender": "Test",
+      "veteranStatus": "8",
+      "link":"/hmis-clientapi/rest/v2014/clients/cf98b9b2-9a77-4133-99a3-b60f05a12ad1"
+    }
+  ]
+}
+}

@@ -638,64 +638,16 @@ resourceTypes:
         schema_id_example: !include examples/organization_id_example.json
         schema_example: !include examples/organization_example.json
 /search:
-  '/{searchentity}':
-    get:
-      description: |
-        The Search API is optimized to find the specific entity you're looking for (e.g., a client, enrollments, etc.).It's designed to  find the one result you're looking for (or maybe the few results you're looking for). Currently hmislynk supporting search on 'clients' entity only. Just like searching on Google, you sometimes want to see a few pages of search results so that you can find the item that best meets your needs.  HMISLynk Search API provides up to 50 results for each searh. However, the search results can be limited by the client. Note: Current supporting URI  is /search/clients
+  description: |
+    The Search API is optimized to find the specific entity you're looking for (e.g., a client, enrollments, etc.).  It's designed to  find the one result you're looking for (or maybe the few results you're looking for). Currently hmislynk supporting search on 'clients' entity only. Just like searching on Google, you sometimes want to see a few pages of search results so that you can find the item that best meets your needs.  HMISLynk Search API provides up to 50 results for each search. However, the search results can be limited by the client. Note: Current supporting URI is /search/clients .
 
+  /{searchentity}:
+    get:
       responses:
         '200':
-          description: |
-            example: |
-              {
-              "searchResults": {
-                "pagination": {
-                  "total":"2"
-                  "from": "0",
-                  "maximum": "50",
-                  "returned":"2"
-                },
-                "items": [
-                  {
-                    "clientId": "65e3df62-dd22-4d07-83ef-6858a6322839",
-                    "firstName": "Eric",
-                    "middleName": "Eric",
-                    "lastName": "Eric",
-                    "nameSuffix": "NS ",
-                    "nameDataQuality": "1",
-                    "ssn": "ssn ",
-                    "ssnDataQuality": "1",
-                    "dob": "1459498034983",
-                    "dobDataQuality": "1",
-                    "race": "1",
-                    "ethnicity": "1",
-                    "gender": "1",
-                    "otherGender": "Test",
-                    "veteranStatus": "8",
-                    "link":"/hmis-clientapi/rest/v2015/clients/65e3df62-dd22-4d07-83ef-6858a6322839"
-                  },
-                  {
-                    "clientId": "cf98b9b2-9a77-4133-99a3-b60f05a12ad1",
-                    "firstName": "Eric",
-                    "middleName": "Eric",
-                    "lastName": "Eric",
-                    "nameSuffix": "NS ",
-                    "nameDataQuality": "1",
-                    "ssn": "ssn ",
-                    "ssnDataQuality": "1",
-                    "dob": "1459498034983",
-                    "dobDataQuality": "1",
-                    "race": "1",
-                    "ethnicity": "1",
-                    "gender": "1",
-                    "otherGender": "Test",
-                    "veteranStatus": "8",
-                    "link":"/hmis-clientapi/rest/v2014/clients/cf98b9b2-9a77-4133-99a3-b60f05a12ad1"
-                  }
-                ]
-              }
-              }
-
+          body:
+            application/json:
+              example: !include examples/search_results.json
       queryParameters:
         q:
           description: |
@@ -721,9 +673,7 @@ resourceTypes:
           type: integer
         exclude:
           description: |
-            Excludes flieds from the search.Currently it suppoted value is "ssi" (to exclude         source system id) only.
-    uriParameters:
-      searchentity: {}
+            Excludes fields from the search.  Currently its only supported value is "ssi" (to exclude source system id) only.
 /dataelements:
   description: Get all available data elements
   get:
