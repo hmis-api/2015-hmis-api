@@ -13,7 +13,9 @@
          {
             "educationId":"f91547a2-d13b-40a1-a1be-fed415c468a6",
             "lastgradecompleted":10,
-            "schoolStatus":6
+            "schoolStatus":6,
+            "dataCollectionStage":1,
+            "informationDate":"03-17-2016"
          }
       ]
    }

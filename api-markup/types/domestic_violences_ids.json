@@ -49,13 +49,21 @@
               },
               "currentlyFleeing": {
                 "type": "integer"
+              },
+              "informationDate": {
+                "type": "string"
+              },
+              "dataCollectionStage": {
+                "type": "integer"
               }
             },
             "required": [
               "domesticviolenceId",
               "domesticviolencevictim",
               "whenoccurred",
-              "currentlyFleeing"
+              "currentlyFleeing",
+              "informationDate",
+              "dataCollectionStage"
             ]
           }
         }

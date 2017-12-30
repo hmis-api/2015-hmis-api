@@ -49,6 +49,9 @@
         },
         "informationDate": {
           "type": "string"
+        },
+        "dataCollectionStage": {
+          "type": "integer"
         }
       },
       "required": [
@@ -66,7 +69,8 @@
         "viralLoadAvailable",
         "viralLoad",
         "viralLoadSource",
-        "informationDate"
+        "informationDate",
+        "dataCollectionStage"
       ]
     }
   },

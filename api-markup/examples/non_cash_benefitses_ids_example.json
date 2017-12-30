@@ -21,7 +21,9 @@
             "snap":0,
             "tanfchildcare":0,
             "tanftransportation":0,
-            "wic":0
+            "wic":0,
+            "dataCollectionStage":1,
+            "informationDate":"03-17-2016"
          }
       ]
    }

@@ -16,12 +16,19 @@
         },
         "dueDate": {
           "type": "string"
+        },
+        "dataCollectionStage": {
+          "type": "integer"
+        },
+        "dueDate": {
+          "type": "string"
         }
       },
       "required": [
         "healthCategory",
         "healthStatus",
         "informationDate",
+        "dataCollectionStage",
         "dueDate"
       ]
     }

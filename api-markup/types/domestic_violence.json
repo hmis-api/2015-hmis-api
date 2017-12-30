@@ -13,12 +13,20 @@
         },
         "currentlyFleeing": {
           "type": "integer"
+        },
+        "informationDate": {
+          "type": "string"
+        },
+        "dataCollectionStage": {
+          "type": "integer"
         }
       },
       "required": [
         "domesticviolencevictim",
         "whenoccurred",
-        "currentlyFleeing"
+        "currentlyFleeing",
+        "informationDate",
+        "dataCollectionStage"
       ]
     }
   },

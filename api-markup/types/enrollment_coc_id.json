@@ -13,12 +13,16 @@
         },
         "informationDate": {
           "type": "string"
+        },
+        "dataCollectionStage": {
+          "type": "integer"
         }
       },
       "required": [
         "enrollmentCocId",
         "clientCode",
-        "informationDate"
+        "informationDate",
+        "dataCollectionStage"
       ]
     }
   },

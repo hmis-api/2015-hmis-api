@@ -8,12 +8,16 @@
         "informationDate": {
           "type": "string"
         },
+        "dataCollectionStage": {
+          "type": "integer"
+        },
         "clientCode": {
           "type": "string"
         }
       },
       "required": [
         "informationDate",
+        "dataCollectionStage",
         "clientCode"
       ]
     }

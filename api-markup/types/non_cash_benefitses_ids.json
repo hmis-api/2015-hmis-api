@@ -70,6 +70,12 @@
               },
               "wic": {
                 "type": "integer"
+              },
+              "informationDate": {
+                "type": "string"
+              },
+              "dataCollectionStage": {
+                "type": "integer"
               }
             },
             "required": [
@@ -83,7 +89,9 @@
               "snap",
               "tanfchildcare",
               "tanftransportation",
-              "wic"
+              "wic",
+              "informationDate",
+              "dataCollectionStage",
             ]
           }
         }

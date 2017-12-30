@@ -130,6 +130,12 @@
         },
         "laborExploitPastThreeMonths": {
           "type": "integer"
+        },
+        "informationDate": {
+          "type": "string"
+        },
+        "dataCollectionStage": {
+          "type": "integer"
         }
       },
       "required": [
@@ -174,7 +180,9 @@
         "workPlaceViolenceThreat",
         "workPlacePromiseDifference",
         "coercedToContinueWork",
-        "laborExploitPastThreeMonths"
+        "laborExploitPastThreeMonths",
+        "informationDate",
+        "dataCollectionStage",
       ]
     }
   },

@@ -52,6 +52,9 @@
               },
               "informationDate": {
                 "type": "string"
+              },
+              "dataCollectionStage": {
+                "type": "integer"
               }
             },
             "required": [
@@ -59,7 +62,8 @@
               "employed",
               "employmentType",
               "notEmployedReason",
-              "informationDate"
+              "informationDate",
+              "dataCollectionStage"
             ]
           }
         }

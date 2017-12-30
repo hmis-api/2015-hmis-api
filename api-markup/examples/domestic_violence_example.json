@@ -2,6 +2,8 @@
    "domesticviolence":{
       "domesticviolencevictim":9,
       "whenoccurred":8,
-      "currentlyFleeing":-588416505
+      "currentlyFleeing":-588416505,
+      "dataCollectionStage":1,
+      "informationDate":"03-17-2016"
    }
 }

@@ -1,6 +1,8 @@
 {
    "education":{
       "lastgradecompleted":10,
-      "schoolStatus":6
+      "schoolStatus":6,
+      "dataCollectionStage":1,
+      "informationDate":"03-17-2016"
    }
 }
