@@ -45,6 +45,8 @@
             "vadisabilityserviceamount":0.148,
             "workerscomp":0,
             "workerscompamount":0.144,
+            "dataCollectionStage":1,
+            "informationDate":"03-17-2016",
             "dateCreated":"04-11-2016 10:32"
          }
       ]

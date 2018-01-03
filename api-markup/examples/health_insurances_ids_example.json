@@ -29,7 +29,9 @@
             "statehealthins":0,
             "nostatehealthinsreason":8,
             "otherSource":688424562,
-            "otherSourceIdentify":"test    "
+            "otherSourceIdentify":"test    ",
+            "dataCollectionStage":1,
+            "informationDate":"03-17-2016"
          }
       ]
    }

@@ -10,6 +10,8 @@
       "tanfchildcare":0,
       "tanftransportation":0,
       "wic":0,
-      "othersourceidentify":"test"
+      "othersourceidentify":"test",
+      "dataCollectionStage":1,
+      "informationDate":"03-17-2016"
    }
 }

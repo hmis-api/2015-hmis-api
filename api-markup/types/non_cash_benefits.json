@@ -34,6 +34,12 @@
         },
         "othersourceidentify": {
           "type": "string"
+        },
+        "informationDate": {
+          "type": "string"
+        },
+        "dataCollectionStage": {
+          "type": "integer"
         }
       },
       "required": [
@@ -46,7 +52,9 @@
         "tanfchildcare",
         "tanftransportation",
         "wic",
-        "othersourceidentify"
+        "othersourceidentify",
+        "informationDate",
+        "dataCollectionStage",
       ]
     }
   },

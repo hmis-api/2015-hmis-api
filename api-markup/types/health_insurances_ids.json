@@ -94,6 +94,12 @@
               },
               "otherSourceIdentify": {
                 "type": "string"
+              },
+              "informationDate": {
+                "type": "string"
+              },
+              "dataCollectionStage": {
+                "type": "integer"
               }
             },
             "required": [
@@ -115,7 +121,9 @@
               "statehealthins",
               "nostatehealthinsreason",
               "otherSource",
-              "otherSourceIdentify"
+              "otherSourceIdentify",
+              "informationDate",
+              "dataCollectionStage"
             ]
           }
         }

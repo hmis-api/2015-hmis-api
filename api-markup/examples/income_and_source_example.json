@@ -32,6 +32,8 @@
       "vadisabilityservice":0,
       "vadisabilityserviceamount":0.1477319,
       "workerscomp":0,
-      "workerscompamount":0.14441723
+      "workerscompamount":0.14441723,
+      "dataCollectionStage":1,
+      "informationDate":"03-17-2016"
    }
 }

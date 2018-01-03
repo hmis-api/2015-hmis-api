@@ -13,12 +13,20 @@
         },
         "schoolStatus": {
           "type": "integer"
+        },
+        "informationDate": {
+          "type": "string"
+        },
+        "dataCollectionStage": {
+          "type": "integer"
         }
       },
       "required": [
         "educationId",
         "lastgradecompleted",
-        "schoolStatus"
+        "schoolStatus",
+        "informationDate",
+        "dataCollectionStage"
       ]
     }
   },

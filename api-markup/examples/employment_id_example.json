@@ -4,6 +4,7 @@
       "employed":0,
       "employmentType":2,
       "notEmployedReason":3,
-      "informationDate":"04-07-2016"
+      "dataCollectionStage":1,
+      "informationDate":"03-17-2016"
    }
 }

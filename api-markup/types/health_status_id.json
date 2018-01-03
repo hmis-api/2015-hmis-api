@@ -17,6 +17,9 @@
         "informationDate": {
           "type": "string"
         },
+        "dataCollectionStage": {
+          "type": "integer"
+        },
         "dueDate": {
           "type": "string"
         }
@@ -26,6 +29,7 @@
         "healthCategory",
         "healthStatus",
         "informationDate",
+        "dataCollectionStage"
         "dueDate"
       ]
     }

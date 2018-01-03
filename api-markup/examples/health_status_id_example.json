@@ -3,7 +3,8 @@
       "healthstatusId":"81057685-4120-424f-9378-23bc45e01925",
       "healthCategory":27,
       "healthStatus":3,
-      "informationDate":"04-05-2016",
+      "dataCollectionStage":1,
+      "informationDate":"03-17-2016",
       "dueDate":"04-05-2016"
    }
 }
