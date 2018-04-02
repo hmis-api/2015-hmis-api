@@ -746,6 +746,10 @@ resourceTypes:
 /questions:
   description:  get all HUD Questions. Maximum number items (questions) that can be returned in a response is 200.
   get:
+    queryParameters:
+     text:
+      description: filter on actual question text ( displayText )
+      required: false
     responses:
       200:
         body:
