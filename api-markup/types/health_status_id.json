@@ -29,7 +29,7 @@
         "healthCategory",
         "healthStatus",
         "informationDate",
-        "dataCollectionStage"
+        "dataCollectionStage",
         "dueDate"
       ]
     }
