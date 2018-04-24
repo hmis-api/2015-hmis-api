@@ -65,6 +65,9 @@
               },
               "dateCreated": {
                 "type": "string"
+              },
+              "sourceSystemId" : {
+                "type": "string"
               }
             }
           }

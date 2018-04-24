@@ -31,6 +31,9 @@
         },
         "dateUpdated": {
           "type": "string"
+        },
+        "sourceSystemId":{
+          "type":"string"
         }
       },
       "required": [
@@ -42,7 +45,8 @@
         "targetPopulation",
         "trackingMethod",
         "dateCreated",
-        "dateUpdated"
+        "dateUpdated",
+        "sourceSystemId"
       ]
     }
   },

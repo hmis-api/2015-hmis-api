@@ -25,6 +25,9 @@
         },
         "trackingMethod": {
           "type": "integer"
+        },
+        "sourceSystemId":{
+          "type":"string"
         }
       },
       "required": [
@@ -34,7 +37,8 @@
         "projectType",
         "residentialAffiliation",
         "targetPopulation",
-        "trackingMethod"
+        "trackingMethod",
+        "sourceSystemId"
       ]
     }
   },
