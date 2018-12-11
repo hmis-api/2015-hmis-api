@@ -3,7 +3,7 @@ info:
   title: 2015 HMIS API
   version: 1.1.1
 servers:
-  - url: 'https://www.hmislynk.com/hmis-clientapi-v2015/rest/v2015'
+  - url: 'https://www.hslynk.com/hmis-clientapi/rest/v2015'
 paths:
   /clients:
     get:
