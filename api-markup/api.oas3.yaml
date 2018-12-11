@@ -174,7 +174,9 @@ paths:
         '500':
           description: Internal Server Error.
       description: |
-        Add a client
+                    1)  an SSN value submitted as an empty string (not null) will be treatedand stored by HSLynk as a nullified/deleted SSN data element
+                    2) a full 9 digit SSN may be submitted
+                    3) a partial SSN may be submitted, but one or more lower case 'x'(s) must be present in the locations of the missing actual SSN digits.
       operationId: POST_clients
       requestBody:
         content:
@@ -261,7 +263,12 @@ paths:
           description: Not found – There is no resource behind the URI.
         '500':
           description: Internal Server Error.
-      description: Updates a specific client specified by the URI resource parameter/ID.
+      description: |
+                    Updates a specific client specified by the URI resource parameter
+                    /ID.
+                    1)  an SSN value submitted as an empty string (not null) will be treatedand stored by HSLynk as a nullified/deleted SSN data element
+                    2) a full 9 digit SSN may be submitted
+                    3) a partial SSN may be submitted, but one or more lower case 'x'(s) must be present in the locations of the missing actual SSN digits.
       operationId: PUT_clients-clientid
       requestBody:
         content:
