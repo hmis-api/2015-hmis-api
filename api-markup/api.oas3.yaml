@@ -1,7 +1,10 @@
 openapi: 3.0.0
 info:
   title: 2015 HMIS API
-  version: 1.1.1
+  version: 1.2.1
+  description: |
+       **Note :**
+              Please note that the partial updates are supported via PUT APIs. However, Note that If "null" value is passed for any element, in the PUT request body, it will be ignored. An empty string value should be sent (instead of "null" value) for the elements that need to be updated with NULL values.
 servers:
   - url: 'https://www.hslynk.com/hmis-clientapi/rest/v2015'
 paths:
@@ -22,7 +25,10 @@ paths:
                         maximum: 30
                         sort: {}
                       clients:
-                        - clientId: e7f87b3b-9282-4031-af3f-34bebc2c6cbf
+                        - links:
+                          - rel: history
+                            href: "/clients/e7f87b3b-9282-4031-af3f-34bebc2c6cbf/history"
+                          clientId: e7f87b3b-9282-4031-af3f-34bebc2c6cbf
                           dedupClientId: 46b89200-656a-11e8-985f-02fe61f7863e
                           firstName: Bob
                           middleName: Irwin
@@ -40,7 +46,10 @@ paths:
                           veteranStatus: '8'
                           phoneNumber: 1-541-754-3010
                           emailAddress: Jeanette@gmail.com
-                        - clientId: bb1c4869-52af-4b4f-a9b6-a48f93c35294
+                        - links:
+                          - rel: history
+                            href: "/clients/bb1c4869-52af-4b4f-a9b6-a48f93c35294/history"
+                          clientId: bb1c4869-52af-4b4f-a9b6-a48f93c35294
                           firstName: Fred
                           middleName: Amos
                           lastName: Bunyan
@@ -55,7 +64,10 @@ paths:
                           gender: 1
                           otherGender: Test
                           veteranStatus: '8'
-                        - clientId: 2e31aed0-eb42-484d-9b42-8395b65a9ac7
+                        - links:
+                          - rel: history
+                            href: "/clients/2e31aed0-eb42-484d-9b42-8395b65a9ac7/history"
+                          clientId: 2e31aed0-eb42-484d-9b42-8395b65a9ac7
                           firstName: Agnes
                           middleName: Faye
                           lastName: Baker
@@ -70,7 +82,10 @@ paths:
                           gender: 1
                           otherGender: Test
                           veteranStatus: '8'
-                        - clientId: edf4594b-8a89-4ee9-b5dc-3e7dd3374c8f
+                        - links:
+                          - rel: history
+                            href: "/clients/edf4594b-8a89-4ee9-b5dc-3e7dd3374c8f/history"
+                          clientId: edf4594b-8a89-4ee9-b5dc-3e7dd3374c8f
                           firstName: Chester
                           middleName: Blythe
                           lastName: Mayhew
@@ -197,23 +212,26 @@ paths:
               schema:
                 example:
                     client:
-                      clientId: 8547a63e-4659-412f-b5fa-200e03b62ae8
-                      firstName: Bob
-                      middleName: Edward
-                      lastName: Blass
-                      nameSuffix: Jr
-                      nameDataQuality: 1
-                      ssn: '123456789'
-                      ssnDataQuality: 1
-                      dob: 1459517834983
-                      dobDataQuality: 1
-                      race: 1
-                      ethnicity: 1
-                      gender: 1
-                      otherGender: Test
-                      veteranStatus: '8'
-                      phoneNumber: 1-541-754-3010
-                      emailAddress: Jeanette@gmail.com
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/history"
+                        clientId: 8547a63e-4659-412f-b5fa-200e03b62ae8
+                        firstName: Bob
+                        middleName: Edward
+                        lastName: Blass
+                        nameSuffix: Jr
+                        nameDataQuality: 1
+                        ssn: '123456789'
+                        ssnDataQuality: 1
+                        dob: 1459517834983
+                        dobDataQuality: 1
+                        race: 1
+                        ethnicity: 1
+                        gender: 1
+                        otherGender: Test
+                        veteranStatus: '8'
+                        phoneNumber: 1-541-754-3010
+                        emailAddress: Jeanette@gmail.com
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -302,6 +320,127 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    Clients:
+                      pagination:
+                        from: 0
+                        returned: 27
+                        total: 30
+                        maximum: 30
+                        sort: {}
+                      clients:
+                        - clientId: e7f87b3b-9282-4031-af3f-34bebc2c6cbf
+                          dedupClientId: 46b89200-656a-11e8-985f-02fe61f7863e
+                          firstName: Bob
+                          middleName: Irwin
+                          lastName: Smith
+                          nameSuffix: Jr
+                          nameDataQuality: 1
+                          ssn: '123456789'
+                          ssnDataQuality: 1
+                          dob: 1459517834983
+                          dobDataQuality: 1
+                          race: 1
+                          ethnicity: 1
+                          gender: 1
+                          otherGender: Test
+                          veteranStatus: '8'
+                          phoneNumber: 1-541-754-3010
+                          emailAddress: Jeanette@gmail.com
+                        - clientId: bb1c4869-52af-4b4f-a9b6-a48f93c35294
+                          firstName: Fred
+                          middleName: Amos
+                          lastName: Bunyan
+                          nameSuffix: Sr.
+                          nameDataQuality: 1
+                          ssn: 'ssn      '
+                          ssnDataQuality: 1
+                          dob: 1459517834983
+                          dobDataQuality: 1
+                          race: 1
+                          ethnicity: 1
+                          gender: 1
+                          otherGender: Test
+                          veteranStatus: '8'
+                        - clientId: 2e31aed0-eb42-484d-9b42-8395b65a9ac7
+                          firstName: Agnes
+                          middleName: Faye
+                          lastName: Baker
+                          nameSuffix: III
+                          nameDataQuality: 1
+                          ssn: '123456788'
+                          ssnDataQuality: 1
+                          dob: 1459517834983
+                          dobDataQuality: 1
+                          race: 1
+                          ethnicity: 1
+                          gender: 1
+                          otherGender: Test
+                          veteranStatus: '8'
+                        - clientId: edf4594b-8a89-4ee9-b5dc-3e7dd3374c8f
+                          firstName: Chester
+                          middleName: Blythe
+                          lastName: Mayhew
+                          nameSuffix: Jr
+                          nameDataQuality: 1
+                          ssn: '123456787'
+                          ssnDataQuality: 1
+                          dob: 1459517834983
+                          dobDataQuality: 1
+                          race: 1
+                          ethnicity: 1
+                          gender: 1
+                          otherGender: Test
+                          veteranStatus: '8'
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for client history.  Returns a list of client ids history, based on the query
+        parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-history
+
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+
+    parameters:
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments':
     get:
       responses:
@@ -319,7 +458,10 @@ paths:
                         maximum: 30
                         sort: {}
                       enrollments:
-                        - enrollmentId: cc1da849-b877-4455-ab44-84bdb9991f97
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/history"
+                          enrollmentId: cc1da849-b877-4455-ab44-84bdb9991f97
                           disablingcondition: 0
                           entrydate: 1459517941736
                           householdid: eca19be3-303b-47b0-a9ef-8832ab0fa13d
@@ -449,21 +591,24 @@ paths:
               schema:
                 example:
                     enrollment:
-                      enrollmentId: cc1da849-b877-4455-ab44-84bdb9991f97
-                      disablingcondition: 0
-                      entrydate: 1459517941736
-                      householdid: eca19be3-303b-47b0-a9ef-8832ab0fa13d
-                      housingstatus: 3
-                      monthshomelesspastthreeyears: 7
-                      otherresidenceprior: '1'
-                      relationshiptohoh: 2
-                      residenceprior: 2
-                      residencepriorlengthofstay: 4
-                      timeshomelesspastthreeyears: 1
-                      yearshomeless: 0
-                      entryfromstreetessh: 1
-                      dateCreated: 05-13-2016
-                      dateUpdated: 05-13-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/history"
+                        enrollmentId: cc1da849-b877-4455-ab44-84bdb9991f97
+                        disablingcondition: 0
+                        entrydate: 1459517941736
+                        householdid: eca19be3-303b-47b0-a9ef-8832ab0fa13d
+                        housingstatus: 3
+                        monthshomelesspastthreeyears: 7
+                        otherresidenceprior: '1'
+                        relationshiptohoh: 2
+                        residenceprior: 2
+                        residencepriorlengthofstay: 4
+                        timeshomelesspastthreeyears: 1
+                        yearshomeless: 0
+                        entryfromstreetessh: 1
+                        dateCreated: 05-13-2016
+                        dateUpdated: 05-13-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -559,6 +704,82 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    enrollments:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      enrollments:
+                        - enrollmentId: cc1da849-b877-4455-ab44-84bdb9991f97
+                          disablingcondition: 0
+                          entrydate: 1459517941736
+                          householdid: eca19be3-303b-47b0-a9ef-8832ab0fa13d
+                          housingstatus: 3
+                          monthshomelesspastthreeyears: 7
+                          otherresidenceprior: '1'
+                          relationshiptohoh: 2
+                          residenceprior: 2
+                          residencepriorlengthofstay: 4
+                          timeshomelesspastthreeyears: 1
+                          yearshomeless: 0
+                          entryfromstreetessh: 1
+                          dateCreated: 05-13-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for enrollment history.  Returns a list of enrollment ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/enrollmentcocs':
     get:
       responses:
@@ -576,7 +797,10 @@ paths:
                         maximum: 30
                         sort: {}
                       enrollmentCocs:
-                        - enrollmentCocId: 60071b3a-2625-45b8-aa6e-23e99096b343
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/enrollmentcocs/60071b3a-2625-45b8-aa6e-23e99096b343/history"
+                          enrollmentCocId: 60071b3a-2625-45b8-aa6e-23e99096b343
                           clientCode: 'Test                '
                           dataCollectionStage: 1
                           informationDate: 03-17-2016
@@ -675,10 +899,13 @@ paths:
               schema:
                 example:
                     enrollmentCoc:
-                      enrollmentCocId: 60071b3a-2625-45b8-aa6e-23e99096b343
-                      clientCode: Test
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/enrollmentcocs/60071b3a-2625-45b8-aa6e-23e99096b343/history"
+                        enrollmentCocId: 60071b3a-2625-45b8-aa6e-23e99096b343
+                        clientCode: Test
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -767,6 +994,78 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/enrollmentcocs/{enrollmentcocid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    enrollmentCocs:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      enrollmentCocs:
+                        - enrollmentCocId: 60071b3a-2625-45b8-aa6e-23e99096b343
+                          clientCode: 'Test                '
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for enrollmentcoc history.  Returns a list of enrollmentcoc ids history, based
+        on the query parameters sent.  The query parameters are cumulative, so
+        each additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-enrollmentcocs-enrollmentcocid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: enrollmentcocid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollmentcoc Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/educations':
     get:
       responses:
@@ -784,7 +1083,10 @@ paths:
                         maximum: 30
                         sort: {}
                       educations:
-                        - educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/educations/f91547a2-d13b-40a1-a1be-fed415c468a6/history"
+                          educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
                           lastgradecompleted: 10
                           schoolStatus: 6
                           dataCollectionStage: 1
@@ -886,11 +1188,14 @@ paths:
               schema:
                 example:
                     education:
-                      educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
-                      lastgradecompleted: 10
-                      schoolStatus: 6
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/educations/f91547a2-d13b-40a1-a1be-fed415c468a6/history"
+                        educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
+                        lastgradecompleted: 10
+                        schoolStatus: 6
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -973,6 +1278,79 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/educations/{educationid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    educations:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      educations:
+                        - educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
+                          lastgradecompleted: 10
+                          schoolStatus: 6
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for education history.  Returns a list of education ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-educations-educationid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: educationid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Education Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/contacts':
     get:
       responses:
@@ -990,7 +1368,10 @@ paths:
                         maximum: 30
                         sort: {}
                       contacts:
-                        - contactId: 169da295-22f9-41d9-b991-ada835b1e123
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/contacts/169da295-22f9-41d9-b991-ada835b1e123/history"
+                          contactId: 169da295-22f9-41d9-b991-ada835b1e123
                           contactLocation: 3
         '400':
           description: Bad Request – The request was invalid or cannot be served.
@@ -1083,8 +1464,11 @@ paths:
               schema:
                 example:
                     contact:
-                      contactId: 169da295-22f9-41d9-b991-ada835b1e123
-                      contactLocation: 3
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/contacts/169da295-22f9-41d9-b991-ada835b1e123/history"
+                        contactId: 169da295-22f9-41d9-b991-ada835b1e123
+                        contactLocation: 3
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -1164,6 +1548,76 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/contacts/{contactid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    contacts:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      contacts:
+                        - contactId: 169da295-22f9-41d9-b991-ada835b1e123
+                          contactLocation: 3
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for contact history.  Returns a list of contact ids history, based on the query
+        parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-contacts-contactid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: contactid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Contact Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/dateofengagements':
     get:
       responses:
@@ -1181,7 +1635,10 @@ paths:
                         maximum: 30
                         sort: {}
                       dateofengagements:
-                        - dateofengagementId: 61d17265-aa9f-4ed2-a146-2a94846f3dd3
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/dateofengagements/61d17265-aa9f-4ed2-a146-2a94846f3dd3/history"
+                          dateofengagementId: 61d17265-aa9f-4ed2-a146-2a94846f3dd3
                           dateofengagement: '04-07-2016 17:50'
         '400':
           description: Bad Request – The request was invalid or cannot be served.
@@ -1275,8 +1732,11 @@ paths:
               schema:
                 example:
                     dateofengagement:
-                      dateofengagementId: 61d17265-aa9f-4ed2-a146-2a94846f3dd3
-                      dateofengagement: '04-07-2016 17:50'
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/dateofengagements/61d17265-aa9f-4ed2-a146-2a94846f3dd3/history"
+                        dateofengagementId: 61d17265-aa9f-4ed2-a146-2a94846f3dd3
+                        dateofengagement: '04-07-2016 17:50'
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -1363,6 +1823,77 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/dateofengagements/{dateofengagementid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    dateofengagements:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      dateofengagements:
+                        - dateofengagementId: 61d17265-aa9f-4ed2-a146-2a94846f3dd3
+                          dateofengagement: '04-07-2016 17:50'
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for dateofengagement history.  Returns a list of dateofengagement ids history,
+        based on the query parameters sent.  The query parameters are
+        cumulative, so each additional query parameter narrows the search down
+        further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-dateofengagements-dateofengagementid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: dateofengagementid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Dateofengagement Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/disabilities':
     get:
       responses:
@@ -1380,7 +1911,10 @@ paths:
                         maximum: 30
                         sort: {}
                       disabilitiesList:
-                        - disabilitiesId: afeb939c-72d9-43e8-95e6-045a39843c10
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/disabilities/afeb939c-72d9-43e8-95e6-045a39843c10/history"
+                          disabilitiesId: afeb939c-72d9-43e8-95e6-045a39843c10
                           disabilitytype: 6
                           disabilityresponse: -1994754550
                           indefiniteandimpairs: 0
@@ -1515,22 +2049,25 @@ paths:
               schema:
                 example:
                     disabilities:
-                      disabilitiesId: afeb939c-72d9-43e8-95e6-045a39843c10
-                      disabilitytype: 6
-                      disabilityresponse: -1994754550
-                      indefiniteandimpairs: 0
-                      documentationonfile: 0
-                      receivingservices: 0
-                      pathhowconfirmed: 99
-                      pathsmiinformation: 0
-                      tcellcountavailable: 1
-                      tcellcount: 2
-                      tcellcountsource: '3       '
-                      viralLoadAvailable: 4
-                      viralLoad: 5
-                      viralLoadSource: 'test    '
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/disabilities/afeb939c-72d9-43e8-95e6-045a39843c10/history"
+                        disabilitiesId: afeb939c-72d9-43e8-95e6-045a39843c10
+                        disabilitytype: 6
+                        disabilityresponse: -1994754550
+                        indefiniteandimpairs: 0
+                        documentationonfile: 0
+                        receivingservices: 0
+                        pathhowconfirmed: 99
+                        pathsmiinformation: 0
+                        tcellcountavailable: 1
+                        tcellcount: 2
+                        tcellcountsource: '3       '
+                        viralLoadAvailable: 4
+                        viralLoad: 5
+                        viralLoadSource: 'test    '
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -1629,6 +2166,90 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/disabilities/{disabilityid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    disabilitiesList:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      disabilitiesList:
+                        - disabilitiesId: afeb939c-72d9-43e8-95e6-045a39843c10
+                          disabilitytype: 6
+                          disabilityresponse: -1994754550
+                          indefiniteandimpairs: 0
+                          documentationonfile: 0
+                          receivingservices: 0
+                          pathhowconfirmed: 99
+                          pathsmiinformation: 0
+                          tcellcountavailable: 1
+                          tcellcount: 2
+                          tcellcountsource: '3       '
+                          viralLoadAvailable: 4
+                          viralLoad: 5
+                          viralLoadSource: 'test    '
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for disability history.  Returns a list of disability ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-disabilities-disabilityid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: disabilityid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Disability Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/domesticviolences':
     get:
       responses:
@@ -1646,7 +2267,10 @@ paths:
                         maximum: 30
                         sort: {}
                       domesticviolences:
-                        - domesticviolenceId: b4dcd92a-4d6c-44bb-bb07-4431ab48e806
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/domesticviolences/b4dcd92a-4d6c-44bb-bb07-4431ab48e806/history"
+                          domesticviolenceId: b4dcd92a-4d6c-44bb-bb07-4431ab48e806
                           domesticviolencevictim: 9
                           whenoccurred: 8
                           currentlyFleeing: -588416505
@@ -1752,12 +2376,15 @@ paths:
               schema:
                 example:
                     domesticviolence:
-                      domesticviolenceId: b4dcd92a-4d6c-44bb-bb07-4431ab48e806
-                      domesticviolencevictim: 9
-                      whenoccurred: 8
-                      currentlyFleeing: -588416505
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/domesticviolences/b4dcd92a-4d6c-44bb-bb07-4431ab48e806/history"
+                        domesticviolenceId: b4dcd92a-4d6c-44bb-bb07-4431ab48e806
+                        domesticviolencevictim: 9
+                        whenoccurred: 8
+                        currentlyFleeing: -588416505
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -1848,6 +2475,81 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/domesticviolences/{domesticviolenceid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    domesticviolences:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      domesticviolences:
+                        - domesticviolenceId: b4dcd92a-4d6c-44bb-bb07-4431ab48e806
+                          domesticviolencevictim: 9
+                          whenoccurred: 8
+                          currentlyFleeing: -588416505
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for domesticviolence history.  Returns a list of domesticviolence ids history,
+        based on the query parameters sent.  The query parameters are
+        cumulative, so each additional query parameter narrows the search down
+        further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-domesticviolences-domesticviolenceid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: domesticviolenceid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Domesticviolence Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/employments':
     get:
       responses:
@@ -1865,7 +2567,10 @@ paths:
                         maximum: 30
                         sort: {}
                       employments:
-                        - employmentId: 61fa7069-3d46-4b4f-86f5-44fc4e1d6131
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/employments/61fa7069-3d46-4b4f-86f5-44fc4e1d6131/history"
+                          employmentId: 61fa7069-3d46-4b4f-86f5-44fc4e1d6131
                           employed: 0
                           employmentType: 2
                           notEmployedReason: 3
@@ -1970,12 +2675,15 @@ paths:
               schema:
                 example:
                     employment:
-                      employmentId: 61fa7069-3d46-4b4f-86f5-44fc4e1d6131
-                      employed: 0
-                      employmentType: 2
-                      notEmployedReason: 3
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/employments/61fa7069-3d46-4b4f-86f5-44fc4e1d6131/history"
+                        employmentId: 61fa7069-3d46-4b4f-86f5-44fc4e1d6131
+                        employed: 0
+                        employmentType: 2
+                        notEmployedReason: 3
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -2064,6 +2772,80 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/employments/{employmentid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    employments:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      employments:
+                        - employmentId: 61fa7069-3d46-4b4f-86f5-44fc4e1d6131
+                          employed: 0
+                          employmentType: 2
+                          notEmployedReason: 3
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for employment history.  Returns a list of employment ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-employments-employmentid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: employmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Employment Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/healthinsurances':
     get:
       responses:
@@ -2081,7 +2863,10 @@ paths:
                         maximum: 30
                         sort: {}
                       healthinsurances:
-                        - healthinsuranceId: b7ccbf4c-980d-4163-a7a5-7eecf6829946
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/healthinsurances/b7ccbf4c-980d-4163-a7a5-7eecf6829946/history"
+                          healthinsuranceId: b7ccbf4c-980d-4163-a7a5-7eecf6829946
                           insurancefromanysource: 99
                           medicaid: 1
                           nomedicaidreason: 8
@@ -2233,27 +3018,30 @@ paths:
               schema:
                 example:
                     healthinsurance:
-                      healthinsuranceId: b7ccbf4c-980d-4163-a7a5-7eecf6829946
-                      insurancefromanysource: 99
-                      medicaid: 1
-                      nomedicaidreason: 8
-                      medicare: 99
-                      nomedicarereason: 4
-                      schip: 1
-                      noschipreason: 2
-                      novamedreason: 9
-                      employerprovided: 1929555170
-                      noemployerprovidedreason: 99
-                      cobra: 1401014227
-                      nocobrareason: 2
-                      privatepay: 0
-                      noprivatepayreason: 4
-                      statehealthins: 0
-                      nostatehealthinsreason: 8
-                      otherSource: 688424562
-                      otherSourceIdentify: 'test    '
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/healthinsurances/b7ccbf4c-980d-4163-a7a5-7eecf6829946/history"
+                        healthinsuranceId: b7ccbf4c-980d-4163-a7a5-7eecf6829946
+                        insurancefromanysource: 99
+                        medicaid: 1
+                        nomedicaidreason: 8
+                        medicare: 99
+                        nomedicarereason: 4
+                        schip: 1
+                        noschipreason: 2
+                        novamedreason: 9
+                        employerprovided: 1929555170
+                        noemployerprovidedreason: 99
+                        cobra: 1401014227
+                        nocobrareason: 2
+                        privatepay: 0
+                        noprivatepayreason: 4
+                        statehealthins: 0
+                        nostatehealthinsreason: 8
+                        otherSource: 688424562
+                        otherSourceIdentify: 'test    '
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -2360,6 +3148,96 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/healthinsurances/{healthinsuranceid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    healthinsurances:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      healthinsurances:
+                        - healthinsuranceId: b7ccbf4c-980d-4163-a7a5-7eecf6829946
+                          insurancefromanysource: 99
+                          medicaid: 1
+                          nomedicaidreason: 8
+                          medicare: 99
+                          nomedicarereason: 4
+                          schip: 1
+                          noschipreason: 2
+                          novamedreason: 9
+                          employerprovided: 1929555170
+                          noemployerprovidedreason: 99
+                          cobra: 1401014227
+                          nocobrareason: 2
+                          privatepay: 0
+                          noprivatepayreason: 4
+                          statehealthins: 0
+                          nostatehealthinsreason: 8
+                          otherSource: 688424562
+                          otherSourceIdentify: 'test    '
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for healthinsurance history.  Returns a list of healthinsurance ids history,
+        based on the query parameters sent.  The query parameters are
+        cumulative, so each additional query parameter narrows the search down
+        further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-healthinsurances-healthinsuranceid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: healthinsuranceid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Healthinsurance Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/healthstatuses':
     get:
       responses:
@@ -2377,7 +3255,10 @@ paths:
                         maximum: 30
                         sort: {}
                       healthstatuses:
-                        - healthstatusId: 81057685-4120-424f-9378-23bc45e01925
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/healthstatuses/81057685-4120-424f-9378-23bc45e01925/history"
+                          healthstatusId: 81057685-4120-424f-9378-23bc45e01925
                           healthCategory: 27
                           healthStatus: 3
                           dataCollectionStage: 1
@@ -2482,12 +3363,15 @@ paths:
               schema:
                 example:
                     healthstatus:
-                      healthstatusId: 81057685-4120-424f-9378-23bc45e01925
-                      healthCategory: 27
-                      healthStatus: 3
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
-                      dueDate: 04-05-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/healthstatuses/81057685-4120-424f-9378-23bc45e01925/history"
+                        healthstatusId: 81057685-4120-424f-9378-23bc45e01925
+                        healthCategory: 27
+                        healthStatus: 3
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
+                        dueDate: 04-05-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -2578,6 +3462,80 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/healthstatuses/{healthstatusid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    healthstatuses:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      healthstatuses:
+                        - healthstatusId: 81057685-4120-424f-9378-23bc45e01925
+                          healthCategory: 27
+                          healthStatus: 3
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+                          dueDate: 04-05-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for healthstatus history.  Returns a list of healthstatus ids history, based on
+        the query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-healthstatuses-healthstatusid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: healthstatusid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Healthstatus Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/incomeandsources':
     get:
       responses:
@@ -2595,7 +3553,10 @@ paths:
                         maximum: 30
                         sort: {}
                       incomeAndSources:
-                        - incomeAndSourceId: 07577bdf-d44d-4a2f-b0f5-952098158242
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/incomeandsources/07577bdf-d44d-4a2f-b0f5-952098158242/history"
+                          incomeAndSourceId: 07577bdf-d44d-4a2f-b0f5-952098158242
                           alimony: 0
                           alimonyamount: 0.683
                           childsupport: 0
@@ -2794,44 +3755,47 @@ paths:
               schema:
                 example:
                     incomeAndSource:
-                      incomeAndSourceId: 07577bdf-d44d-4a2f-b0f5-952098158242
-                      alimony: 0
-                      alimonyamount: 0.683
-                      childsupport: 0
-                      childsupportamount: 0.375
-                      earned: 0
-                      earnedamount: 0.974
-                      ga: 0
-                      gaamount: 0.638
-                      incomefromanysource: 0
-                      othersource: 0
-                      othersourceamount: 0.867
-                      othersourceidentify: TestData
-                      pension: 0
-                      pensionamount: 0.375
-                      privatedisability: 0
-                      privatedisabilityamount: 0.966
-                      socsecretirement: 0
-                      socsecretirementamount: 0.635
-                      ssdi: 0
-                      ssdiamount: 0.429
-                      ssi: 0
-                      ssiamount: 0.33
-                      tanf: 0
-                      tanfamount: 0.361
-                      totalmonthlyincome: 0.273
-                      unemployment: 0
-                      unemploymentamount: 0.584
-                      vadisabilitynonservice: 0
-                      vadisabilitynonserviceamount: 0.816
-                      vadisabilityservice: 0
-                      vadisabilityserviceamount: 0.148
-                      workerscomp: 0
-                      workerscompamount: 0.144
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
-                      dateCreated: '04-11-2016 10:32'
-                      dateUpdated: '04-11-2016 10:32'
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/incomeandsources/07577bdf-d44d-4a2f-b0f5-952098158242/history"
+                        incomeAndSourceId: 07577bdf-d44d-4a2f-b0f5-952098158242
+                        alimony: 0
+                        alimonyamount: 0.683
+                        childsupport: 0
+                        childsupportamount: 0.375
+                        earned: 0
+                        earnedamount: 0.974
+                        ga: 0
+                        gaamount: 0.638
+                        incomefromanysource: 0
+                        othersource: 0
+                        othersourceamount: 0.867
+                        othersourceidentify: TestData
+                        pension: 0
+                        pensionamount: 0.375
+                        privatedisability: 0
+                        privatedisabilityamount: 0.966
+                        socsecretirement: 0
+                        socsecretirementamount: 0.635
+                        ssdi: 0
+                        ssdiamount: 0.429
+                        ssi: 0
+                        ssiamount: 0.33
+                        tanf: 0
+                        tanfamount: 0.361
+                        totalmonthlyincome: 0.273
+                        unemployment: 0
+                        unemploymentamount: 0.584
+                        vadisabilitynonservice: 0
+                        vadisabilitynonserviceamount: 0.816
+                        vadisabilityservice: 0
+                        vadisabilityserviceamount: 0.148
+                        workerscomp: 0
+                        workerscompamount: 0.144
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
+                        dateCreated: '04-11-2016 10:32'
+                        dateUpdated: '04-11-2016 10:32'
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -2952,6 +3916,112 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/incomeandsources/{incomeandsourceid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    IncomeAndSources:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      incomeAndSources:
+                        - incomeAndSourceId: 07577bdf-d44d-4a2f-b0f5-952098158242
+                          alimony: 0
+                          alimonyamount: 0.683
+                          childsupport: 0
+                          childsupportamount: 0.375
+                          earned: 0
+                          earnedamount: 0.974
+                          ga: 0
+                          gaamount: 0.638
+                          incomefromanysource: 0
+                          othersource: 0
+                          othersourceamount: 0.867
+                          othersourceidentify: TestData
+                          pension: 0
+                          pensionamount: 0.375
+                          privatedisability: 0
+                          privatedisabilityamount: 0.966
+                          socsecretirement: 0
+                          socsecretirementamount: 0.635
+                          ssdi: 0
+                          ssdiamount: 0.429
+                          ssi: 0
+                          ssiamount: 0.33
+                          tanf: 0
+                          tanfamount: 0.361
+                          totalmonthlyincome: 0.273
+                          unemployment: 0
+                          unemploymentamount: 0.584
+                          vadisabilitynonservice: 0
+                          vadisabilitynonserviceamount: 0.816
+                          vadisabilityservice: 0
+                          vadisabilityserviceamount: 0.148
+                          workerscomp: 0
+                          workerscompamount: 0.144
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+                          dateCreated: '04-11-2016 10:32'
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for incomeandsource history.  Returns a list of incomeandsource ids history,
+        based on the query parameters sent.  The query parameters are
+        cumulative, so each additional query parameter narrows the search down
+        further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-incomeandsources-incomeandsourceid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: incomeandsourceid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Incomeandsource Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/medicalassistances':
     get:
       responses:
@@ -2969,7 +4039,10 @@ paths:
                         maximum: 30
                         sort: {}
                       medicalassistances:
-                        - medicalassistanceId: 17125891-0fa3-4680-9093-fc866cf2f838
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/medicalassistances/17125891-0fa3-4680-9093-fc866cf2f838/history"
+                          medicalassistanceId: 17125891-0fa3-4680-9093-fc866cf2f838
                           hivaidsassistance: 9
                           nohivaidsassistancereason: 3
                           adap: 0
@@ -3078,13 +4151,16 @@ paths:
               schema:
                 example:
                     medicalassistance:
-                      medicalassistanceId: 7bad6629-48da-49b2-aebe-3ff449ee5b91
-                      hivaidsassistance: 9
-                      nohivaidsassistancereason: 3
-                      adap: 0
-                      noadapreason: 2
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/medicalassistances/7bad6629-48da-49b2-aebe-3ff449ee5b91/history"
+                        medicalassistanceId: 7bad6629-48da-49b2-aebe-3ff449ee5b91
+                        hivaidsassistance: 9
+                        nohivaidsassistancereason: 3
+                        adap: 0
+                        noadapreason: 2
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -3176,6 +4252,82 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/medicalassistances/{medicalassistanceid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    medicalassistances:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      medicalassistances:
+                        - medicalassistanceId: 17125891-0fa3-4680-9093-fc866cf2f838
+                          hivaidsassistance: 9
+                          nohivaidsassistancereason: 3
+                          adap: 0
+                          noadapreason: 2
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for medicalassistance history.  Returns a list of medicalassistance
+        ids history, based on the query parameters sent.  The query parameters are
+        cumulative, so each additional query parameter narrows the search down
+        further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-medicalassistances-medicalassistanceid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: medicalassistanceid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Medicalassistance Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/noncashbenefits':
     get:
       responses:
@@ -3193,7 +4345,10 @@ paths:
                         maximum: 30
                         sort: {}
                       noncashbenefitsList:
-                        - noncashbenefitsID: 80dfa67e-bf60-4227-822f-6d3850d9c5e5
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/noncashbenefits/80dfa67e-bf60-4227-822f-6d3850d9c5e5/history"
+                          noncashbenefitsID: 80dfa67e-bf60-4227-822f-6d3850d9c5e5
                           benefitsfromanysource: 0
                           othersource: 99
                           othersourceidentify: test
@@ -3320,19 +4475,22 @@ paths:
               schema:
                 example:
                     noncashbenefits:
-                      noncashbenefitsID: 520f2a27-e92d-4dc2-946f-54bcdd334114
-                      benefitsfromanysource: 0
-                      othersource: 0
-                      othertanf: 0
-                      rentalassistanceongoing: 0
-                      rentalassistancetemp: 0
-                      snap: 0
-                      tanfchildcare: 0
-                      tanftransportation: 0
-                      wic: 0
-                      othersourceidentify: test
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/noncashbenefits/520f2a27-e92d-4dc2-946f-54bcdd334114/history"
+                        noncashbenefitsID: 520f2a27-e92d-4dc2-946f-54bcdd334114
+                        benefitsfromanysource: 0
+                        othersource: 0
+                        othertanf: 0
+                        rentalassistanceongoing: 0
+                        rentalassistancetemp: 0
+                        snap: 0
+                        tanfchildcare: 0
+                        tanftransportation: 0
+                        wic: 0
+                        othersourceidentify: test
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -3430,6 +4588,88 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/noncashbenefits/{noncashbenefitid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    noncashbenefitsList:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      noncashbenefitsList:
+                        - noncashbenefitsID: 80dfa67e-bf60-4227-822f-6d3850d9c5e5
+                          benefitsfromanysource: 0
+                          othersource: 99
+                          othersourceidentify: test
+                          othertanf: 0
+                          rentalassistanceongoing: 0
+                          rentalassistancetemp: 0
+                          snap: 0
+                          tanfchildcare: 0
+                          tanftransportation: 0
+                          wic: 0
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for noncashbenefit history.  Returns a list of noncashbenefit ids history,
+        based on the query parameters sent.  The query parameters are
+        cumulative, so each additional query parameter narrows the search down
+        further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-noncashbenefits-noncashbenefitid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: noncashbenefitid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Noncashbenefit Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/residentialmoveindates':
     get:
       responses:
@@ -3447,7 +4687,10 @@ paths:
                         maximum: 30
                         sort: {}
                       residentialmoveindates:
-                        - residentialmoveindateId: 37775c5e-72ea-4b1d-92ad-91c76decebd1
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/residentialmoveindates/37775c5e-72ea-4b1d-92ad-91c76decebd1/history"
+                          residentialmoveindateId: 37775c5e-72ea-4b1d-92ad-91c76decebd1
                           inpermanenthousing: 0
                           residentialmoveindate: 04-05-2016
         '400':
@@ -3543,8 +4786,11 @@ paths:
               schema:
                 example:
                     residentialmoveindate:
-                      residentialmoveindateId: 37775c5e-72ea-4b1d-92ad-91c76decebd1
-                      inpermanenthousing: 0
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/residentialmoveindates/37775c5e-72ea-4b1d-92ad-91c76decebd1/history"
+                        residentialmoveindateId: 37775c5e-72ea-4b1d-92ad-91c76decebd1
+                        inpermanenthousing: 0
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -3632,6 +4878,78 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/residentialmoveindates/{residentialmoveindateid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    residentialmoveindates:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      residentialmoveindates:
+                        - residentialmoveindateId: 37775c5e-72ea-4b1d-92ad-91c76decebd1
+                          inpermanenthousing: 0
+                          residentialmoveindate: 04-05-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for residentialmoveindate history.  Returns a list of
+        residentialmoveindate ids history, based on the query parameters sent.  The
+        query parameters are cumulative, so each additional query parameter
+        narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-residentialmoveindates-residentialmoveindateid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: residentialmoveindateid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Residentialmoveindate Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/pathstatuses':
     get:
       responses:
@@ -3649,7 +4967,10 @@ paths:
                         maximum: 30
                         sort: {}
                       pathstatuses:
-                        - pathstatusId: 5c70ea90-df48-4a5a-8d48-6fee70e3c4ec
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/pathstatuses/5c70ea90-df48-4a5a-8d48-6fee70e3c4ec/history"
+                          pathstatusId: 5c70ea90-df48-4a5a-8d48-6fee70e3c4ec
                           clientEnrolledInPath: 123545
                           reasonNotEnrolled: 99
                           dateOfStatus: 04-16-2016
@@ -3749,10 +5070,13 @@ paths:
               schema:
                 example:
                     pathstatus:
-                      pathstatusId: 5c70ea90-df48-4a5a-8d48-6fee70e3c4ec
-                      clientEnrolledInPath: 123545
-                      reasonNotEnrolled: 99
-                      dateOfStatus: 04-16-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/pathstatuses/5c70ea90-df48-4a5a-8d48-6fee70e3c4ec/history"
+                        pathstatusId: 5c70ea90-df48-4a5a-8d48-6fee70e3c4ec
+                        clientEnrolledInPath: 123545
+                        reasonNotEnrolled: 99
+                        dateOfStatus: 04-16-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -3840,6 +5164,78 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/pathstatuses/{pathstatusid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    pathstatuses:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      pathstatuses:
+                        - pathstatusId: 5c70ea90-df48-4a5a-8d48-6fee70e3c4ec
+                          clientEnrolledInPath: 123545
+                          reasonNotEnrolled: 99
+                          dateOfStatus: 04-16-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for pathstatus history.  Returns a list of pathstatus ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-pathstatuses-pathstatusid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: pathstatusid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Pathstatus Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/entryrhsps':
     get:
       responses:
@@ -3857,7 +5253,10 @@ paths:
                         maximum: 30
                         sort: {}
                       entryrhsps:
-                        - entryrhspId: 4fe746e5-0323-46b9-866f-209d81dbda51
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/entryrhsps/4fe746e5-0323-46b9-866f-209d81dbda51/history"
+                          entryrhspId: 4fe746e5-0323-46b9-866f-209d81dbda51
                           worstHousingSituation: 781317225
         '400':
           description: Bad Request – The request was invalid or cannot be served.
@@ -3950,8 +5349,11 @@ paths:
               schema:
                 example:
                     entryrhsp:
-                      entryrhspId: c10f31e4-9e09-4fab-b788-e89fc074c9f8
-                      worstHousingSituation: 781317225
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/entryrhsps/c10f31e4-9e09-4fab-b788-e89fc074c9f8/history"
+                        entryrhspId: c10f31e4-9e09-4fab-b788-e89fc074c9f8
+                        worstHousingSituation: 781317225
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -4031,6 +5433,76 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/entryrhsps/{entryrhspid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    entryrhsps:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      entryrhsps:
+                        - entryrhspId: 4fe746e5-0323-46b9-866f-209d81dbda51
+                          worstHousingSituation: 781317225
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for entryrhsp history.  Returns a list of entryrhsp ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-entryrhsps-entryrhspid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: entryrhspid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Entryrhsp Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/entryrhys':
     get:
       responses:
@@ -4048,7 +5520,10 @@ paths:
                         maximum: 30
                         sort: {}
                       entryrhys:
-                        - entryrhyId: 6304041b-b997-4b01-9987-63d7e78070f1
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/entryrhys/6304041b-b997-4b01-9987-63d7e78070f1/history"
+                          entryrhyId: 6304041b-b997-4b01-9987-63d7e78070f1
                           formerlyWardChildWelfrForestCare: 99
                           yearsChildWelfrForestCare: 2
                           monthsChildWelfrForestCare: 4538
@@ -4267,50 +5742,53 @@ paths:
               schema:
                 example:
                     entryrhy:
-                      entryrhyId: 6304041b-b997-4b01-9987-63d7e78070f1
-                      formerlyWardChildWelfrForestCare: 99
-                      yearsChildWelfrForestCare: 2
-                      monthsChildWelfrForestCare: 4538
-                      formerlyWardOfJuvenileJustice: 8
-                      yearsJuvenileJustice: 3
-                      houseHoldDynamics: 1
-                      sexualOrientatiionGenderIdentityYouth: 99
-                      sexualOrientatiionGenderIdentityFamilyMbr: 1
-                      housingIssuesYouth: 99
-                      housingIssuesFamilyMbr: 1
-                      schoolEducationIssuesYouth: 99
-                      schoolEducationIssuesFamilyMbr: 1
-                      unemployementYouth: 99
-                      unemployementFamilyMbr: 1
-                      mentalHealthIssuesYouth: 99
-                      mentalHealthIssuesFamilyMbr: 1
-                      healthIssuesYouth: 1
-                      healthIssuesFamilyMbr: 99
-                      physicalDisabilityYouth: 1
-                      physicalDisabilityFamilyMbr: 99
-                      mentalDisabilityYouth: 99
-                      mentalDisabilityFamilyMbr: 99
-                      abuseAndNeglectYouth: 99
-                      abuseAndNeglectFamilyMbr: 99
-                      alcoholDrugAbuseYouth: 99
-                      alcoholDrugAbuseFamilyMbr: 99
-                      insufficientIncomeToSupportYouth: 1
-                      activeMilitaryParent: 1
-                      incarceratedParent: 1
-                      incarceratedParentStatus: 3
-                      referralSource: 663
-                      countOutReachReferralApproaches: 234
-                      exchangeForSex: 8
-                      exchangeForSexPastThreeMonths: 9
-                      countOfExchangeForSex: 4
-                      askedOfForcedToExchangeForSex: 8
-                      askedOfForcedToExchangeForSexPastThreeMonths: 8
-                      workPlaceViolenceThreat: 1
-                      workPlacePromiseDifference: 8
-                      coercedToContinueWork: 9
-                      laborExploitPastThreeMonths: 420
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/entryrhys/6304041b-b997-4b01-9987-63d7e78070f1/history"
+                        entryrhyId: 6304041b-b997-4b01-9987-63d7e78070f1
+                        formerlyWardChildWelfrForestCare: 99
+                        yearsChildWelfrForestCare: 2
+                        monthsChildWelfrForestCare: 4538
+                        formerlyWardOfJuvenileJustice: 8
+                        yearsJuvenileJustice: 3
+                        houseHoldDynamics: 1
+                        sexualOrientatiionGenderIdentityYouth: 99
+                        sexualOrientatiionGenderIdentityFamilyMbr: 1
+                        housingIssuesYouth: 99
+                        housingIssuesFamilyMbr: 1
+                        schoolEducationIssuesYouth: 99
+                        schoolEducationIssuesFamilyMbr: 1
+                        unemployementYouth: 99
+                        unemployementFamilyMbr: 1
+                        mentalHealthIssuesYouth: 99
+                        mentalHealthIssuesFamilyMbr: 1
+                        healthIssuesYouth: 1
+                        healthIssuesFamilyMbr: 99
+                        physicalDisabilityYouth: 1
+                        physicalDisabilityFamilyMbr: 99
+                        mentalDisabilityYouth: 99
+                        mentalDisabilityFamilyMbr: 99
+                        abuseAndNeglectYouth: 99
+                        abuseAndNeglectFamilyMbr: 99
+                        alcoholDrugAbuseYouth: 99
+                        alcoholDrugAbuseFamilyMbr: 99
+                        insufficientIncomeToSupportYouth: 1
+                        activeMilitaryParent: 1
+                        incarceratedParent: 1
+                        incarceratedParentStatus: 3
+                        referralSource: 663
+                        countOutReachReferralApproaches: 234
+                        exchangeForSex: 8
+                        exchangeForSexPastThreeMonths: 9
+                        countOfExchangeForSex: 4
+                        askedOfForcedToExchangeForSex: 8
+                        askedOfForcedToExchangeForSexPastThreeMonths: 8
+                        workPlaceViolenceThreat: 1
+                        workPlacePromiseDifference: 8
+                        coercedToContinueWork: 9
+                        laborExploitPastThreeMonths: 420
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -4432,6 +5910,118 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/entryrhys/{entryrhyid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    entryrhys:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      entryrhys:
+                        - entryrhyId: 6304041b-b997-4b01-9987-63d7e78070f1
+                          formerlyWardChildWelfrForestCare: 99
+                          yearsChildWelfrForestCare: 2
+                          monthsChildWelfrForestCare: 4538
+                          formerlyWardOfJuvenileJustice: 8
+                          yearsJuvenileJustice: 3
+                          houseHoldDynamics: 1
+                          sexualOrientatiionGenderIdentityYouth: 99
+                          sexualOrientatiionGenderIdentityFamilyMbr: 1
+                          housingIssuesYouth: 99
+                          housingIssuesFamilyMbr: 1
+                          schoolEducationIssuesYouth: 99
+                          schoolEducationIssuesFamilyMbr: 1
+                          unemployementYouth: 99
+                          unemployementFamilyMbr: 1
+                          mentalHealthIssuesYouth: 99
+                          mentalHealthIssuesFamilyMbr: 1
+                          healthIssuesYouth: 1
+                          healthIssuesFamilyMbr: 99
+                          physicalDisabilityYouth: 1
+                          physicalDisabilityFamilyMbr: 99
+                          mentalDisabilityYouth: 99
+                          mentalDisabilityFamilyMbr: 99
+                          abuseAndNeglectYouth: 99
+                          abuseAndNeglectFamilyMbr: 99
+                          alcoholDrugAbuseYouth: 99
+                          alcoholDrugAbuseFamilyMbr: 99
+                          insufficientIncomeToSupportYouth: 1
+                          activeMilitaryParent: 1
+                          incarceratedParent: 1
+                          incarceratedParentStatus: 3
+                          referralSource: 663
+                          countOutReachReferralApproaches: 234
+                          exchangeForSex: 8
+                          exchangeForSexPastThreeMonths: 9
+                          countOfExchangeForSex: 4
+                          askedOfForcedToExchangeForSex: 8
+                          askedOfForcedToExchangeForSexPastThreeMonths: 8
+                          workPlaceViolenceThreat: 1
+                          workPlacePromiseDifference: 8
+                          coercedToContinueWork: 9
+                          laborExploitPastThreeMonths: 420
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for entryrhy history.  Returns a list of entryrhy ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-entryrhys-entryrhyid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: entryrhyid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Entryrhy Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/entryssvfs':
     get:
       responses:
@@ -4449,7 +6039,10 @@ paths:
                         maximum: 30
                         sort: {}
                       educations:
-                        - educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/entryssvfs/f91547a2-d13b-40a1-a1be-fed415c468a6/history"
+                          educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
                           lastgradecompleted: 10
                           schoolStatus: 6
                           dataCollectionStage: 1
@@ -4551,11 +6144,14 @@ paths:
               schema:
                 example:
                     education:
-                      educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
-                      lastgradecompleted: 10
-                      schoolStatus: 6
-                      dataCollectionStage: 1
-                      informationDate: 03-17-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/entryssvfs/f91547a2-d13b-40a1-a1be-fed415c468a6/history"
+                        educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
+                        lastgradecompleted: 10
+                        schoolStatus: 6
+                        dataCollectionStage: 1
+                        informationDate: 03-17-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -4638,7 +6234,7 @@ paths:
         schema:
           type: string
         description: Client Identifier
-  '/clients/{clientid}/enrollments/{enrollmentid}/servicefareferrals':
+  '/clients/{clientid}/enrollments/{enrollmentid}/entryssvfs/{entryssvfid}/history':
     get:
       responses:
         '200':
@@ -4656,6 +6252,82 @@ paths:
                         sort: {}
                       educations:
                         - educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
+                          lastgradecompleted: 10
+                          schoolStatus: 6
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for entryssvf history.  Returns a list of entryssvf ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-entryssvfs-entryssvfid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: entryssvfid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Entryssvf Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/servicefareferrals':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    educations:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      educations:
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/servicefareferrals/f91547a2-d13b-40a1-a1be-fed415c468a6/history"
+                          educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
                           lastgradecompleted: 10
                           schoolStatus: 6
                           dataCollectionStage: 1
@@ -4758,6 +6430,9 @@ paths:
               schema:
                 example:
                     education:
+                      links:
+                      - rel: history
+                        href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/servicefareferrals/f91547a2-d13b-40a1-a1be-fed415c468a6/history"
                       educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
                       lastgradecompleted: 10
                       schoolStatus: 6
@@ -4852,7 +6527,81 @@ paths:
         schema:
           type: string
         description: Client Identifier
-  '/clients/{clientid}/enrollments/{enrollmentid}/veteraninfos':
+  '/clients/{clientid}/enrollments/{enrollmentid}/servicefareferrals/{servicefareferralid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    educations:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      educations:
+                        - educationId: f91547a2-d13b-40a1-a1be-fed415c468a6
+                          lastgradecompleted: 10
+                          schoolStatus: 6
+                          dataCollectionStage: 1
+                          informationDate: 03-17-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for servicefareferral history.  Returns a list of servicefareferral
+        ids history, based on the query parameters sent.  The query parameters are
+        cumulative, so each additional query parameter narrows the search down
+        further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-servicefareferrals-servicefareferralid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: servicefareferralid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Servicefareferral Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
+  '/clients/{clientid}/veteraninfos':
     get:
       responses:
         '200':
@@ -4869,7 +6618,10 @@ paths:
                         maximum: 30
                         sort: {}
                       veteranInfos:
-                        - veteranInfoId: d0f7f763-dba8-4bc5-9602-d6e3775c59d3
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/veteraninfos/d0f7f763-dba8-4bc5-9602-d6e3775c59d3/history"
+                          veteranInfoId: d0f7f763-dba8-4bc5-9602-d6e3775c59d3
                           yearEntrdService: 1164728538
                           yearSeperated: -410173299
                           worldWar2: 1
@@ -4896,7 +6648,7 @@ paths:
         Searches for veteraninfo.  Returns a list of veteraninfo ids, based on
         the query parameters sent.  The query parameters are cumulative, so each
         additional query parameter narrows the search down further.
-      operationId: GET_clients-clientid-enrollments-enrollmentid-veteraninfos
+      operationId: GET_clients-clientid-veteraninfos
       parameters:
         - name: startIndex
           in: query
@@ -4952,7 +6704,7 @@ paths:
           description: Internal Server Error.
       description: |
         Add a veteraninfo
-      operationId: POST_clients-clientid-enrollments-enrollmentid-veteraninfos
+      operationId: POST_clients-clientid-veteraninfos
       requestBody:
         content:
           application/json:
@@ -4973,19 +6725,13 @@ paths:
                     dischargeStatus: 5
         required: true
     parameters:
-      - name: enrollmentid
-        in: path
-        required: true
-        schema:
-          type: string
-        description: Enrollment Identifier
       - name: clientid
         in: path
         required: true
         schema:
           type: string
         description: Client Identifier
-  '/clients/{clientid}/enrollments/{enrollmentid}/veteraninfos/{veteraninfoid}':
+  '/clients/{clientid}/veteraninfos/{veteraninfoid}':
     get:
       responses:
         '200':
@@ -4995,19 +6741,22 @@ paths:
               schema:
                 example:
                     veteranInfo:
-                      veteranInfoId: bf09eb50-b641-486e-bf7e-49e9faa37c41
-                      yearEnteredService: 1970
-                      yearSeparated: 1972
-                      worldWar2: 1234
-                      koreanWar: 1
-                      vietnamWar: 0
-                      desertStorm: 0
-                      afghanistanOef: 1
-                      iraqOif: 1
-                      iraqOnd: 0
-                      otherTheater: 1
-                      militaryBranch: 1
-                      dischargeStatus: 0
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/veteraninfos/bf09eb50-b641-486e-bf7e-49e9faa37c41/history"
+                        veteranInfoId: bf09eb50-b641-486e-bf7e-49e9faa37c41
+                        yearEnteredService: 1970
+                        yearSeparated: 1972
+                        worldWar2: 1234
+                        koreanWar: 1
+                        vietnamWar: 0
+                        desertStorm: 0
+                        afghanistanOef: 1
+                        iraqOif: 1
+                        iraqOnd: 0
+                        otherTheater: 1
+                        militaryBranch: 1
+                        dischargeStatus: 0
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -5021,7 +6770,7 @@ paths:
         '500':
           description: Internal Server Error
       description: Gets a veteraninfo using a URI resource parameter/ID.
-      operationId: GET_clients-clientid-enrollments-enrollmentid-veteraninfos-veteraninfoid
+      operationId: GET_clients-clientid-veteraninfos-veteraninfoid
     put:
       responses:
         '200':
@@ -5043,7 +6792,7 @@ paths:
       description: >-
         Updates a specific veteraninfo specified by the URI resource
         parameter/ID.
-      operationId: PUT_clients-clientid-enrollments-enrollmentid-veteraninfos-veteraninfoid
+      operationId: PUT_clients-clientid-veteraninfos-veteraninfoid
       requestBody:
         content:
           application/json:
@@ -5083,7 +6832,7 @@ paths:
         Deletes a specific veteraninfo specified by the URI resource
         parameter/ID.
       operationId: >-
-        DELETE_clients-clientid-enrollments-enrollmentid-veteraninfos-veteraninfoid
+        DELETE_clients-clientid-veteraninfos-veteraninfoid
     parameters:
       - name: veteraninfoid
         in: path
@@ -5091,18 +6840,86 @@ paths:
         schema:
           type: string
         description: Veteraninfo Identifier
-      - name: enrollmentid
-        in: path
-        required: true
-        schema:
-          type: string
-        description: Enrollment Identifier
       - name: clientid
         in: path
         required: true
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/veteraninfos/{veteraninfoid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    veteranInfos:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      veteranInfos:
+                        - veteranInfoId: d0f7f763-dba8-4bc5-9602-d6e3775c59d3
+                          yearEntrdService: 1164728538
+                          yearSeperated: -410173299
+                          worldWar2: 1
+                          koreanWar: 8
+                          vietnamWar: 9
+                          desertStorm: 8
+                          afghanistanOef: 99
+                          iraqOif: 1
+                          iraqOnd: 1
+                          otherTheater: 9
+                          militaryBranch: 2
+                          dischargeStatus: 5
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for veteraninfo history.  Returns a list of veteraninfo ids history, based on
+        the query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-veteraninfos-veteraninfoid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+        - name: veteraninfoid
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Veteraninfo Identifier
+        - name: clientid
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/exits':
     get:
       responses:
@@ -5120,7 +6937,10 @@ paths:
                         maximum: 30
                         sort: {}
                       exits:
-                        - exitId: 89c350f4-9165-4898-bb8b-f8b096a1aa2d
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/history"
+                          exitId: 89c350f4-9165-4898-bb8b-f8b096a1aa2d
                           exitDate: 1459518853883
                           otherDestination: TWENTY_FOUR
                           destination: 6
@@ -5222,12 +7042,15 @@ paths:
               schema:
                 example:
                     exit:
-                      exitId: 89c350f4-9165-4898-bb8b-f8b096a1aa2d
-                      exitDate: 1459518853883
-                      otherDestination: TWENTY_FOUR
-                      destination: 6
-                      dateCreated: 05-11-2016
-                      dateUpdated: 05-11-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/history"
+                        exitId: 89c350f4-9165-4898-bb8b-f8b096a1aa2d
+                        exitDate: 1459518853883
+                        otherDestination: TWENTY_FOUR
+                        destination: 6
+                        dateCreated: 05-11-2016
+                        dateUpdated: 05-11-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -5309,6 +7132,79 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    exits:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      exits:
+                        - exitId: 89c350f4-9165-4898-bb8b-f8b096a1aa2d
+                          exitDate: 1459518853883
+                          otherDestination: TWENTY_FOUR
+                          destination: 6
+                          dateCreated: 05-11-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for exit history.  Returns a list of exit ids history, based on the query
+        parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-exits-exitid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: exitid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Exit Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/exithousingassesments':
     get:
       responses:
@@ -5326,7 +7222,10 @@ paths:
                         maximum: 30
                         sort: {}
                       exithousingassessments:
-                        - exithousingassessmentId: a45e96ba-0287-4c9f-a1c2-5058a4acc1aa
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/exithousingassesments/a45e96ba-0287-4c9f-a1c2-5058a4acc1aa/history"
+                          exithousingassessmentId: a45e96ba-0287-4c9f-a1c2-5058a4acc1aa
                           housingassessment: 5
                           subsidyinformation: 4
         '400':
@@ -5431,9 +7330,12 @@ paths:
               schema:
                 example:
                     exithousingassessment:
-                      exithousingassessmentId: a45e96ba-0287-4c9f-a1c2-5058a4acc1aa
-                      housingassessment: 5
-                      subsidyinformation: 4
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/exithousingassesments/a45e96ba-0287-4c9f-a1c2-5058a4acc1aa/history"
+                        exithousingassessmentId: a45e96ba-0287-4c9f-a1c2-5058a4acc1aa
+                        housingassessment: 5
+                        subsidyinformation: 4
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -5527,6 +7429,85 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/exithousingassesments/{exithousingassesmentid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    exithousingassessments:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      exithousingassessments:
+                        - exithousingassessmentId: a45e96ba-0287-4c9f-a1c2-5058a4acc1aa
+                          housingassessment: 5
+                          subsidyinformation: 4
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for exithousingassesment history.  Returns a list of
+        exithousingassesment ids history, based on the query parameters sent.  The query
+        parameters are cumulative, so each additional query parameter narrows
+        the search down further.
+      operationId:
+        GET_clients-clientid-enrollments-enrollmentid-exits-exitid-exithousingassesments-exithousingassesmentid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: exithousingassesmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Exithousingassesment Identifier
+      - name: exitid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Exit Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/housingassessmentdispositions':
     get:
       responses:
@@ -5544,7 +7525,10 @@ paths:
                         maximum: 30
                         sort: {}
                       housingAssessmentDispositions:
-                        - housingAssessmentDispositionId: c08b6685-c03e-4151-87dc-34f367a4a968
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/housingassessmentdispositions/c08b6685-c03e-4151-87dc-34f367a4a968/history"
+                          housingAssessmentDispositionId: c08b6685-c03e-4151-87dc-34f367a4a968
                           assessmentdisposition: 3
                           otherdisposition: lAP0q07uSY
                           dateCreated: 05-11-2016
@@ -5560,7 +7544,7 @@ paths:
           description: Internal Server Error
       description: >-
         Searches for housingassessmentdisposition.  Returns a list of
-        housingassessmentdisposition ids, based on the query parameters sent. 
+        housingassessmentdisposition ids, based on the query parameters sent.
         The query parameters are cumulative, so each additional query parameter
         narrows the search down further.
       operationId: >-
@@ -5652,11 +7636,14 @@ paths:
               schema:
                 example:
                     housingAssessmentDisposition:
-                      housingAssessmentDispositionId: c08b6685-c03e-4151-87dc-34f367a4a968
-                      assessmentdisposition: 3
-                      otherdisposition: lAP0q07uSYlSKUifs
-                      dateCreated: 05-11-2016
-                      dateUpdated: 05-11-2016
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/housingassessmentdispositions/c08b6685-c03e-4151-87dc-34f367a4a968/history"
+                        housingAssessmentDispositionId: c08b6685-c03e-4151-87dc-34f367a4a968
+                        assessmentdisposition: 3
+                        otherdisposition: lAP0q07uSYlSKUifs
+                        dateCreated: 05-11-2016
+                        dateUpdated: 05-11-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -5750,6 +7737,86 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/housingassessmentdispositions/{housingassessmentdispositionid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    HousingAssessmentDispositions:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      housingAssessmentDispositions:
+                        - housingAssessmentDispositionId: c08b6685-c03e-4151-87dc-34f367a4a968
+                          assessmentdisposition: 3
+                          otherdisposition: lAP0q07uSY
+                          dateCreated: 05-11-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for housingassessmentdisposition history.  Returns a list of
+        housingassessmentdisposition ids history, based on the query parameters sent.
+        The query parameters are cumulative, so each additional query parameter
+        narrows the search down further.
+      operationId:
+        GET_clients-clientid-enrollments-enrollmentid-exits-exitid-housingassessmentdispositions-housingassessmentdispositionid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: housingassessmentdispositionid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Housingassessmentdisposition Identifier
+      - name: exitid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Exit Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/exitpaths':
     get:
       responses:
@@ -5767,7 +7834,10 @@ paths:
                         maximum: 30
                         sort: {}
                       exitpaths:
-                        - exitpathId: 46b4e67b-08f4-4962-9a1e-3ff614aaea23
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/exitpaths/46b4e67b-08f4-4962-9a1e-3ff614aaea23/history"
+                          exitpathId: 46b4e67b-08f4-4962-9a1e-3ff614aaea23
                           connectionWithSoar: 9
         '400':
           description: Bad Request – The request was invalid or cannot be served.
@@ -5865,7 +7935,10 @@ paths:
               schema:
                 example:
                     exitpath:
-                      exitpathId: 46b4e67b-08f4-4962-9a1e-3ff614aaea23
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/exitpaths/46b4e67b-08f4-4962-9a1e-3ff614aaea23/history"
+                        exitpathId: 46b4e67b-08f4-4962-9a1e-3ff614aaea23
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -5954,6 +8027,82 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/exitpaths/{exitpathid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    exitpaths:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      exitpaths:
+                        - exitpathId: 46b4e67b-08f4-4962-9a1e-3ff614aaea23
+                          connectionWithSoar: 9
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for exitpath history.  Returns a list of exitpath ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-exits-exitid-exitpaths-exitpathid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: exitpathid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Exitpath Identifier
+      - name: exitid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Exit Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/exitrhys':
     get:
       responses:
@@ -5971,7 +8120,10 @@ paths:
                         maximum: 30
                         sort: {}
                       exitrhys:
-                        - exitrhyId: 878d7b3f-91d8-4a5d-9eba-81b081f0a9f8
+                        - links:
+                          - rel: history
+                            href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/exitrhys/878d7b3f-91d8-4a5d-9eba-81b081f0a9f8/history"
+                          exitrhyId: 878d7b3f-91d8-4a5d-9eba-81b081f0a9f8
                           projectCompletionStatus: 3
                           earlyExitReason: 1
                           familyReunificationAchieved: 0
@@ -6103,19 +8255,22 @@ paths:
               schema:
                 example:
                     exitrhy:
-                      exitrhyId: 878d7b3f-91d8-4a5d-9eba-81b081f0a9f8
-                      projectCompletionStatus: 3
-                      earlyExitReason: 1
-                      familyReunificationAchieved: 0
-                      writtenAfterCarePlan: 2
-                      assistanceMainStreamBenefits: 0
-                      permenantHousingPlacement: 1
-                      tempShelterPlacement: 2
-                      exitCounseling: 1
-                      furtherFollowupServices: 1
-                      scheduledFollowupContacts: 2
-                      resourcePackage: 1
-                      otherAftercarePlanOrAction: 2
+                        links:
+                        - rel: history
+                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/exitrhys/878d7b3f-91d8-4a5d-9eba-81b081f0a9f8/history"
+                        exitrhyId: 878d7b3f-91d8-4a5d-9eba-81b081f0a9f8
+                        projectCompletionStatus: 3
+                        earlyExitReason: 1
+                        familyReunificationAchieved: 0
+                        writtenAfterCarePlan: 2
+                        assistanceMainStreamBenefits: 0
+                        permenantHousingPlacement: 1
+                        tempShelterPlacement: 2
+                        exitCounseling: 1
+                        furtherFollowupServices: 1
+                        scheduledFollowupContacts: 2
+                        resourcePackage: 1
+                        otherAftercarePlanOrAction: 2
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -6215,6 +8370,93 @@ paths:
         schema:
           type: string
         description: Client Identifier
+  '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}/exitrhys/{exitrhyid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    exitrhys:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      exitrhys:
+                        - exitrhyId: 878d7b3f-91d8-4a5d-9eba-81b081f0a9f8
+                          projectCompletionStatus: 3
+                          earlyExitReason: 1
+                          familyReunificationAchieved: 0
+                          writtenAfterCarePlan: 2
+                          assistanceMainStreamBenefits: 0
+                          permenantHousingPlacement: 1
+                          tempShelterPlacement: 2
+                          exitCounseling: 0
+                          furtherFollowupServices: 1
+                          scheduledFollowupContacts: 1
+                          resourcePackage: 1
+                          otherAftercarePlanOrAction: 2
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for exitrhy history.  Returns a list of exitrhy ids history, based on the query
+        parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_clients-clientid-enrollments-enrollmentid-exits-exitid-exitrhys-exitrhyid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: exitrhyid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Exitrhy Identifier
+      - name: exitid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Exit Identifier
+      - name: enrollmentid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Enrollment Identifier
+      - name: clientid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Client Identifier
   /projects:
     get:
       responses:
@@ -6232,7 +8474,10 @@ paths:
                         maximum: 30
                         sort: {}
                       projects:
-                        - projectId: 0dda7333-0592-4fa7-ba79-1fe2dfaaff4e
+                        - links:
+                          - rel: history
+                            href: "/projects/0dda7333-0592-4fa7-ba79-1fe2dfaaff4e/history"
+                          projectId: 0dda7333-0592-4fa7-ba79-1fe2dfaaff4e
                           projectName: Homeless People Project
                           projectCommonName: Homeless People Project
                           continuumProject: 0
@@ -6332,15 +8577,18 @@ paths:
               schema:
                 example:
                     project:
-                      projectId: d12a5b43-9411-4fe3-8cd3-0778459d0911
-                      projectName: ProjectName_1459515376900
-                      projectCommonName: ProjectCommonName_1459515376900
-                      continuumProject: 0
-                      projectType: 2
-                      targetPopulation: 3
-                      trackingMethod: 0
-                      dateCreated: 05-11-2016
-                      dateUpdated: 05-11-2016
+                        links:
+                        - rel: history
+                          href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/history"
+                        projectId: d12a5b43-9411-4fe3-8cd3-0778459d0911
+                        projectName: ProjectName_1459515376900
+                        projectCommonName: ProjectCommonName_1459515376900
+                        continuumProject: 0
+                        projectType: 2
+                        targetPopulation: 3
+                        trackingMethod: 0
+                        dateCreated: 05-11-2016
+                        dateUpdated: 05-11-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -6414,7 +8662,72 @@ paths:
         schema:
           type: string
         description: Project Identifier
-  /projects/projectcocs:
+  '/projects/{projectid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    projects:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      projects:
+                        - projectId: 0dda7333-0592-4fa7-ba79-1fe2dfaaff4e
+                          projectName: Homeless People Project
+                          projectCommonName: Homeless People Project
+                          continuumProject: 0
+                          projectType: 1
+                          residentialAffiliation: 0
+                          targetPopulation: 1
+                          trackingMethod: 0
+                          dateCreated: 03-15-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for project history.  Returns a list of project ids history, based on the query
+        parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_projects-projectId-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  /projects/{projectid}/projectcocs:
     get:
       responses:
         '200':
@@ -6431,7 +8744,10 @@ paths:
                         maximum: 30
                         sort: {}
                       projectcocs:
-                        - projectcocId: a72c1666-cf51-47e4-8c2e-6ae5b8688cca
+                        - links:
+                          - rel: history
+                            href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/projectcocs/a72c1666-cf51-47e4-8c2e-6ae5b8688cca/history"
+                          projectcocId: a72c1666-cf51-47e4-8c2e-6ae5b8688cca
                           coccode: HPltHrjWAdDWKDYBj7dvUfzEvrNc2Y
                           dateCreated: 05-11-2016
         '400':
@@ -6448,7 +8764,7 @@ paths:
         Searches for projectcoc.  Returns a list of projectcoc ids, based on the
         query parameters sent.  The query parameters are cumulative, so each
         additional query parameter narrows the search down further.
-      operationId: GET_projects-projectcocs
+      operationId: GET_projects-projectid-projectcocs
       parameters:
         - name: startIndex
           in: query
@@ -6495,7 +8811,7 @@ paths:
           description: Internal Server Error.
       description: |
         Add a projectcoc
-      operationId: POST_projects-projectcocs
+      operationId: POST_projects-projectid-projectcocs
       requestBody:
         content:
           application/json:
@@ -6506,7 +8822,14 @@ paths:
                     dateCreated: 05-11-2016
                     dateUpdated: 05-11-2016
         required: true
-  '/projects/projectcocs/{projectcocid}':
+    parameters:
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/projectcocs/{projectcocid}':
     get:
       responses:
         '200':
@@ -6516,10 +8839,13 @@ paths:
               schema:
                 example:
                     projectcoc:
-                      projectcocId: a72c1666-cf51-47e4-8c2e-6ae5b8688cca
-                      coccode: HPltHrjWAdDWKDYBj7dvUfzEvrNc2Y
-                      dateCreated: 05-11-2016
-                      dateUpdated: 05-11-2016
+                        links:
+                        - rel: history
+                          href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/projectcocs/a72c1666-cf51-47e4-8c2e-6ae5b8688cca/history"
+                        projectcocId: a72c1666-cf51-47e4-8c2e-6ae5b8688cca
+                        coccode: HPltHrjWAdDWKDYBj7dvUfzEvrNc2Y
+                        dateCreated: 05-11-2016
+                        dateUpdated: 05-11-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -6533,7 +8859,7 @@ paths:
         '500':
           description: Internal Server Error
       description: Gets a projectcoc using a URI resource parameter/ID.
-      operationId: GET_projects-projectcocs-projectcocid
+      operationId: GET_projects-projectid-projectcocs-projectcocid
     put:
       responses:
         '200':
@@ -6555,7 +8881,7 @@ paths:
       description: >-
         Updates a specific projectcoc specified by the URI resource
         parameter/ID.
-      operationId: PUT_projects-projectcocs-projectcocid
+      operationId: PUT_projects-projectid-projectcocs-projectcocid
       requestBody:
         content:
           application/json:
@@ -6585,7 +8911,7 @@ paths:
       description: >-
         Deletes a specific projectcoc specified by the URI resource
         parameter/ID.
-      operationId: DELETE_projects-projectcocs-projectcocid
+      operationId: DELETE_projects-projectid-projectcocs-projectcocid
     parameters:
       - name: projectcocid
         in: path
@@ -6593,7 +8919,78 @@ paths:
         schema:
           type: string
         description: Projectcoc Identifier
-  /projects/inventories:
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/projectcocs/{projectcocid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    projectcocs:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      projectcocs:
+                        - projectcocId: a72c1666-cf51-47e4-8c2e-6ae5b8688cca
+                          coccode: HPltHrjWAdDWKDYBj7dvUfzEvrNc2Y
+                          dateCreated: 05-11-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for projectcoc history.  Returns a list of projectcoc ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_projects-projectid-projectcocs-projectcocid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: projectcocid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Projectcoc Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  /projects/{projectid}/projectcocs/{projectcocid}/inventories:
     get:
       responses:
         '200':
@@ -6610,7 +9007,10 @@ paths:
                         maximum: 30
                         sort: {}
                       inventories:
-                        - inventoryId: 74e4ed15-688e-4dfa-9609-1c6161d0dedd
+                        - links:
+                          - rel: history
+                            href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/projectcocs/a72c1666-cf51-47e4-8c2e-6ae5b8688cca/inventories/74e4ed15-688e-4dfa-9609-1c6161d0dedd/history"
+                          inventoryId: 74e4ed15-688e-4dfa-9609-1c6161d0dedd
                           availabilty: 2
                           bedtype: 1
                           hmisparticipatingbeds: -791575690
@@ -6637,7 +9037,7 @@ paths:
         Searches for inventory.  Returns a list of inventory ids, based on the
         query parameters sent.  The query parameters are cumulative, so each
         additional query parameter narrows the search down further.
-      operationId: GET_projects-inventories
+      operationId: GET_projects-projectid-projectcocs-projectcocid-inventories
       parameters:
         - name: startIndex
           in: query
@@ -6694,7 +9094,7 @@ paths:
           description: Internal Server Error.
       description: |
         Add a inventory
-      operationId: POST_projects-inventories
+      operationId: POST_projects-projectid-projectcocs-projectcocid-inventories
       requestBody:
         content:
           application/json:
@@ -6714,7 +9114,20 @@ paths:
                     youthbedinventory: 3
                     youthagegroup: 4
         required: true
-  '/projects/inventories/{inventoryid}':
+    parameters:
+      - name: projectcocid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Projectcoc Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/projectcocs/{projectcocid}/inventories/{inventoryid}':
     get:
       responses:
         '200':
@@ -6724,20 +9137,23 @@ paths:
               schema:
                 example:
                     inventory:
-                      inventoryId: 74e4ed15-688e-4dfa-9609-1c6161d0dedd
-                      availabilty: 2
-                      bedtype: 1
-                      hmisparticipatingbeds: -791575690
-                      householdtype: 3
-                      chbedinventory: 1
-                      vetbedinventory: 2
-                      youthbedinventory: 3
-                      youthagegroup: 4
-                      unitinventory: 1579850350
-                      dateCreated: 05-12-2016
-                      dateUpdated: 05-12-2016
-                      inventoryenddate: 02-04-2016
-                      inventorystartdate: 02-04-2016
+                        links:
+                        - rel: history
+                          href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/projectcocs/a72c1666-cf51-47e4-8c2e-6ae5b8688cca/inventories/74e4ed15-688e-4dfa-9609-1c6161d0dedd/history"
+                        inventoryId: 74e4ed15-688e-4dfa-9609-1c6161d0dedd
+                        availabilty: 2
+                        bedtype: 1
+                        hmisparticipatingbeds: -791575690
+                        householdtype: 3
+                        chbedinventory: 1
+                        vetbedinventory: 2
+                        youthbedinventory: 3
+                        youthagegroup: 4
+                        unitinventory: 1579850350
+                        dateCreated: 05-12-2016
+                        dateUpdated: 05-12-2016
+                        inventoryenddate: 02-04-2016
+                        inventorystartdate: 02-04-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -6751,7 +9167,7 @@ paths:
         '500':
           description: Internal Server Error
       description: Gets a inventory using a URI resource parameter/ID.
-      operationId: GET_projects-inventories-inventoryid
+      operationId: GET_projects-projectid-projectcocs-projectcocid-inventories-inventoryid
     put:
       responses:
         '200':
@@ -6771,7 +9187,7 @@ paths:
         '500':
           description: Internal Server Error.
       description: Updates a specific inventory specified by the URI resource parameter/ID.
-      operationId: PUT_projects-inventories-inventoryid
+      operationId: PUT_projects-projectid-projectcocs-projectcocid-inventories-inventoryid
       requestBody:
         content:
           application/json:
@@ -6808,7 +9224,88 @@ paths:
         '500':
           description: Internal Server Error.
       description: Deletes a specific inventory specified by the URI resource parameter/ID.
-      operationId: DELETE_projects-inventories-inventoryid
+      operationId: DELETE_projects-projectid-projectcocs-projectcocid-inventories-inventoryid
+    parameters:
+      - name: projectcocid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Projectcoc Identifier
+      - name: inventoryid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Inventory Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/projectcocs/{projectcocid}/inventories/{inventoryid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    Inventories:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      inventories:
+                        - inventoryId: 74e4ed15-688e-4dfa-9609-1c6161d0dedd
+                          availabilty: 2
+                          bedtype: 1
+                          hmisparticipatingbeds: -791575690
+                          householdtype: 3
+                          chbedinventory: 1
+                          vetbedinventory: 2
+                          youthbedinventory: 3
+                          youthagegroup: 4
+                          unitinventory: 1579850350
+                          dateCreated: 05-12-2016
+                          inventoryenddate: 02-04-2016
+                          inventorystartdate: 02-04-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for inventory history.  Returns a list of inventory ids history, based on the
+        query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_projects-projectid-projectcocs-projectcocid-inventories-inventoryid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
     parameters:
       - name: inventoryid
         in: path
@@ -6816,7 +9313,19 @@ paths:
         schema:
           type: string
         description: Inventory Identifier
-  /projects/sites:
+      - name: projectcocid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Projectcoc Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  /projects/{projectid}/projectcocs/{projectcocid}/sites:
     get:
       responses:
         '200':
@@ -6833,7 +9342,10 @@ paths:
                         maximum: 30
                         sort: {}
                       sites:
-                        - siteId: 336b4b5f-8e07-4582-bf88-a7c1d17bd3fc
+                        - links:
+                          - rel: history
+                            href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/projectcocs/a72c1666-cf51-47e4-8c2e-6ae5b8688cca/sites/336b4b5f-8e07-4582-bf88-a7c1d17bd3fc/history"
+                          siteId: 336b4b5f-8e07-4582-bf88-a7c1d17bd3fc
                           address: n4wuRkopYjCtFz52omPRSIyO0o6e1LuZ6XPafjcqPZCgYBphlu
                           city: GZbBVvo6rm
                           geocode: -206855564
@@ -6855,7 +9367,7 @@ paths:
         Searches for site.  Returns a list of site ids, based on the query
         parameters sent.  The query parameters are cumulative, so each
         additional query parameter narrows the search down further.
-      operationId: GET_projects-sites
+      operationId: GET_projects-projectid-projectcocs-projectcocid-sites
       parameters:
         - name: startIndex
           in: query
@@ -6907,7 +9419,7 @@ paths:
           description: Internal Server Error.
       description: |
         Add a site
-      operationId: POST_projects-sites
+      operationId: POST_projects-projectid-projectcocs-projectcocid-sites
       requestBody:
         content:
           application/json:
@@ -6921,7 +9433,20 @@ paths:
                     state: MN
                     zip: 123456
         required: true
-  '/projects/sites/{siteid}':
+    parameters:
+      - name: projectcocid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Projectcoc Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/projectcocs/{projectcocid}/sites/{siteid}':
     get:
       responses:
         '200':
@@ -6931,15 +9456,18 @@ paths:
               schema:
                 example:
                     site:
-                      siteId: 336b4b5f-8e07-4582-bf88-a7c1d17bd3fc
-                      address: n4wuRkopYjCtFz52omPRSIyO0o6e1LuZ6XPafjcqPZCgYBphlu
-                      city: GZbBVvo6rm
-                      geocode: -206855564
-                      principalsite: 0
-                      state: MN
-                      zip: '123456'
-                      dateCreated: 05-11-2016
-                      dateUpdated: 05-11-2016
+                        links:
+                        - rel: history
+                          href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/projectcocs/a72c1666-cf51-47e4-8c2e-6ae5b8688cca/sites/336b4b5f-8e07-4582-bf88-a7c1d17bd3fc/history"
+                        siteId: 336b4b5f-8e07-4582-bf88-a7c1d17bd3fc
+                        address: n4wuRkopYjCtFz52omPRSIyO0o6e1LuZ6XPafjcqPZCgYBphlu
+                        city: GZbBVvo6rm
+                        geocode: -206855564
+                        principalsite: 0
+                        state: MN
+                        zip: '123456'
+                        dateCreated: 05-11-2016
+                        dateUpdated: 05-11-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -6953,7 +9481,7 @@ paths:
         '500':
           description: Internal Server Error
       description: Gets a site using a URI resource parameter/ID.
-      operationId: GET_projects-sites-siteid
+      operationId: GET_projects-projectid-projectcocs-projectcocid-sites-siteid
     put:
       responses:
         '200':
@@ -6973,7 +9501,7 @@ paths:
         '500':
           description: Internal Server Error.
       description: Updates a specific site specified by the URI resource parameter/ID.
-      operationId: PUT_projects-sites-siteid
+      operationId: PUT_projects-projectid-projectcocs-projectcocid-sites-siteid
       requestBody:
         content:
           application/json:
@@ -7004,7 +9532,83 @@ paths:
         '500':
           description: Internal Server Error.
       description: Deletes a specific site specified by the URI resource parameter/ID.
-      operationId: DELETE_projects-sites-siteid
+      operationId: DELETE_projects-projectid-projectcocs-projectcocid-sites-siteid
+    parameters:
+      - name: projectcocid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Projectcoc Identifier
+      - name: siteid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/projectcocs/{projectcocid}/sites/{siteid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    sites:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      sites:
+                        - siteId: 336b4b5f-8e07-4582-bf88-a7c1d17bd3fc
+                          address: n4wuRkopYjCtFz52omPRSIyO0o6e1LuZ6XPafjcqPZCgYBphlu
+                          city: GZbBVvo6rm
+                          geocode: -206855564
+                          principalsite: 0
+                          state: MN
+                          zip: '123456'
+                          dateCreated: 05-11-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for site history.  Returns a list of site ids history, based on the query
+        parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_projects-projectid-projectcocs-projectcocid-sites-siteid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
     parameters:
       - name: siteid
         in: path
@@ -7012,7 +9616,19 @@ paths:
         schema:
           type: string
         description: Site Identifier
-  /projects/funders:
+      - name: projectcocid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Projectcoc Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  /projects/{projectid}/funders:
     get:
       responses:
         '200':
@@ -7029,7 +9645,10 @@ paths:
                         maximum: 30
                         sort: {}
                       funders:
-                        - funderId: 8f11979d-8402-49a8-8253-f5f16c57d63f
+                        - links:
+                          - rel: history
+                            href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/funders/8f11979d-8402-49a8-8253-f5f16c57d63f/history"
+                          funderId: 8f11979d-8402-49a8-8253-f5f16c57d63f
                           funder: 8
                           grantid: a2cac563-e852-487b-996d-b1bae8225234
                           dateCreated: 05-11-2016
@@ -7049,7 +9668,7 @@ paths:
         Searches for funder.  Returns a list of funder ids, based on the query
         parameters sent.  The query parameters are cumulative, so each
         additional query parameter narrows the search down further.
-      operationId: GET_projects-funders
+      operationId: GET_projects-projectid-funders
       parameters:
         - name: startIndex
           in: query
@@ -7099,7 +9718,7 @@ paths:
           description: Internal Server Error.
       description: |
         Add a funder
-      operationId: POST_projects-funders
+      operationId: POST_projects-projectid-funders
       requestBody:
         content:
           application/json:
@@ -7111,7 +9730,14 @@ paths:
                     grantid: a2cac563-e852-487b-996d-b1bae8225234
                     startdate: '02-04-2016 12:12'
         required: true
-  '/projects/funders/{funderid}':
+    parameters:
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/funders/{funderid}':
     get:
       responses:
         '200':
@@ -7121,13 +9747,16 @@ paths:
               schema:
                 example:
                     funder:
-                      funderId: 8f11979d-8402-49a8-8253-f5f16c57d63f
-                      funder: 8
-                      grantid: a2cac563-e852-487b-996d-b1bae8225234
-                      dateCreated: 05-11-2016
-                      dateUpdated: 05-11-2016
-                      enddate: 04-16-2016
-                      startdate: 02-04-2016
+                        links:
+                        - rel: history
+                          href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/funders/8f11979d-8402-49a8-8253-f5f16c57d63f/history"
+                        funderId: 8f11979d-8402-49a8-8253-f5f16c57d63f
+                        funder: 8
+                        grantid: a2cac563-e852-487b-996d-b1bae8225234
+                        dateCreated: 05-11-2016
+                        dateUpdated: 05-11-2016
+                        enddate: 04-16-2016
+                        startdate: 02-04-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -7141,7 +9770,7 @@ paths:
         '500':
           description: Internal Server Error
       description: Gets a funder using a URI resource parameter/ID.
-      operationId: GET_projects-funders-funderid
+      operationId: GET_projects-projectid-funders-funderid
     put:
       responses:
         '200':
@@ -7161,7 +9790,7 @@ paths:
         '500':
           description: Internal Server Error.
       description: Updates a specific funder specified by the URI resource parameter/ID.
-      operationId: PUT_projects-funders-funderid
+      operationId: PUT_projects-projectid-funders-funderid
       requestBody:
         content:
           application/json:
@@ -7190,7 +9819,7 @@ paths:
         '500':
           description: Internal Server Error.
       description: Deletes a specific funder specified by the URI resource parameter/ID.
-      operationId: DELETE_projects-funders-funderid
+      operationId: DELETE_projects-projectid-funders-funderid
     parameters:
       - name: funderid
         in: path
@@ -7198,7 +9827,81 @@ paths:
         schema:
           type: string
         description: Funder Identifier
-  /projects/affiliations:
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/funders/{funderid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    funders:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      funders:
+                        - funderId: 8f11979d-8402-49a8-8253-f5f16c57d63f
+                          funder: 8
+                          grantid: a2cac563-e852-487b-996d-b1bae8225234
+                          dateCreated: 05-11-2016
+                          enddate: 04-16-2016
+                          startdate: 02-04-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for funder history.  Returns a list of funder ids history, based on the query
+        parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_projects-projectid-funders-funderid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: funderid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Funder Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  /projects/{projectid}/affiliations:
     get:
       responses:
         '200':
@@ -7215,7 +9918,10 @@ paths:
                         maximum: 30
                         sort: {}
                       affiliations:
-                        - affiliationId: f3c479a5-041a-49f6-b3ce-c999ec0bee40
+                        - links:
+                          - rel: history
+                            href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/affiliations/f3c479a5-041a-49f6-b3ce-c999ec0bee40/history"
+                          affiliationId: f3c479a5-041a-49f6-b3ce-c999ec0bee40
                           resprojectid: lVkFrvuVDsJcxR9z1cNC
                           dateCreated: 04-25-2016
         '400':
@@ -7232,7 +9938,7 @@ paths:
         Searches for affiliation.  Returns a list of affiliation ids, based on
         the query parameters sent.  The query parameters are cumulative, so each
         additional query parameter narrows the search down further.
-      operationId: GET_projects-affiliations
+      operationId: GET_projects-projectid-affiliations
       parameters:
         - name: startIndex
           in: query
@@ -7279,7 +9985,7 @@ paths:
           description: Internal Server Error.
       description: |
         Add a affiliation
-      operationId: POST_projects-affiliations
+      operationId: POST_projects-projectid-affiliations
       requestBody:
         content:
           application/json:
@@ -7288,7 +9994,14 @@ paths:
                   affiliation:
                     resprojectid: lVkFrvuVDsJcxR9z1cNC
         required: true
-  '/projects/affiliations/{affiliationid}':
+    parameters:
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/affiliations/{affiliationid}':
     get:
       responses:
         '200':
@@ -7298,10 +10011,13 @@ paths:
               schema:
                 example:
                     affiliation:
-                      affiliationId: f3c479a5-041a-49f6-b3ce-c999ec0bee40
-                      resprojectid: lVkFrvuVDsJcxR9z1cNC
-                      dateCreated: 04-25-2016
-                      dateUpdated: 04-25-2016
+                        links:
+                        - rel: history
+                          href: "/projects/d12a5b43-9411-4fe3-8cd3-0778459d0911/affiliations/f3c479a5-041a-49f6-b3ce-c999ec0bee40/history"
+                        affiliationId: f3c479a5-041a-49f6-b3ce-c999ec0bee40
+                        resprojectid: lVkFrvuVDsJcxR9z1cNC
+                        dateCreated: 04-25-2016
+                        dateUpdated: 04-25-2016
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -7315,7 +10031,7 @@ paths:
         '500':
           description: Internal Server Error
       description: Gets a affiliation using a URI resource parameter/ID.
-      operationId: GET_projects-affiliations-affiliationid
+      operationId: GET_projects-projectid-affiliations-affiliationid
     put:
       responses:
         '200':
@@ -7337,7 +10053,7 @@ paths:
       description: >-
         Updates a specific affiliation specified by the URI resource
         parameter/ID.
-      operationId: PUT_projects-affiliations-affiliationid
+      operationId: PUT_projects-projectid-affiliations-affiliationid
       requestBody:
         content:
           application/json:
@@ -7365,7 +10081,7 @@ paths:
       description: >-
         Deletes a specific affiliation specified by the URI resource
         parameter/ID.
-      operationId: DELETE_projects-affiliations-affiliationid
+      operationId: DELETE_projects-projectid-affiliations-affiliationid
     parameters:
       - name: affiliationid
         in: path
@@ -7373,6 +10089,77 @@ paths:
         schema:
           type: string
         description: Affiliation Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
+  '/projects/{projectid}/affiliations/{affiliationid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    affiliations:
+                      pagination:
+                        from: 0
+                        returned: 1
+                        total: 1
+                        maximum: 30
+                        sort: {}
+                      affiliations:
+                        - affiliationId: f3c479a5-041a-49f6-b3ce-c999ec0bee40
+                          resprojectid: lVkFrvuVDsJcxR9z1cNC
+                          dateCreated: 04-25-2016
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for affiliation history.  Returns a list of affiliation ids history, based on
+        the query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_projects-projectid-affiliations-affiliationid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: affiliationid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Affiliation Identifier
+      - name: projectid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Project Identifier
   /organizations:
     get:
       responses:
@@ -7390,10 +10177,16 @@ paths:
                         maximum: 30
                         sort: {}
                       organizations:
-                        - organizationId: 81a20cb3-e000-473c-a3e6-cddcba15a02f
+                        - links:
+                          - rel: history
+                            href: "/organizations/81a20cb3-e000-473c-a3e6-cddcba15a02f/history"
+                          organizationId: 81a20cb3-e000-473c-a3e6-cddcba15a02f
                           organizationCommonName: BBR
                           organizationName: BBjksdjgjdR
-                        - organizationId: f6807bb4-fb1e-4ce4-aa28-ba61b2ee4342
+                        - links:
+                          - rel: history
+                          href: "/organizations/f6807bb4-fb1e-4ce4-aa28-ba61b2ee4342/history"
+                          organizationId: f6807bb4-fb1e-4ce4-aa28-ba61b2ee4342
                           organizationCommonName: BBR
                           organizationName: BBjksdjgjdR
         '400':
@@ -7476,9 +10269,12 @@ paths:
               schema:
                 example:
                     organization:
-                      organizationId: 8dff4029-09b7-4293-b24b-b077b39ee673
-                      organizationName: BBjksdjgjdR
-                      organizationCommonName: BBR
+                     links:
+                     - rel: history
+                       href: "/organizations/8dff4029-09b7-4293-b24b-b077b39ee673/history"
+                     organizationId: 8dff4029-09b7-4293-b24b-b077b39ee673
+                     organizationName: BBjksdjgjdR
+                     organizationCommonName: BBR
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -7551,6 +10347,68 @@ paths:
         schema:
           type: string
         description: Organization Identifier
+  '/organizations/{organizationid}/history':
+    get:
+      responses:
+        '200':
+          description: OK – Everything is working.
+          content:
+            application/json:
+              schema:
+                example:
+                    Organizations:
+                      pagination:
+                        from: 0
+                        returned: 16
+                        total: 16
+                        maximum: 30
+                        sort: {}
+                      organizations:
+                        - organizationId: 81a20cb3-e000-473c-a3e6-cddcba15a02f
+                          organizationCommonName: BBR
+                          organizationName: BBjksdjgjdR
+                        - organizationId: f6807bb4-fb1e-4ce4-aa28-ba61b2ee4342
+                          organizationCommonName: BBR
+                          organizationName: BBjksdjgjdR
+        '400':
+          description: Bad Request – The request was invalid or cannot be served.
+        '403':
+          description: >-
+            Forbidden – The server understood the request, but is refusing it or
+            the access is not allowed.
+        '404':
+          description: Not found – There is no resource behind the URI.
+        '500':
+          description: Internal Server Error
+      description: >-
+        Searches for organization history.  Returns a list of organization ids history, based on
+        the query parameters sent.  The query parameters are cumulative, so each
+        additional query parameter narrows the search down further.
+      operationId: GET_organizations-organizationid-history
+      parameters:
+        - name: startIndex
+          in: query
+          required: true
+          description: >-
+            start index
+
+          schema:
+            type: string
+        - name: maxItems
+          in: query
+          required: true
+          description: >-
+            Max items in response
+
+          schema:
+            type: string
+    parameters:
+      - name: organizationid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Organization Identifier
   '/search/{searchentity}':
     get:
       responses:
@@ -7611,7 +10469,7 @@ paths:
         result you're looking for (or maybe the few results you're looking for).
         Currently hmislynk supporting search on 'clients' entity only. Just like
         searching on Google, you sometimes want to see a few pages of search
-        results so that you can find the item that best meets your needs. 
+        results so that you can find the item that best meets your needs.
         HMISLynk Search API provides up to 50 results for each searh. However,
         the search results can be limited by the client. Note: Current
         supporting URI  is /search/clients
