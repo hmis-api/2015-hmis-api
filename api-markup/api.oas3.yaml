@@ -1,12 +1,12 @@
 openapi: 3.0.0
 info:
   title: 2015 HMIS API
-  version: 1.2.3
+  version: 1.2.4
   description: |
        **Note :**
               Please note that the partial updates are supported via PUT APIs. However, Note that If "null" value is passed for any element, in the PUT request body, it will be ignored. An empty string value should be sent (instead of "null" value) for the elements that need to be updated with NULL values.
 servers:
-  - url: 'https://www.hslynk.com/hmis-clientapi/rest/v2015'
+  - url: 'https://api.hslynk.com/hmis-clientapi/rest/v2015'
 paths:
   /clients:
     get:
@@ -10954,7 +10954,7 @@ paths:
         in: path
         required: true
         schema:
-          type: string                    
+          type: string
 components:
   schemas:
     affiliation_id_only:
