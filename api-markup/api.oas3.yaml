@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: 2015 HMIS API
-  version: 1.2.6
+  version: 1.2.7
   description: |
        **Note :**
               Please note that the partial updates are supported via PUT APIs. However, Note that If "null" value is passed for any element, in the PUT request body, it will be ignored. An empty string value should be sent (instead of "null" value) for the elements that need to be updated with NULL values.
@@ -418,89 +418,89 @@ paths:
         content:
           application/json:
               schema:
-                {
-                  "type": "object",
-                  "required": [
-                    "client"
-                  ],
-                  "properties": {
-                    "client": {
-                      "type": "object",
-                      "required": [
-                        "firstName",
-                        "middleName",
-                        "lastName",
-                        "nameSuffix",
-                        "nameDataQuality",
-                        "ssn",
-                        "ssnDataQuality",
-                        "dob",
-                        "dobDataQuality",
-                        "race",
-                        "ethnicity",
-                        "gender",
-                        "otherGender",
-                        "veteranStatus",
-                        "sourceSystemId",
-                        "phoneNumber",
-                        "emailAddress"
-                      ],
-                      "properties": {
-                        "firstName": {
-                          "type": "string",
-                        },
-                        "middleName": {
-                          "type": "string",
-                        },
-                        "lastName": {
-                          "type": "string",
-                        },
-                        "nameSuffix": {
-                          "type": "string",
-                        },
-                        "nameDataQuality": {
-                          "type": "integer"
-                        },
-                        "ssn": {
-                          "type": "string",
-                        },
-                        "ssnDataQuality": {
-                          "type": "integer"
-                        },
-                        "dob": {
-                          "type": "integer"
-                        },
-                        "dobDataQuality": {
-                          "type": "integer"
-                        },
-                        "race": {
-                          "type": "integer"
-                        },
-                        "ethnicity": {
-                          "type": "integer"
-                        },
-                        "gender": {
-                          "type": "integer"
-                        },
-                        "otherGender": {
-                          "type": "string",
-                        },
-                        "veteranStatus": {
-                          "type": "integer"
-                        },
-                        "sourceSystemId": {
-                          "type": "string",
-                        },
-                        "phoneNumber": {
-                          "type": "string",
-                        },
-                        "emailAddress": {
-                          "type": "string",
+                  {
+                    "type": "object",
+                    "required": [
+                      "client"
+                    ],
+                    "properties": {
+                      "client": {
+                        "type": "object",
+                        "required": [
+                          "firstName",
+                          "middleName",
+                          "lastName",
+                          "nameSuffix",
+                          "nameDataQuality",
+                          "ssn",
+                          "ssnDataQuality",
+                          "dob",
+                          "dobDataQuality",
+                          "race",
+                          "ethnicity",
+                          "gender",
+                          "otherGender",
+                          "veteranStatus",
+                          "sourceSystemId",
+                          "phoneNumber",
+                          "emailAddress"
+                        ],
+                        "properties": {
+                          "firstName": {
+                            "type": "string",
+                          },
+                          "middleName": {
+                            "type": "string",
+                          },
+                          "lastName": {
+                            "type": "string",
+                          },
+                          "nameSuffix": {
+                            "type": "string",
+                          },
+                          "nameDataQuality": {
+                            "type": "integer"
+                          },
+                          "ssn": {
+                            "type": "string",
+                          },
+                          "ssnDataQuality": {
+                            "type": "integer"
+                          },
+                          "dob": {
+                            "type": "integer"
+                          },
+                          "dobDataQuality": {
+                            "type": "integer"
+                          },
+                          "race": {
+                            "type": "integer"
+                          },
+                          "ethnicity": {
+                            "type": "integer"
+                          },
+                          "gender": {
+                            "type": "integer"
+                          },
+                          "otherGender": {
+                            "type": "string",
+                          },
+                          "veteranStatus": {
+                            "type": "integer"
+                          },
+                          "sourceSystemId": {
+                            "type": "string",
+                          },
+                          "phoneNumber": {
+                            "type": "string",
+                          },
+                          "emailAddress": {
+                            "type": "string",
+                          }
                         }
                       }
                     }
                   }
-                }
               example:
                   client:
                     firstName: First Name
@@ -1527,128 +1527,1379 @@ paths:
         description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}':
     get:
+      parameters:
+      - name: includeChildLinks
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: >-
+          To include enrollment child entity links in the response this flag must be set true. default value of this flag is false. The enrollment child entity links, will be grouped by dataCollectionStage and then infromationDate or updatedDate (if informationDate is not available). If dataCollectionStage is not available child entity links will be categorized as unassgined
       responses:
         '200':
-          description: OK – Everything is working.
+          description: OK   Everything is working.
           content:
             application/json:
-                schema:
-                  {
-                    "type": "object",
-                    "required": [
-                      "enrollment"
-                    ],
-                    "properties": {
-                      "enrollment": {
-                        "type": "object",
-                        "properties": {
-                          "links": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "required": [
-                                "rel",
-                                "href"
-                              ],
-                              "properties": {
-                                "rel": {
-                                  "type": "string",
-                                },
-                                "href": {
-                                  "type": "string",
+             schema:
+                        {
+                            "type": "object",
+                            "properties": {
+                                "enrollment": {
+                                    "type": "object",
+                                    "properties": {
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "rel": {
+                                                                "type": "string"
+                                                            },
+                                                            "href": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "enrollmentId": {
+                                            "type": "string"
+                                        },
+                                        "entryLinks": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rhsps": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "unspecified_stage": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-09-23T18:48": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-09-23T19:56": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-09-25T09:50": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-09-25T09:51": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "entryrhys": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "1": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-09-23T19:56": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-11-14T12:10": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-11-17T12:09": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-11-20T12:09": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "2": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-09-23T18:48": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-11-14T12:10": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-11-17T12:09": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "3": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-11-20T12:09": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "unspecified_stage": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-09-25T09:51": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "entryssvfs": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "unspecified_stage": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-09-23T19:56": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-09-25T09:50": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-09-25T09:51": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "enrollmentLinks": {
+                                            "type": "object",
+                                            "properties": {
+                                                "educations": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "1": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-11-13T00:17": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-11-15T23:01": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "unspecified_stage": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-11-13T00:17": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "2018-11-15T23:01": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "dateOfEngagements": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "unspecified_stage": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-09-25T09:51": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "disabilities": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "1": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "0009-11-04T00:00": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "2": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-11-17T12:07": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "domesticViolences": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "unspecified_stage": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "2018-01-08T00:00": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "rel": {
+                                                                                                            "type": "string"
+                                                                                                        },
+                                                                                                        "href": {
+                                                                                                            "type": "string"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "groupBy": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "exitLinks": {
+                                            "type": "object",
+                                            "properties": {
+                                                "unspecified_stage": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "2018-09-25T09:50": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "data": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "anyOf": [
+                                                                                        {
+                                                                                            "type": "object",
+                                                                                            "properties": {
+                                                                                                "rel": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "href": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "exitHousingAssessments": {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "unspecified_stage": {
+                                                                                                            "type": "object",
+                                                                                                            "properties": {
+                                                                                                                "2018-09-25T09:50": {
+                                                                                                                    "type": "array",
+                                                                                                                    "items": {
+                                                                                                                        "anyOf": [
+                                                                                                                            {
+                                                                                                                                "type": "object",
+                                                                                                                                "properties": {
+                                                                                                                                    "data": {
+                                                                                                                                        "type": "array",
+                                                                                                                                        "items": {
+                                                                                                                                            "anyOf": [
+                                                                                                                                                {
+                                                                                                                                                    "type": "object",
+                                                                                                                                                    "properties": {
+                                                                                                                                                        "rel": {
+                                                                                                                                                            "type": "string"
+                                                                                                                                                        },
+                                                                                                                                                        "href": {
+                                                                                                                                                            "type": "string"
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "groupBy": {
+                                                                                                                                        "type": "string"
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "groupBy": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        "2018-09-25T09:51": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "data": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "anyOf": [
+                                                                                        {
+                                                                                            "type": "object",
+                                                                                            "properties": {
+                                                                                                "rel": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "href": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "exitHousingAssessments": {
+                                                                                                    "type": "object",
+                                                                                                    "properties": {
+                                                                                                        "unspecified_stage": {
+                                                                                                            "type": "object",
+                                                                                                            "properties": {
+                                                                                                                "2018-09-25T09:51": {
+                                                                                                                    "type": "array",
+                                                                                                                    "items": {
+                                                                                                                        "anyOf": [
+                                                                                                                            {
+                                                                                                                                "type": "object",
+                                                                                                                                "properties": {
+                                                                                                                                    "data": {
+                                                                                                                                        "type": "array",
+                                                                                                                                        "items": {
+                                                                                                                                            "anyOf": [
+                                                                                                                                                {
+                                                                                                                                                    "type": "object",
+                                                                                                                                                    "properties": {
+                                                                                                                                                        "rel": {
+                                                                                                                                                            "type": "string"
+                                                                                                                                                        },
+                                                                                                                                                        "href": {
+                                                                                                                                                            "type": "string"
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "groupBy": {
+                                                                                                                                        "type": "string"
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "groupBy": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "dateCreated": {
+                                            "type": "string"
+                                        },
+                                        "dateUpdated": {
+                                            "type": "string"
+                                        },
+                                        "disablingCondition": {
+                                            "type": "integer"
+                                        },
+                                        "entryDate": {
+                                            "type": "integer"
+                                        },
+                                        "monthsHomelessPastThreeYears": {
+                                            "type": "integer"
+                                        },
+                                        "projectId": {
+                                            "type": "string"
+                                        },
+                                        "timesHomelessPastThreeYears": {
+                                            "type": "integer"
+                                        },
+                                        "yearsHomeless": {
+                                            "type": "integer"
+                                        },
+                                        "losUnderThreshold": {
+                                            "type": "integer"
+                                        },
+                                        "previousStreetESSH": {
+                                            "type": "integer"
+                                        },
+                                        "chronicHomeless": {
+                                            "type": "integer"
+                                        }
+                                    }
                                 }
-                              }
                             }
-                          },
-                          "enrollmentId": {
-                            "type": "string",
-                            "format": "uuid",
-                          },
-                          "disablingcondition": {
-                            "type": "integer"
-                          },
-                          "entrydate": {
-                            "type": "integer"
-                          },
-                          "householdid": {
-                            "type": "string",
-                            "format": "uuid",
-                          },
-                          "housingstatus": {
-                            "type": "integer"
-                          },
-                          "monthshomelesspastthreeyears": {
-                            "type": "integer"
-                          },
-                          "otherresidenceprior": {
-                            "type": "string",
-                          },
-                          "relationshiptohoh": {
-                            "type": "integer"
-                          },
-                          "residenceprior": {
-                            "type": "integer"
-                          },
-                          "residencepriorlengthofstay": {
-                            "type": "integer"
-                          },
-                          "timeshomelesspastthreeyears": {
-                            "type": "integer"
-                          },
-                          "yearshomeless": {
-                            "type": "integer"
-                          },
-                          "entryfromstreetessh": {
-                            "type": "integer"
-                          },
-                          "dateCreated": {
-                            "type": "string",
-                            "format": "mm-dd-yyyy",
-                          },
-                          "dateUpdated": {
-                            "type": "string",
-                            "format": "mm-dd-yyyy",
-                          },
-                            "chronicHomeless": {
-                              "type": "integer"
-                            },
-                             "hmisHouseholdId": {
-                              "type": "string",
-                              "format": "uuid",
-                            },
-                                "genericHouseHoldId":{
-                                  "type": "string",
-                                  "format": "uuid",
-                                }                            
                         }
-                      }
-                    }
-                  }
-                example:
-                    enrollment:
-                        links:
-                        - rel: history
-                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/history"
-                        - rel: hmisHouseHold   
-                          href: "/hmis-clientapi/rest/v2014/hmishouseholds/8e956388-b909-41ea-b1d0-203e9cc15c45/"                                                      
-                        enrollmentId: cc1da849-b877-4455-ab44-84bdb9991f97
-                        disablingcondition: 0
-                        entrydate: 1459517941736
-                        householdid: eca19be3-303b-47b0-a9ef-8832ab0fa13d
-                        housingstatus: 3
-                        monthshomelesspastthreeyears: 7
-                        otherresidenceprior: '1'
-                        relationshiptohoh: 2
-                        residenceprior: 2
-                        residencepriorlengthofstay: 4
-                        timeshomelesspastthreeyears: 1
-                        yearshomeless: 0
-                        entryfromstreetessh: 1
-                        dateCreated: 05-13-2016
-                        dateUpdated: 05-13-2016
-                        chronicHomeless: 1
-                        hmisHouseholdId: 8e956388-b909-41ea-b1d0-203e9cc15c45
-                        genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1                         
+                        
+             example:
+                enrollment:
+                  links:
+                  - rel: history
+                    href: "/clients/48db8ac0-cbfe-4456-a1fd-e40cb710b51b/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/history"
+                  enrollmentId: 03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113
+                  entryLinks:
+                    rhsps:
+                      unspecified_stage:
+                        2018-09-23T18:48:
+                        - data:
+                          - rel: 03c66d96-72b9-49c9-bcb2-388053fb8e74
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/03c66d96-72b9-49c9-bcb2-388053fb8e74"
+                          - rel: 3591939e-8adc-417c-8aad-386e85f87551
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/3591939e-8adc-417c-8aad-386e85f87551"
+                          groupBy: dateUpdated
+                        2018-09-23T19:56:
+                        - data:
+                          - rel: f340d9c5-c5d1-44f6-b407-9c91da9b9ef9
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/f340d9c5-c5d1-44f6-b407-9c91da9b9ef9"
+                          - rel: 924e4746-4c1a-41cf-a0ed-d3177b9cc23d
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/924e4746-4c1a-41cf-a0ed-d3177b9cc23d"
+                          groupBy: dateUpdated
+                        2018-09-25T09:50:
+                        - data:
+                          - rel: d80ac82c-0030-4e34-bd43-0332dc5af5c0
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/d80ac82c-0030-4e34-bd43-0332dc5af5c0"
+                          - rel: 0bab25d1-cff7-4a57-8c30-f7b258af6143
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/0bab25d1-cff7-4a57-8c30-f7b258af6143"
+                          groupBy: dateUpdated
+                        2018-09-25T09:51:
+                        - data:
+                          - rel: a47aee4e-8584-432a-b790-31be3a4e1409
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/a47aee4e-8584-432a-b790-31be3a4e1409"
+                          - rel: 0e5f52b9-e24e-43d9-a34d-9ef691b3b5c8
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/0e5f52b9-e24e-43d9-a34d-9ef691b3b5c8"
+                          - rel: 112571c2-356c-4224-a844-310525f97201
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/112571c2-356c-4224-a844-310525f97201"
+                          - rel: 0a7fae66-1283-4cd9-8341-8606c90b26ee
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhsps/0a7fae66-1283-4cd9-8341-8606c90b26ee"
+                          groupBy: dateUpdated
+                    entryrhys:
+                      '1':
+                        2018-09-23T19:56:
+                        - data:
+                          - rel: 66015eca-afa7-4f3f-a499-389c737339e3
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/66015eca-afa7-4f3f-a499-389c737339e3"
+                          groupBy: dateUpdated
+                        2018-11-14T12:10:
+                        - data:
+                          - rel: b2462907-9ae5-4209-827d-e56ebb3631c7
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/b2462907-9ae5-4209-827d-e56ebb3631c7"
+                          groupBy: informationDate
+                        2018-11-17T12:09:
+                        - data:
+                          - rel: 025b18af-d096-4b2e-9aec-f36d2a2435d3
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/025b18af-d096-4b2e-9aec-f36d2a2435d3"
+                          - rel: 7a47384f-d5e0-4c11-be33-2477bf0e9de4
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/7a47384f-d5e0-4c11-be33-2477bf0e9de4"
+                          groupBy: submissionDate
+                        2018-11-20T12:09:
+                        - data:
+                          - rel: 5be632ee-8ba1-4bc6-b947-158963269eab
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/5be632ee-8ba1-4bc6-b947-158963269eab"
+                          groupBy: informationDate
+                      '2':
+                        2018-09-23T18:48:
+                        - data:
+                          - rel: e686d4cb-78cf-4642-bcf6-7be27e1d714c
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/e686d4cb-78cf-4642-bcf6-7be27e1d714c"
+                          groupBy: dateUpdated
+                        2018-11-14T12:10:
+                        - data:
+                          - rel: 904623af-08c5-47f9-b034-bf3a6b82d646
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/904623af-08c5-47f9-b034-bf3a6b82d646"
+                          groupBy: informationDate
+                        2018-11-17T12:09:
+                        - data:
+                          - rel: 6e541341-a2e4-40e7-8d89-0037a45095d4
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/6e541341-a2e4-40e7-8d89-0037a45095d4"
+                          groupBy: submissionDate
+                      '3':
+                        2018-11-20T12:09:
+                        - data:
+                          - rel: b817a545-1998-4377-9648-0b55828fdb8b
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/b817a545-1998-4377-9648-0b55828fdb8b"
+                          groupBy: informationDate
+                      unspecified_stage:
+                        2018-09-25T09:51:
+                        - data:
+                          - rel: 2e9ece93-d935-4489-8440-42230f05e999
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryrhys/2e9ece93-d935-4489-8440-42230f05e999"
+                          groupBy: dateUpdated
+                    entryssvfs:
+                      unspecified_stage:
+                        2018-09-23T19:56:
+                        - data:
+                          - rel: 190094ed-a0a6-4210-bc0b-bbb73e53c0b8
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryssvfs/190094ed-a0a6-4210-bc0b-bbb73e53c0b8"
+                          - rel: 93038b0f-a916-43cd-9a5c-7cb544e96749
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryssvfs/93038b0f-a916-43cd-9a5c-7cb544e96749"
+                          groupBy: dateUpdated
+                        2018-09-25T09:50:
+                        - data:
+                          - rel: d05e4b34-b561-4630-b960-474b05dbeeec
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryssvfs/d05e4b34-b561-4630-b960-474b05dbeeec"
+                          - rel: 2e772c46-cf20-4916-a6d0-cb00e3aa70af
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryssvfs/2e772c46-cf20-4916-a6d0-cb00e3aa70af"
+                          groupBy: dateUpdated
+                        2018-09-25T09:51:
+                        - data:
+                          - rel: 99362cc3-8c14-4869-8895-b647d922d36b
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryssvfs/99362cc3-8c14-4869-8895-b647d922d36b"
+                          - rel: 62c37373-02e9-4247-9388-7f62e169ce8a
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryssvfs/62c37373-02e9-4247-9388-7f62e169ce8a"
+                          - rel: d94df8a9-9eba-49c2-8f89-43aa2249ee3c
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryssvfs/d94df8a9-9eba-49c2-8f89-43aa2249ee3c"
+                          - rel: ebc3baa6-64dc-4741-b440-dae2047907d0
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/entryssvfs/ebc3baa6-64dc-4741-b440-dae2047907d0"
+                          groupBy: dateUpdated
+                  enrollmentLinks:
+                    educations:
+                      '1':
+                        2018-11-13T00:17:
+                        - data:
+                          - rel: 3130d17b-c60a-473c-99f9-83e6886a9b7d
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/educations/3130d17b-c60a-473c-99f9-83e6886a9b7d"
+                          groupBy: submissionDate
+                        - data:
+                          - rel: dcaba5a8-3fc9-48c1-93c8-ba2c3631a27a
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/educations/dcaba5a8-3fc9-48c1-93c8-ba2c3631a27a"
+                          groupBy: informationDate
+                        2018-11-15T23:01:
+                        - data:
+                          - rel: 7736581e-db33-4fb3-b2c9-19bfd32c5b51
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/educations/7736581e-db33-4fb3-b2c9-19bfd32c5b51"
+                          groupBy: dateUpdated
+                      unspecified_stage:
+                        2018-11-13T00:17:
+                        - data:
+                          - rel: fa3dfcc0-4e2e-4ee6-b4d0-ef083e1ee0b9
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/educations/fa3dfcc0-4e2e-4ee6-b4d0-ef083e1ee0b9"
+                          groupBy: submissionDate
+                        - data:
+                          - rel: 1da16c18-e507-41dc-9eba-5c61acb00b45
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/educations/1da16c18-e507-41dc-9eba-5c61acb00b45"
+                          groupBy: informationDate
+                        2018-11-15T23:01:
+                        - data:
+                          - rel: 1bd7018e-f919-461f-982e-5f5c049d5896
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/educations/1bd7018e-f919-461f-982e-5f5c049d5896"
+                          groupBy: dateUpdated
+                    dateOfEngagements:
+                      unspecified_stage:
+                        2018-09-25T09:51:
+                        - data:
+                          - rel: 40e7b72d-d265-4dd1-84c2-d900f5cbc5c1
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/dateofengagements/40e7b72d-d265-4dd1-84c2-d900f5cbc5c1"
+                          - rel: 55c85e93-d131-46c1-8529-ed17005f1d24
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/dateofengagements/55c85e93-d131-46c1-8529-ed17005f1d24"
+                          groupBy: dateUpdated
+                    disabilities:
+                      '1':
+                        0009-11-04T00:00:
+                        - data:
+                          - rel: de33b981-f68d-418f-a303-eb0840091e42
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/disabilities/de33b981-f68d-418f-a303-eb0840091e42"
+                          - rel: 66af571c-5c97-4ceb-b781-b87dcc9d7174
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/disabilities/66af571c-5c97-4ceb-b781-b87dcc9d7174"
+                          groupBy: informationDate
+                      '2':
+                        2018-11-17T12:07:
+                        - data:
+                          - rel: ed7bbf2a-fae4-40cb-806e-b46bd5a2ec56
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/disabilities/ed7bbf2a-fae4-40cb-806e-b46bd5a2ec56"
+                          - rel: 4ff222c3-9bb7-4d72-bb06-40b1c1fba304
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/disabilities/4ff222c3-9bb7-4d72-bb06-40b1c1fba304"
+                          groupBy: submissionDate
+                    domesticViolences:
+                      unspecified_stage:
+                        2018-01-08T00:00:
+                        - data:
+                          - rel: 6ac472ec-bad7-4cb7-b60a-8e237bea1d0d
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/domesticviolences/6ac472ec-bad7-4cb7-b60a-8e237bea1d0d"
+                          - rel: 1929cc50-5c5c-45b5-8dac-56747bb03c8e
+                            href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/domesticviolences/1929cc50-5c5c-45b5-8dac-56747bb03c8e"
+                          groupBy: informationDate
+                  exitLinks:
+                    unspecified_stage:
+                      2018-09-25T09:50:
+                      - data:
+                        - rel: 28e48aec-82e0-48ff-918b-493825cdea18
+                          href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/28e48aec-82e0-48ff-918b-493825cdea18"
+                          exitHousingAssessments:
+                            unspecified_stage:
+                              2018-09-25T09:50:
+                              - data:
+                                - rel: 2cd01b48-c7e8-4e2a-90ff-144174c60757
+                                  href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/28e48aec-82e0-48ff-918b-493825cdea18/exithousingassessments/2cd01b48-c7e8-4e2a-90ff-144174c60757"
+                                groupBy: dateUpdated
+                        groupBy: dateUpdated
+                      2018-09-25T09:51:
+                      - data:
+                        - rel: 3ed58fa0-b406-4ee0-86ad-32de911407ad
+                          href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/3ed58fa0-b406-4ee0-86ad-32de911407ad"
+                          exitHousingAssessments:
+                            unspecified_stage:
+                              2018-09-25T09:51:
+                              - data:
+                                - rel: 3bdb1ef3-52e4-4bf7-b492-2a7afb600d47
+                                  href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/3ed58fa0-b406-4ee0-86ad-32de911407ad/exithousingassessments/3bdb1ef3-52e4-4bf7-b492-2a7afb600d47"
+                                groupBy: dateUpdated
+                        - rel: 473f41ca-4a77-491f-aec8-a9765dff9012
+                          href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/473f41ca-4a77-491f-aec8-a9765dff9012"
+                          exitHousingAssessments:
+                            unspecified_stage:
+                              2018-09-25T09:51:
+                              - data:
+                                - rel: 099359fe-36a3-4d09-9029-35c4b6938e58
+                                  href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/473f41ca-4a77-491f-aec8-a9765dff9012/exithousingassessments/099359fe-36a3-4d09-9029-35c4b6938e58"
+                                groupBy: dateUpdated
+                        groupBy: dateUpdated
+                  dateCreated: '2018-09-23'
+                  dateUpdated: '2018-09-23'
+                  disablingCondition: 1
+                  entryDate: -19799999
+                  monthsHomelessPastThreeYears: 101
+                  projectId: 5958e1b7-0296-4821-b183-ae9967217579
+                  timesHomelessPastThreeYears: 1
+                  yearsHomeless: 0
+                  losUnderThreshold: 1
+                  previousStreetESSH: 1
+                  chronicHomeless: 1
+                  hmisHouseholdId: 8e956388-b909-41ea-b1d0-203e9cc15c45
+                  genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1                         
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -17217,9 +18468,17 @@ paths:
         description: Client Identifier
   '/clients/{clientid}/enrollments/{enrollmentid}/exits/{exitid}':
     get:
+      parameters:
+      - name: includeChildLinks
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: >-
+          To include exit child entity links in the response this flag must be set true. default value of this flag is false. The exit child entity links, will be grouped by dataCollectionStage and then infromationDate or updatedDate (if informationDate is not available). If dataCollectionStage is not available child entity links will be categorized as unassgined
       responses:
         '200':
-          description: OK – Everything is working.
+          description: OK   Everything is working.
           content:
             application/json:
                 schema:
@@ -17232,7 +18491,6 @@ paths:
                       "exit": {
                         "type": "object",
                         "required": [
-                          "links",
                           "exitId",
                           "exitDate",
                           "otherDestination",
@@ -17241,24 +18499,6 @@ paths:
                           "dateUpdated"
                         ],
                         "properties": {
-                          "links": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "required": [
-                                "rel",
-                                "href"
-                              ],
-                              "properties": {
-                                "rel": {
-                                  "type": "string",
-                                },
-                                "href": {
-                                  "type": "string",
-                                }
-                              }
-                            }
-                          },
                           "exitId": {
                             "type": "string",
                             "format": "uuid",
@@ -17279,22 +18519,241 @@ paths:
                           "dateUpdated": {
                             "type": "string",
                             "format": "mm-dd-yyyy",
-                          }
+                          },
+                          "exitLinks": {
+                              "type": "object",
+                              "required": [
+                                "unspecified_stage"
+                              ],
+                              "properties": {
+                                "unspecified_stage": {
+                                  "type": "object",
+                                  "required": [
+                                    "2018-09-25T09:50",
+                                    "2018-09-25T09:51"
+                                  ],
+                                  "properties": {
+                                    "2018-09-25T09:50": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "required": [
+                                          "data",
+                                          "groupBy"
+                                        ],
+                                        "properties": {
+                                          "data": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "required": [
+                                                "rel",
+                                                "href",
+                                                "exitHousingAssessments"
+                                              ],
+                                              "properties": {
+                                                "rel": {
+                                                  "type": "string",
+                                                  "format": "uuid",
+                                                },
+                                                "href": {
+                                                  "type": "string",
+                                                },
+                                                "exitHousingAssessments": {
+                                                  "type": "object",
+                                                  "required": [
+                                                    "unspecified_stage"
+                                                  ],
+                                                  "properties": {
+                                                    "unspecified_stage": {
+                                                      "type": "object",
+                                                      "required": [
+                                                        "2018-09-25T09:50"
+                                                      ],
+                                                      "properties": {
+                                                        "2018-09-25T09:50": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "object",
+                                                            "required": [
+                                                              "data",
+                                                              "groupBy"
+                                                            ],
+                                                            "properties": {
+                                                              "data": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                  "type": "object",
+                                                                  "required": [
+                                                                    "rel",
+                                                                    "href"
+                                                                  ],
+                                                                  "properties": {
+                                                                    "rel": {
+                                                                      "type": "string",
+                                                                      "format": "uuid",
+                                                                    },
+                                                                    "href": {
+                                                                      "type": "string",
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "groupBy": {
+                                                                "type": "string",
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "groupBy": {
+                                            "type": "string",
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "2018-09-25T09:51": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "required": [
+                                          "data",
+                                          "groupBy"
+                                        ],
+                                        "properties": {
+                                          "data": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "required": [
+                                                "rel",
+                                                "href",
+                                                "exitHousingAssessments"
+                                              ],
+                                              "properties": {
+                                                "rel": {
+                                                  "type": "string",
+                                                  "format": "uuid",
+                                                },
+                                                "href": {
+                                                  "type": "string",
+                                                },
+                                                "exitHousingAssessments": {
+                                                  "type": "object",
+                                                  "required": [
+                                                    "unspecified_stage"
+                                                  ],
+                                                  "properties": {
+                                                    "unspecified_stage": {
+                                                      "type": "object",
+                                                      "required": [
+                                                        "2018-09-25T09:51"
+                                                      ],
+                                                      "properties": {
+                                                        "2018-09-25T09:51": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "object",
+                                                            "required": [
+                                                              "data",
+                                                              "groupBy"
+                                                            ],
+                                                            "properties": {
+                                                              "data": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                  "type": "object",
+                                                                  "required": [
+                                                                    "rel",
+                                                                    "href"
+                                                                  ],
+                                                                  "properties": {
+                                                                    "rel": {
+                                                                      "type": "string",
+                                                                      "format": "uuid",
+                                                                    },
+                                                                    "href": {
+                                                                      "type": "string",
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "groupBy": {
+                                                                "type": "string",
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "groupBy": {
+                                            "type": "string",
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
                         }
                       }
                     }
                   }
                 example:
                     exit:
-                        links:
-                        - rel: history
-                          href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/exits/89c350f4-9165-4898-bb8b-f8b096a1aa2d/history"
-                        exitId: 89c350f4-9165-4898-bb8b-f8b096a1aa2d
-                        exitDate: 1459518853883
-                        otherDestination: TWENTY_FOUR
-                        destination: 6
-                        dateCreated: 05-11-2016
-                        dateUpdated: 05-11-2016
+                      exitId: 89c350f4-9165-4898-bb8b-f8b096a1aa2d
+                      exitDate: 1459518853883
+                      otherDestination: TWENTY_FOUR
+                      destination: 6
+                      dateCreated: 05-11-2020
+                      dateUpdated: 05-11-2020
+                      exitLinks:
+                        unspecified_stage:
+                          2018-09-25T09:50:
+                          - data:
+                            - rel: 28e48aec-82e0-48ff-918b-493825cdea18
+                              href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/28e48aec-82e0-48ff-918b-493825cdea18"
+                              exitHousingAssessments:
+                                unspecified_stage:
+                                  2018-09-25T09:50:
+                                  - data:
+                                    - rel: 2cd01b48-c7e8-4e2a-90ff-144174c60757
+                                      href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/28e48aec-82e0-48ff-918b-493825cdea18/exithousingassessments/2cd01b48-c7e8-4e2a-90ff-144174c60757"
+                                    groupBy: dateUpdated
+                            groupBy: dateUpdated
+                          2018-09-25T09:51:
+                          - data:
+                            - rel: 3ed58fa0-b406-4ee0-86ad-32de911407ad
+                              href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/3ed58fa0-b406-4ee0-86ad-32de911407ad"
+                              exitHousingAssessments:
+                                unspecified_stage:
+                                  2018-09-25T09:51:
+                                  - data:
+                                    - rel: 3bdb1ef3-52e4-4bf7-b492-2a7afb600d47
+                                      href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/3ed58fa0-b406-4ee0-86ad-32de911407ad/exithousingassessments/3bdb1ef3-52e4-4bf7-b492-2a7afb600d47"
+                                    groupBy: dateUpdated
+                            - rel: 473f41ca-4a77-491f-aec8-a9765dff9012
+                              href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/473f41ca-4a77-491f-aec8-a9765dff9012"
+                              exitHousingAssessments:
+                                unspecified_stage:
+                                  2018-09-25T09:51:
+                                  - data:
+                                    - rel: 099359fe-36a3-4d09-9029-35c4b6938e58
+                                      href: "/hmis-clientapi/rest/v2015/clients/00ba9b0a-bf0a-411f-9ad3-56194beb9e8a/enrollments/03c9fbfc-a3a0-42f4-b304-3f7dc3ad2113/exits/473f41ca-4a77-491f-aec8-a9765dff9012/exithousingassessments/099359fe-36a3-4d09-9029-35c4b6938e58"
+                                    groupBy: dateUpdated
+                            groupBy: dateUpdated
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
