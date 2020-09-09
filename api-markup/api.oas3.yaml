@@ -1,7 +1,15 @@
 openapi: 3.0.0
 info:
   title: 2015 HMIS API
-  version: 1.2.7
+  version: 1.2.8
+  contact:
+    name: API Source
+    email: support@hslynk.com
+    url: https://github.com/hmis-api/2015-hmis-api
+  # Name of the license and a URL to the license description.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
   description: |
        **Note :**
               Please note that the partial updates are supported via PUT APIs. However, Note that If "null" value is passed for any element, in the PUT request body, it will be ignored. An empty string value should be sent (instead of "null" value) for the elements that need to be updated with NULL values.
@@ -1216,7 +1224,7 @@ paths:
                                 "genericHouseHoldId":{
                                   "type": "string",
                                   "format": "uuid",
-                                }                                
+                                }
                               }
                             }
                           }
@@ -1236,8 +1244,8 @@ paths:
                         - links:
                           - rel: history
                             href: "/clients/8547a63e-4659-412f-b5fa-200e03b62ae8/enrollments/cc1da849-b877-4455-ab44-84bdb9991f97/history"
-                          - rel: hmisHouseHold   
-                            href: "/hmis-clientapi/rest/v2014/hmishouseholds/8e956388-b909-41ea-b1d0-203e9cc15c45/"                            
+                          - rel: hmisHouseHold
+                            href: "/hmis-clientapi/rest/v2014/hmishouseholds/8e956388-b909-41ea-b1d0-203e9cc15c45/"
                           enrollmentId: cc1da849-b877-4455-ab44-84bdb9991f97
                           disablingcondition: 0
                           entrydate: 1459517941736
@@ -1254,7 +1262,7 @@ paths:
                           dateCreated: 05-13-2016
                           chronicHomeless: 1
                           hmisHouseholdId: 8e956388-b909-41ea-b1d0-203e9cc15c45
-                          genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1                           
+                          genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '403':
@@ -1362,7 +1370,7 @@ paths:
                                 "genericHouseHoldId":{
                                   "type": "string",
                                   "format": "uuid",
-                                }                            
+                                }
                         }
                       }
                     }
@@ -1384,9 +1392,9 @@ paths:
                     entryfromstreetessh: 1
                     dateCreated: 05-13-2016
                     dateUpdated: 05-13-2016
-                    chronicHomeless: 1           
+                    chronicHomeless: 1
                     hmisHouseholdId: 8e956388-b909-41ea-b1d0-203e9cc15c45
-                    genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1                     
+                    genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -1488,7 +1496,7 @@ paths:
                                 "genericHouseHoldId":{
                                   "type": "string",
                                   "format": "uuid",
-                                }                        
+                                }
                       }
                     }
                   }
@@ -1516,7 +1524,7 @@ paths:
                     datetostreetessh: 1
                     chronicHomeless: 1
                     hmisHouseholdId: 8e956388-b909-41ea-b1d0-203e9cc15c45
-                    genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1                     
+                    genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1
         required: true
     parameters:
       - name: clientid
@@ -2664,7 +2672,7 @@ paths:
                                 }
                             }
                         }
-                        
+
              example:
                 enrollment:
                   links:
@@ -2899,7 +2907,7 @@ paths:
                   previousStreetESSH: 1
                   chronicHomeless: 1
                   hmisHouseholdId: 8e956388-b909-41ea-b1d0-203e9cc15c45
-                  genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1                         
+                  genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '401':
@@ -3020,7 +3028,7 @@ paths:
                                 "genericHouseHoldId":{
                                   "type": "string",
                                   "format": "uuid",
-                                }                        
+                                }
                       }
                     }
                   }
@@ -3048,7 +3056,7 @@ paths:
                     datetostreetessh: 1
                     chronicHomeless: 1
                     hmisHouseholdId: 8e956388-b909-41ea-b1d0-203e9cc15c45
-                    genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1                     
+                    genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1
         required: true
     delete:
       responses:
@@ -3191,7 +3199,7 @@ paths:
                                 "genericHouseHoldId":{
                                   "type": "string",
                                   "format": "uuid",
-                                }                                
+                                }
                               }
                             }
                           }
@@ -3209,8 +3217,8 @@ paths:
                         sort: {}
                       enrollments:
                         links:
-                        - rel: hmisHouseHold   
-                          href: "/hmis-clientapi/rest/v2014/hmishouseholds/8e956388-b909-41ea-b1d0-203e9cc15c45/"                           
+                        - rel: hmisHouseHold
+                          href: "/hmis-clientapi/rest/v2014/hmishouseholds/8e956388-b909-41ea-b1d0-203e9cc15c45/"
                         - enrollmentId: cc1da849-b877-4455-ab44-84bdb9991f97
                           disablingcondition: 0
                           entrydate: 1459517941736
@@ -3227,7 +3235,7 @@ paths:
                           dateCreated: 05-13-2016
                           chronicHomeless: 1
                           hmisHouseholdId: 8e956388-b909-41ea-b1d0-203e9cc15c45
-                          genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1                           
+                          genericHouseHoldId: 1520d4ac-2998-4825-80a6-2f550c37f3f1
         '400':
           description: Bad Request – The request was invalid or cannot be served.
         '403':
@@ -26859,7 +26867,7 @@ paths:
                           "houseHoldMembers": {
                             "type": "array",
                             "items":{
-                              
+
                             }
                           }
                         }
@@ -27037,7 +27045,7 @@ paths:
                                 "houseHoldMembers": {
                                   "type": "array",
                                   "items":{
-                                    
+
                                   }
                                 }
                               }
