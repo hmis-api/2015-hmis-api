@@ -7,9 +7,9 @@ info:
     email: support@hslynk.com
     url: https://github.com/hmis-api/2015-hmis-api
   # Name of the license and a URL to the license description.
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    license:
+      name: Open Source License
+      url: https://github.com/hmis-api/2014-hmis-api/blob/master/LICENSE
   description: |
        **Note :**
               Please note that the partial updates are supported via PUT APIs. However, Note that If "null" value is passed for any element, in the PUT request body, it will be ignored. An empty string value should be sent (instead of "null" value) for the elements that need to be updated with NULL values.
